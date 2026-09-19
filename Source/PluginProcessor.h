@@ -53,7 +53,7 @@ public:
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
     bool isMidiEffect() const override { return false; }
-    double getTailLengthSeconds() const override { return 3.0; }
+    double getTailLengthSeconds() const override { return 5.0; }
 
     int getNumPrograms() override { return 1; }
     int getCurrentProgram() override { return 0; }
@@ -77,7 +77,10 @@ private:
     oildrum::DrumEngine engine { 44100.0 };
     std::array<std::atomic<float>*, oildrum::kNumInstruments> pitchParams {};
     std::atomic<float>* hammerParam { nullptr };
-    std::vector<float> scratch;
+    std::atomic<float>* strikePosParam { nullptr };
+    std::atomic<float>* dampingParam   { nullptr };
+    std::atomic<float>* roomMixParam   { nullptr };
+    std::vector<float> scratchL, scratchR;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OilDrumKitAudioProcessor)
 };

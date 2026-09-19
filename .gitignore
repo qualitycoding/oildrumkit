@@ -67,3 +67,8 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Tools
+__pycache__/
+*.pyc
+Renders/*/metrics_hits/
