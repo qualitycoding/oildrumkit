@@ -3,26 +3,26 @@
 
 using namespace oildrum;
 
-// Parameter IDs, in Instrument enum order. Ranges/defaults mirror the recipes in
-// Source/Voicing.h (generated from Tools/voicing.json) -- if you change a pitch range
-// there, update the matching entry here too.
-struct ParamSpec { const char* id; const char* label; float minHz; float maxHz; float defaultHz; };
+// Parameter IDs and display names, in Instrument enum order. Ranges and defaults are NOT stated here:
+// they are read from kVoicing (Source/Voicing.h, generated from Tools/voicing.json), the same table the
+// engine clamps against, so the two cannot disagree.
+struct ParamSpec { const char* id; const char* label; };
 static const ParamSpec kParamSpecs[kNumInstruments] = {
-    { "bassPitch",    "Bass Drum",      30, 120,  55 },
-    { "snare1Pitch",  "Snare 1",       100, 400, 190 },
-    { "snare2Pitch",  "Snare 2",        90, 350, 160 },
-    { "tomLow1Pitch", "Low Tom 1",      47, 209,  95 },
-    { "tomLow2Pitch", "Low Tom 2",      52, 231, 105 },
-    { "tomMid1Pitch", "Mid Tom 1",      72, 319, 145 },
-    { "tomMid2Pitch", "Mid Tom 2",      80, 352, 160 },
-    { "tomHigh1Pitch","High Tom 1",    105, 462, 210 },
-    { "tomHigh2Pitch","High Tom 2",    115, 506, 230 },
-    { "splashPitch",  "Splash",        250,1000, 500 },
-    { "ridePitch",    "Ride",          200, 800, 420 },
-    { "hhClosedPitch","Hi-Hat Closed", 250, 900, 500 },
-    { "hhOpenPitch",  "Hi-Hat Open",   250, 900, 500 },
-    { "cowbellPitch", "Cowbell",       300,1100, 560 },
-    { "rimshotPitch", "Rimshot",       180, 700, 350 },
+    { "bassPitch",    "Bass Drum" },
+    { "snare1Pitch",  "Snare 1" },
+    { "snare2Pitch",  "Snare 2" },
+    { "tomLow1Pitch", "Low Tom 1" },
+    { "tomLow2Pitch", "Low Tom 2" },
+    { "tomMid1Pitch", "Mid Tom 1" },
+    { "tomMid2Pitch", "Mid Tom 2" },
+    { "tomHigh1Pitch","High Tom 1" },
+    { "tomHigh2Pitch","High Tom 2" },
+    { "splashPitch",  "Splash" },
+    { "ridePitch",    "Ride" },
+    { "hhClosedPitch","Hi-Hat Closed" },
+    { "hhOpenPitch",  "Hi-Hat Open" },
+    { "cowbellPitch", "Cowbell" },
+    { "rimshotPitch", "Rimshot" },
 };
 
 OilDrumKitAudioProcessor::OilDrumKitAudioProcessor()
@@ -40,12 +40,14 @@ OilDrumKitAudioProcessor::OilDrumKitAudioProcessor()
 juce::AudioProcessorValueTreeState::ParameterLayout OilDrumKitAudioProcessor::createLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-    for (auto& spec : kParamSpecs)
+    for (int i = 0; i < kNumInstruments; ++i)
     {
+        const auto& spec = kParamSpecs[i];
+        const auto& rec  = kVoicing[i];
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { spec.id, 1 }, spec.label,
-            juce::NormalisableRange<float> (spec.minHz, spec.maxHz, 0.1f, 0.5f), // skewed for musical tuning feel
-            spec.defaultHz,
+            juce::NormalisableRange<float> (rec.minHz, rec.maxHz, 0.1f, 0.5f), // skewed for musical tuning feel
+            rec.defaultHz,
             juce::AudioParameterFloatAttributes().withLabel ("Hz")));
     }
     

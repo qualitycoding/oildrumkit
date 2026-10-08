@@ -10,13 +10,6 @@ namespace
     const juce::Colour rustLight (0xffe0813f);
     const juce::Colour hazard    (0xffe8b923);
     const juce::Colour textCol   (0xffd8d2c4);
-
-    const char* noteNames[kNumInstruments] = {
-        "C1 (36)", "C#2 (37)", "D1 (38)", "E1 (40)",
-        "F1 (41)", "G1 (43)", "F#1 (42)", "A#1 (46)",
-        "A1 (45)", "B1 (47)", "C2 (48)", "D2 (50)",
-        "D#2 (51)", "G2 (55)", "G#2 (56)"
-    };
 }
 
 OilDrumKitAudioProcessorEditor::OilDrumKitAudioProcessorEditor (OilDrumKitAudioProcessor& p)
@@ -54,7 +47,7 @@ OilDrumKitAudioProcessorEditor::OilDrumKitAudioProcessorEditor (OilDrumKitAudioP
         row->nameLabel.setColour (juce::Label::textColourId, textCol);
         rowsHolder.addAndMakeVisible (row->nameLabel);
 
-        row->noteLabel.setText (juce::String ("MIDI ") + noteNames[i], juce::dontSendNotification);
+        row->noteLabel.setText (juce::String ("MIDI note ") + juce::String (instrumentMidiNote (i)), juce::dontSendNotification);
         row->noteLabel.setFont (juce::FontOptions (11.0f));
         row->noteLabel.setColour (juce::Label::textColourId, textCol.withAlpha (0.5f));
         rowsHolder.addAndMakeVisible (row->noteLabel);

@@ -34,6 +34,15 @@ inline int midiNoteToInstrument (int note)
     }
 }
 
+// Inverse of midiNoteToInstrument(): the note that triggers an instrument, or -1.
+// The editor shows this, so its labels cannot drift from the real MIDI map above.
+inline int instrumentMidiNote (int instrument)
+{
+    for (int note = 0; note < 128; ++note)
+        if (midiNoteToInstrument (note) == instrument) return note;
+    return -1;
+}
+
 class OilDrumKitAudioProcessor : public juce::AudioProcessor
 {
 public:
