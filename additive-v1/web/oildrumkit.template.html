@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oil Drum Kit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root{
+    --bg:#161512;
+    --panel:#211f1a;
+    --panel2:#2a271f;
+    --rust:#b5602c;
+    --rust-light:#e0813f;
+    --steel:#5c6b70;
+    --steel-light:#8fa3aa;
+    --hazard:#e8b923;
+    --text:#d8d2c4;
+    --text-dim:#8f8a7c;
+    --bronze:#8a6a3a;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Oswald',sans-serif; }
+
+  .stripes{
+    height:10px;
+    background: repeating-linear-gradient(135deg, var(--hazard) 0 18px, #171410 18px 36px);
+    opacity:.9;
+  }
+
+  header{ padding:22px 24px 14px; }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(28px,5vw,44px);
+    letter-spacing:2px;
+    margin:0;
+    color:var(--rust-light);
+    text-shadow: 0 2px 0 #000;
+  }
+  header p{
+    margin:6px 0 0;
+    color:var(--text-dim);
+    font-size:14px;
+    letter-spacing:.5px;
+  }
+  .top-controls{
+    display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .master{ display:flex; align-items:center; gap:8px; }
+  .master label{ font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+  button.panic{
+    background:var(--panel2); color:var(--hazard); border:1px solid var(--hazard);
+    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:1px;
+    padding:7px 14px; border-radius:3px; cursor:pointer; font-size:12px; text-transform:uppercase;
+  }
+  button.panic:hover{ background:var(--hazard); color:#171410; }
+  .hint{ font-size:12px; color:var(--text-dim); }
+  .hint kbd{
+    background:#000; border:1px solid #444; border-radius:3px; padding:1px 5px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text);
+  }
+
+  main{ padding:6px 20px 40px; max-width:1180px; margin:0 auto; }
+
+  .kit-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:14px;
+    margin-top:10px;
+  }
+  @media (max-width:900px){ .kit-grid{ grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:560px){ .kit-grid{ grid-template-columns:repeat(2,1fr);} }
+
+  .pad{
+    background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid #3a352b;
+    border-radius:10px;
+    padding:12px 10px 10px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    position:relative;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  }
+  .pad .key{
+    position:absolute; top:8px; left:10px;
+    font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-dim);
+    background:#000; border:1px solid #3a352b; border-radius:3px; padding:1px 5px;
+  }
+  .lid{
+    width:78px; height:78px; border-radius:50%;
+    cursor:pointer; user-select:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:11px; text-align:center;
+    color:#1a1815;
+    border:3px solid rgba(0,0,0,.4);
+    transition: transform .04s ease-out, box-shadow .12s ease-out;
+    box-shadow: 0 3px 0 rgba(0,0,0,.5), inset 0 3px 6px rgba(255,255,255,.15), inset 0 -6px 10px rgba(0,0,0,.35);
+  }
+  .lid:active, .lid.hit{ transform: scale(.93); }
+  .lid.hit{ box-shadow: 0 1px 0 rgba(0,0,0,.5), inset 0 3px 6px rgba(255,255,255,.25), 0 0 18px 4px var(--glow,rgba(232,185,35,.55)); }
+  .lid .ring{
+    position:absolute; inset:6px; border-radius:50%; border:2px dashed rgba(0,0,0,.25);
+    pointer-events:none;
+  }
+  .lid-wrap{ position:relative; width:78px; height:78px; }
+
+  .drum .lid{ background: radial-gradient(circle at 35% 30%, #d97a3f, var(--rust) 60%, #7a3d1a 100%); }
+  .metal .lid{ background: radial-gradient(circle at 35% 30%, var(--steel-light), var(--steel) 60%, #333c3f 100%); color:#12181a;}
+  .bell .lid{ background: radial-gradient(circle at 35% 30%, #c9a45c, var(--bronze) 60%, #45320f 100%); }
+  .accent .lid{ background: radial-gradient(circle at 35% 30%, #f3d874, var(--hazard) 60%, #8a6a10 100%); }
+
+  .pad .name{ font-size:12.5px; font-weight:600; text-align:center; letter-spacing:.3px; }
+  .pad .sub{ font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-top:-6px;}
+
+  .tune{ width:100%; display:flex; flex-direction:column; gap:2px; align-items:center; }
+  .tune input[type=range]{
+    width:100%; accent-color:var(--hazard);
+  }
+  .tune .hz{
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--hazard);
+  }
+
+  .section-label{
+    grid-column: 1 / -1;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--text-dim);
+    margin:18px 0 -4px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-label::after{ content:""; flex:1; height:1px; background:#3a352b; }
+
+  footer{
+    text-align:center; color:var(--text-dim); font-size:11.5px; padding:10px 20px 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stripes"></div>
+<header>
+  <h1>OIL DRUM KIT</h1>
+  <p>fifteen struck-steel voices, synthesized in your browser by the same algorithm as the plugin &mdash; drag a slider to tune, click/tap a lid to hit</p>
+  <div class="top-controls">
+    <div class="master">
+      <label for="masterVol">Level</label>
+      <input id="masterVol" type="range" min="0" max="1" step="0.01" value="1" />
+    </div>
+    <button class="panic" id="panicBtn">All Off</button>
+    <span class="hint">Computer keys shown on each pad also trigger it &middot; <kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd>&hellip;</span>
+  </div>
+</header>
+
+<main>
+  <div class="kit-grid" id="kitGrid"></div>
+</main>
+
+<footer>Browser preview. The synthesis code (engine.js) is a port of the plugin's DrumEngine.h and is checked against it sample-by-sample (tests/test_web_parity.js); the browser output path itself (ScriptProcessor) is not part of that check. Tuning applies to the next hit.</footer>
+
+<script>
+/*ENGINE_JS*/
+</script>
+<script>
+(function(){
+  "use strict";
+  const KIT = /*KIT_JSON*/;
+  const KEYS = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g'];
+  const GROUPS = [ ['drum',0,8], ['metal',9,12], ['bell',13,13], ['accent',14,14] ];
+  const groupLabels = { drum:'Drums', metal:'Cymbals & Hi-Hats', bell:'Cowbell', accent:'Rimshot' };
+  const groupOf = i => GROUPS.find(g => i >= g[1] && i <= g[2])[0];
+
+  let ctx = null, engine = null, node = null, gainNode = null;
+  const levelEl = document.getElementById('masterVol');
+
+  function ensureAudio(){
+    if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return; }
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    engine = new OilDrumEngine.DrumEngine(KIT, ctx.sampleRate);
+    KIT.instruments.forEach((r, i) => engine.setPitchHz(i, pitchHz[i]));
+    // ScriptProcessorNode runs on the main thread, so trigger()/setPitchHz() and render() never overlap.
+    node = ctx.createScriptProcessor(512, 0, 2);
+    node.onaudioprocess = (e) => {
+      const l = e.outputBuffer.getChannelData(0);
+      engine.render(l, l.length);
+      e.outputBuffer.getChannelData(1).set(l);
+    };
+    gainNode = ctx.createGain();
+    gainNode.gain.value = parseFloat(levelEl.value);
+    node.connect(gainNode).connect(ctx.destination);
+    if (ctx.state === 'suspended') ctx.resume();
+  }
+
+  const pitchHz = KIT.instruments.map(r => r.defaultHz);
+  function hitInstrument(i, vel){
+    ensureAudio();
+    engine.setPitchHz(i, pitchHz[i]);
+    engine.trigger(i, vel);
+  }
+
+  const grid = document.getElementById('kitGrid');
+  const lids = [];
+  let lastGroup = null;
+  KIT.instruments.forEach((spec, idx) => {
+    const group = groupOf(idx);
+    if (group !== lastGroup){
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = groupLabels[group];
+      grid.appendChild(label);
+      lastGroup = group;
+    }
+    const pad = document.createElement('div');
+    pad.className = 'pad ' + group;
+
+    const key = document.createElement('div');
+    key.className = 'key';
+    key.textContent = (KEYS[idx]||'').toUpperCase();
+    pad.appendChild(key);
+
+    const lidWrap = document.createElement('div');
+    lidWrap.className = 'lid-wrap';
+    const lid = document.createElement('div');
+    lid.className = 'lid';
+    lid.innerHTML = spec.name.replace(' ', '<br>');
+    lidWrap.appendChild(lid);
+    const ring = document.createElement('div');
+    ring.className = 'ring';
+    lidWrap.appendChild(ring);
+    pad.appendChild(lidWrap);
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'name';
+    nameEl.textContent = spec.name;
+    pad.appendChild(nameEl);
+
+    const sub = document.createElement('div');
+    sub.className = 'sub';
+    sub.textContent = 'key ' + (KEYS[idx]||'-').toUpperCase() + ' \u00b7 MIDI note ' + spec.midiNote;
+    pad.appendChild(sub);
+
+    const tune = document.createElement('div');
+    tune.className = 'tune';
+    const range = document.createElement('input');
+    range.type = 'range';
+    range.min = spec.minHz; range.max = spec.maxHz; range.step = 0.5; range.value = spec.defaultHz;
+    const hzLabel = document.createElement('div');
+    hzLabel.className = 'hz';
+    hzLabel.textContent = Math.round(spec.defaultHz) + ' Hz';
+    range.addEventListener('input', () => {
+      pitchHz[idx] = parseFloat(range.value);
+      hzLabel.textContent = Math.round(pitchHz[idx]) + ' Hz';
+    });
+    tune.appendChild(range);
+    tune.appendChild(hzLabel);
+    pad.appendChild(tune);
+
+    function hit(){
+      hitInstrument(idx, 0.95);
+      lid.classList.add('hit');
+      setTimeout(()=>lid.classList.remove('hit'), 130);
+    }
+    lid.addEventListener('mousedown', hit);
+    lid.addEventListener('touchstart', (e)=>{ e.preventDefault(); hit(); }, {passive:false});
+    grid.appendChild(pad);
+    lids[idx] = lid;
+  });
+
+  const keyToIdx = {};
+  KEYS.forEach((k,i) => { keyToIdx[k] = i; });
+  const heldKeys = new Set();
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (heldKeys.has(k) || !(k in keyToIdx)) return;
+    heldKeys.add(k);
+    hitInstrument(keyToIdx[k], 0.95);
+    lids[keyToIdx[k]].classList.add('hit');
+  });
+  window.addEventListener('keyup', (e) => {
+    const k = e.key.toLowerCase();
+    heldKeys.delete(k);
+    if (k in keyToIdx) setTimeout(()=>lids[keyToIdx[k]].classList.remove('hit'), 60);
+  });
+
+  levelEl.addEventListener('input', () => { if (gainNode) gainNode.gain.value = parseFloat(levelEl.value); });
+  document.getElementById('panicBtn').addEventListener('click', () => { if (engine) engine.allNotesOff(); });
+})();
+</script>
+</body>
+</html>

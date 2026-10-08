@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oil Drum Kit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root{
+    --bg:#161512;
+    --panel:#211f1a;
+    --panel2:#2a271f;
+    --rust:#b5602c;
+    --rust-light:#e0813f;
+    --steel:#5c6b70;
+    --steel-light:#8fa3aa;
+    --hazard:#e8b923;
+    --text:#d8d2c4;
+    --text-dim:#8f8a7c;
+    --bronze:#8a6a3a;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Oswald',sans-serif; }
+
+  .stripes{
+    height:10px;
+    background: repeating-linear-gradient(135deg, var(--hazard) 0 18px, #171410 18px 36px);
+    opacity:.9;
+  }
+
+  header{ padding:22px 24px 14px; }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(28px,5vw,44px);
+    letter-spacing:2px;
+    margin:0;
+    color:var(--rust-light);
+    text-shadow: 0 2px 0 #000;
+  }
+  header p{
+    margin:6px 0 0;
+    color:var(--text-dim);
+    font-size:14px;
+    letter-spacing:.5px;
+  }
+  .top-controls{
+    display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .master{ display:flex; align-items:center; gap:8px; }
+  .master label{ font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+  button.panic{
+    background:var(--panel2); color:var(--hazard); border:1px solid var(--hazard);
+    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:1px;
+    padding:7px 14px; border-radius:3px; cursor:pointer; font-size:12px; text-transform:uppercase;
+  }
+  button.panic:hover{ background:var(--hazard); color:#171410; }
+  .hint{ font-size:12px; color:var(--text-dim); }
+  .hint kbd{
+    background:#000; border:1px solid #444; border-radius:3px; padding:1px 5px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text);
+  }
+
+  main{ padding:6px 20px 40px; max-width:1180px; margin:0 auto; }
+
+  .kit-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:14px;
+    margin-top:10px;
+  }
+  @media (max-width:900px){ .kit-grid{ grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:560px){ .kit-grid{ grid-template-columns:repeat(2,1fr);} }
+
+  .pad{
+    background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid #3a352b;
+    border-radius:10px;
+    padding:12px 10px 10px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    position:relative;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  }
+  .pad .key{
+    position:absolute; top:8px; left:10px;
+    font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-dim);
+    background:#000; border:1px solid #3a352b; border-radius:3px; padding:1px 5px;
+  }
+  .lid{
+    width:78px; height:78px; border-radius:50%;
+    cursor:pointer; user-select:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:11px; text-align:center;
+    color:#1a1815;
+    border:3px solid rgba(0,0,0,.4);
+    transition: transform .04s ease-out, box-shadow .12s ease-out;
+    box-shadow: 0 3px 0 rgba(0,0,0,.5), inset 0 3px 6px rgba(255,255,255,.15), inset 0 -6px 10px rgba(0,0,0,.35);
+  }
+  .lid:active, .lid.hit{ transform: scale(.93); }
+  .lid.hit{ box-shadow: 0 1px 0 rgba(0,0,0,.5), inset 0 3px 6px rgba(255,255,255,.25), 0 0 18px 4px var(--glow,rgba(232,185,35,.55)); }
+  .lid .ring{
+    position:absolute; inset:6px; border-radius:50%; border:2px dashed rgba(0,0,0,.25);
+    pointer-events:none;
+  }
+  .lid-wrap{ position:relative; width:78px; height:78px; }
+
+  .drum .lid{ background: radial-gradient(circle at 35% 30%, #d97a3f, var(--rust) 60%, #7a3d1a 100%); }
+  .metal .lid{ background: radial-gradient(circle at 35% 30%, var(--steel-light), var(--steel) 60%, #333c3f 100%); color:#12181a;}
+  .bell .lid{ background: radial-gradient(circle at 35% 30%, #c9a45c, var(--bronze) 60%, #45320f 100%); }
+  .accent .lid{ background: radial-gradient(circle at 35% 30%, #f3d874, var(--hazard) 60%, #8a6a10 100%); }
+
+  .pad .name{ font-size:12.5px; font-weight:600; text-align:center; letter-spacing:.3px; }
+  .pad .sub{ font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-top:-6px;}
+
+  .tune{ width:100%; display:flex; flex-direction:column; gap:2px; align-items:center; }
+  .tune input[type=range]{
+    width:100%; accent-color:var(--hazard);
+  }
+  .tune .hz{
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--hazard);
+  }
+
+  .section-label{
+    grid-column: 1 / -1;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--text-dim);
+    margin:18px 0 -4px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-label::after{ content:""; flex:1; height:1px; background:#3a352b; }
+
+  footer{
+    text-align:center; color:var(--text-dim); font-size:11.5px; padding:10px 20px 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stripes"></div>
+<header>
+  <h1>OIL DRUM KIT</h1>
+  <p>fifteen struck-steel voices, synthesized in your browser by the same algorithm as the plugin &mdash; drag a slider to tune, click/tap a lid to hit</p>
+  <div class="top-controls">
+    <div class="master">
+      <label for="masterVol">Level</label>
+      <input id="masterVol" type="range" min="0" max="1" step="0.01" value="1" />
+    </div>
+    <button class="panic" id="panicBtn">All Off</button>
+    <span class="hint">Computer keys shown on each pad also trigger it &middot; <kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd>&hellip;</span>
+  </div>
+</header>
+
+<main>
+  <div class="kit-grid" id="kitGrid"></div>
+</main>
+
+<footer>Browser preview. The synthesis code (engine.js) is a port of the plugin's DrumEngine.h and is checked against it sample-by-sample (tests/test_web_parity.js); the browser output path itself (ScriptProcessor) is not part of that check. Tuning applies to the next hit.</footer>
+
+<script>
+// engine.js -- JavaScript port of Source/DrumEngine.h (same algorithm, same order of operations,
+// same xorshift noise generator). Used by the browser demo and by tests/test_web_parity.js.
+// Recipes are NOT written here: they come from kit.json, which tools/export_recipes.cpp generates
+// from the C++ tables. If you change the C++ engine, re-export and re-run the parity test.
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory();
+  else root.OilDrumEngine = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+  const TWO_PI = 2 * Math.PI;
+
+  class Biquad {
+    constructor() { this.b0 = this.b1 = this.b2 = this.a1 = this.a2 = this.z1 = this.z2 = 0; }
+    reset() { this.z1 = this.z2 = 0; }
+    _common(freq, q, sr) {
+      freq = Math.min(Math.max(freq, 20), sr * 0.45);
+      const w0 = TWO_PI * freq / sr, alpha = Math.sin(w0) / (2 * Math.max(q, 0.05));
+      return { c: Math.cos(w0), alpha, a0: 1 + alpha };
+    }
+    setBandpass(f, q, sr) {
+      const { c, alpha, a0 } = this._common(f, q, sr);
+      this.b0 = alpha / a0; this.b1 = 0; this.b2 = -alpha / a0; this.a1 = -2 * c / a0; this.a2 = (1 - alpha) / a0;
+    }
+    setHighpass(f, q, sr) {
+      const { c, alpha, a0 } = this._common(f, q, sr);
+      this.b0 = (1 + c) * 0.5 / a0; this.b1 = -(1 + c) / a0; this.b2 = this.b0; this.a1 = -2 * c / a0; this.a2 = (1 - alpha) / a0;
+    }
+    setLowpass(f, q, sr) {
+      const { c, alpha, a0 } = this._common(f, q, sr);
+      this.b0 = (1 - c) * 0.5 / a0; this.b1 = (1 - c) / a0; this.b2 = this.b0; this.a1 = -2 * c / a0; this.a2 = (1 - alpha) / a0;
+    }
+    process(x) {
+      const y = this.b0 * x + this.z1;
+      this.z1 = this.b1 * x - this.a1 * y + this.z2;
+      this.z2 = this.b2 * x - this.a2 * y;
+      return y;
+    }
+  }
+
+  class NoiseGen {
+    constructor() { this.state = 0x9E3779B9 >>> 0; }
+    next() {
+      let s = this.state;
+      s ^= (s << 13); s >>>= 0;
+      s ^= (s >>> 17);
+      s ^= (s << 5); s >>>= 0;
+      this.state = s;
+      return (s | 0) / 2147483648;
+    }
+  }
+
+  function polyBlep(t, dt) {
+    if (t < dt) { t /= dt; return t + t - t * t - 1; }
+    if (t > 1 - dt) { t = (t - 1) / dt; return t * t + t + t + 1; }
+    return 0;
+  }
+  function blepSquare(phase, dt) {
+    let v = phase < 0.5 ? 1 : -1;
+    v += polyBlep(phase, dt);
+    let p2 = phase + 0.5; if (p2 >= 1) p2 -= 1;
+    v -= polyBlep(p2, dt);
+    return v;
+  }
+
+  function makeVoice(kit) {
+    const n = kit.maxPartials, m = kit.metalRatios.length;
+    return {
+      active: false, age: 0, hz: 200, velocity: 1, choking: false,
+      phase: new Float32Array(n), envMul: new Float32Array(n), envCoef: new Float32Array(n),
+      bp: Array.from({ length: n }, () => new Biquad()),
+      mphase: new Float32Array(m), hp1: new Biquad(), hp2: new Biquad(), lp1: new Biquad(),
+      metalEnv: 0, metalCoef: 0, clickEnv: 0, clickCoef: 0,
+    };
+  }
+
+  class DrumEngine {
+    // kit = parsed kit.json
+    constructor(kit, sampleRate) {
+      this.kit = kit;
+      this.sr = sampleRate || 44100;
+      this.noise = new NoiseGen();
+      this.currentHz = kit.instruments.map(i => i.defaultHz);
+      this.voices = kit.instruments.map(() => Array.from({ length: kit.maxInstances }, () => makeVoice(kit)));
+    }
+    timeConst(seconds) { return Math.exp(-1 / (seconds * this.sr)); }
+    setPitchHz(inst, hz) {
+      const r = this.kit.instruments[inst];
+      this.currentHz[inst] = Math.min(Math.max(hz, r.minHz), r.maxHz);   // applies to the NEXT trigger only
+    }
+    trigger(inst, velocity) {
+      const kit = this.kit, r = kit.instruments[inst], sr = this.sr;
+      if (velocity === undefined) velocity = 1;
+      if (r.chokeGroup !== 0)
+        kit.instruments.forEach((o, k) => { if (k !== inst && o.chokeGroup === r.chokeGroup) this.voices[k].forEach(v => { if (v.active) v.choking = true; }); });
+      let slot = null, oldest = -1;
+      for (const v of this.voices[inst]) {
+        if (!v.active) { slot = v; break; }
+        if (v.age > oldest) { oldest = v.age; slot = v; }
+      }
+      slot.active = true; slot.age = 0; slot.hz = this.currentHz[inst];
+      slot.velocity = Math.min(Math.max(velocity, 0), 1.5); slot.choking = false;
+      slot.clickEnv = r.clickAmp * slot.velocity; slot.clickCoef = this.timeConst(r.clickDecay);
+      for (let p = 0; p < kit.maxPartials; ++p) {
+        const pt = r.partials[p];
+        slot.phase[p] = 0;
+        if (!pt) { slot.envMul[p] = 0; slot.envCoef[p] = 0; continue; }
+        slot.envMul[p] = pt.amp * slot.velocity;
+        slot.envCoef[p] = this.timeConst(Math.max(pt.decay, 0.001));
+        if (pt.noise) { slot.bp[p].reset(); slot.bp[p].setBandpass(Math.max(20, slot.hz * pt.ratio), pt.q, sr); }
+      }
+      if (r.metal.amp > 0) {
+        for (let k = 0; k < kit.metalRatios.length; ++k) slot.mphase[k] = 0.5 * (this.noise.next() + 1);
+        slot.hp1.reset(); slot.hp2.reset(); slot.lp1.reset();
+        slot.hp1.setHighpass(r.metal.hpHz, 0.7071, sr); slot.hp2.setHighpass(r.metal.hpHz, 0.7071, sr);
+        slot.lp1.setLowpass(r.metal.lpHz, 0.7071, sr);
+        slot.metalEnv = r.metal.amp * slot.velocity; slot.metalCoef = this.timeConst(Math.max(r.metal.decay, 0.001));
+      } else slot.metalEnv = 0;
+    }
+    allNotesOff() { this.voices.forEach(b => b.forEach(v => { v.active = false; })); }
+
+    // Final output (master gain + tanh), writes numSamples into out[offset..]. |out| < 1.
+    render(out, numSamples, offset) {
+      offset = offset || 0;
+      for (let n = 0; n < numSamples; ++n) out[offset + n] = 0;
+      this.renderRaw(out, numSamples, offset);
+      const g = this.kit.masterGain;
+      for (let n = 0; n < numSamples; ++n) out[offset + n] = Math.tanh(out[offset + n] * g);
+    }
+    // Adds the pre-master voice sum into out (caller clears).
+    renderRaw(out, numSamples, offset) {
+      offset = offset || 0;
+      const kit = this.kit, sr = this.sr, noise = this.noise, ratios = kit.metalRatios;
+      for (let inst = 0; inst < kit.instruments.length; ++inst) {
+        const r = kit.instruments[inst], np = r.partials.length, metalOn = r.metal.amp > 0;
+        for (const v of this.voices[inst]) {
+          if (!v.active) continue;
+          for (let n = 0; n < numSamples; ++n) {
+            let sample = 0;
+            const ageSec = v.age / sr;
+            const pitchEnv = 1 + r.pitchEnvAmt * Math.exp(-ageSec / Math.max(r.pitchEnvDecay, 0.001));
+            for (let p = 0; p < np; ++p) {
+              const pt = r.partials[p];
+              if (pt.noise) sample += v.envMul[p] * v.bp[p].process(noise.next()) * 3;
+              else {
+                const inc = TWO_PI * (v.hz * pt.ratio * pitchEnv) / sr;
+                sample += v.envMul[p] * Math.sin(v.phase[p]);
+                v.phase[p] += inc;
+                if (v.phase[p] > TWO_PI) v.phase[p] -= TWO_PI;
+              }
+              v.envMul[p] *= v.choking ? 0.985 : v.envCoef[p];
+            }
+            if (metalOn) {
+              let bank = 0;
+              for (let k = 0; k < ratios.length; ++k) {
+                const dt = v.hz * r.metal.baseScale * ratios[k] / sr;
+                bank += blepSquare(v.mphase[k], dt);
+                v.mphase[k] += dt; if (v.mphase[k] >= 1) v.mphase[k] -= 1;
+              }
+              const src = bank * (1 / ratios.length) + r.metal.noiseMix * noise.next();
+              sample += v.metalEnv * v.lp1.process(v.hp2.process(v.hp1.process(src)));
+              v.metalEnv *= v.choking ? 0.985 : v.metalCoef;
+            }
+            sample += v.clickEnv * noise.next();
+            v.clickEnv *= v.clickCoef;
+            out[offset + n] += sample;
+            v.age += 1;
+          }
+          let audible = v.clickEnv > 0.0002 || (metalOn && v.metalEnv > 0.0002);
+          for (let p = 0; p < np && !audible; ++p) if (v.envMul[p] > 0.0002) audible = true;
+          if (!audible || v.age > sr * 8) v.active = false;
+        }
+      }
+    }
+  }
+  return { DrumEngine, NoiseGen, Biquad };
+});
+
+</script>
+<script>
+(function(){
+  "use strict";
+  const KIT = {"masterGain":0.25,"maxPartials":8,"maxInstances":4,"metalRatios":[1,1.44710004,1.61699998,1.92649996,2.50279999,2.6637001],"instruments":[{"name":"Bass Drum","paramId":"bassPitch","midiNote":36,"defaultHz":55,"minHz":30,"maxHz":120,"clickAmp":0.349999994,"clickDecay":0.00800000038,"pitchEnvAmt":0.800000012,"pitchEnvDecay":0.0450000018,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":1.10000002,"noise":false,"q":10},{"ratio":1.5,"amp":0.5,"decay":0.600000024,"noise":false,"q":10},{"ratio":1.99000001,"amp":0.319999993,"decay":0.400000006,"noise":false,"q":10},{"ratio":2.54999995,"amp":0.159999996,"decay":0.280000001,"noise":false,"q":10}]},{"name":"Snare 1","paramId":"snare1Pitch","midiNote":38,"defaultHz":190,"minHz":100,"maxHz":400,"clickAmp":0.5,"clickDecay":0.00600000005,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":0.75,"decay":0.159999996,"noise":false,"q":10},{"ratio":1.47000003,"amp":0.400000006,"decay":0.119999997,"noise":false,"q":10},{"ratio":2.02999997,"amp":0.219999999,"decay":0.0900000036,"noise":false,"q":10},{"ratio":8,"amp":0.5,"decay":0.159999996,"noise":true,"q":3},{"ratio":16,"amp":0.349999994,"decay":0.100000001,"noise":true,"q":4}]},{"name":"Snare 2","paramId":"snare2Pitch","midiNote":40,"defaultHz":160,"minHz":90,"maxHz":350,"clickAmp":0.400000006,"clickDecay":0.00700000022,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":0.699999988,"decay":0.219999999,"noise":false,"q":10},{"ratio":1.01499999,"amp":0.5,"decay":0.200000003,"noise":false,"q":10},{"ratio":1.89999998,"amp":0.25,"decay":0.140000001,"noise":false,"q":10},{"ratio":6,"amp":0.550000012,"decay":0.300000012,"noise":true,"q":2.20000005},{"ratio":11,"amp":0.400000006,"decay":0.219999999,"noise":true,"q":3}]},{"name":"Low Tom 1","paramId":"tomLow1Pitch","midiNote":41,"defaultHz":95,"minHz":47.5,"maxHz":209,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.577499986,"noise":false,"q":10},{"ratio":1.5,"amp":0.449999988,"decay":0.314999998,"noise":false,"q":10},{"ratio":2,"amp":0.280000001,"decay":0.209999993,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.147,"noise":false,"q":10}]},{"name":"Low Tom 2","paramId":"tomLow2Pitch","midiNote":43,"defaultHz":105,"minHz":52.5,"maxHz":231,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.522499979,"noise":false,"q":10},{"ratio":1.51999998,"amp":0.449999988,"decay":0.284999996,"noise":false,"q":10},{"ratio":1.98000002,"amp":0.280000001,"decay":0.189999998,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.133000001,"noise":false,"q":10}]},{"name":"Mid Tom 1","paramId":"tomMid1Pitch","midiNote":45,"defaultHz":145,"minHz":72.5,"maxHz":319,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.550000012,"noise":false,"q":10},{"ratio":1.5,"amp":0.449999988,"decay":0.300000012,"noise":false,"q":10},{"ratio":2,"amp":0.280000001,"decay":0.200000003,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.140000001,"noise":false,"q":10}]},{"name":"Mid Tom 2","paramId":"tomMid2Pitch","midiNote":47,"defaultHz":160,"minHz":80,"maxHz":352,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.495000005,"noise":false,"q":10},{"ratio":1.48000002,"amp":0.449999988,"decay":0.270000011,"noise":false,"q":10},{"ratio":2.01999998,"amp":0.280000001,"decay":0.179999992,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.126000002,"noise":false,"q":10}]},{"name":"High Tom 1","paramId":"tomHigh1Pitch","midiNote":48,"defaultHz":210,"minHz":105,"maxHz":462,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.522499979,"noise":false,"q":10},{"ratio":1.5,"amp":0.449999988,"decay":0.284999996,"noise":false,"q":10},{"ratio":2,"amp":0.280000001,"decay":0.189999998,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.133000001,"noise":false,"q":10}]},{"name":"High Tom 2","paramId":"tomHigh2Pitch","midiNote":50,"defaultHz":230,"minHz":115,"maxHz":506,"clickAmp":0.280000001,"clickDecay":0.00700000022,"pitchEnvAmt":0.5,"pitchEnvDecay":0.0350000001,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":1,"decay":0.467500031,"noise":false,"q":10},{"ratio":1.51999998,"amp":0.449999988,"decay":0.255000025,"noise":false,"q":10},{"ratio":1.98000002,"amp":0.280000001,"decay":0.170000002,"noise":false,"q":10},{"ratio":2.5999999,"amp":0.119999997,"decay":0.119000003,"noise":false,"q":10}]},{"name":"Splash","paramId":"splashPitch","midiNote":55,"defaultHz":500,"minHz":250,"maxHz":1000,"clickAmp":0.300000012,"clickDecay":0.00400000019,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":1.39999998,"decay":0.300000012,"baseScale":0.600000024,"hpHz":5000,"noiseMix":0.5,"lpHz":12000},"partials":[]},{"name":"Ride","paramId":"ridePitch","midiNote":51,"defaultHz":420,"minHz":200,"maxHz":800,"clickAmp":0.200000003,"clickDecay":0.00499999989,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":0.899999976,"decay":1.60000002,"baseScale":0.699999988,"hpHz":3200,"noiseMix":0.25,"lpHz":11000},"partials":[{"ratio":5,"amp":0.0350000001,"decay":1.39999998,"noise":false,"q":10},{"ratio":7.4000001,"amp":0.0250000004,"decay":0.899999976,"noise":false,"q":10}]},{"name":"Hi-Hat Closed","paramId":"hhClosedPitch","midiNote":42,"defaultHz":500,"minHz":250,"maxHz":900,"clickAmp":0.349999994,"clickDecay":0.00300000003,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":1,"metal":{"amp":2,"decay":0.0399999991,"baseScale":0.600000024,"hpHz":7000,"noiseMix":0.349999994,"lpHz":12000},"partials":[]},{"name":"Hi-Hat Open","paramId":"hhOpenPitch","midiNote":46,"defaultHz":500,"minHz":250,"maxHz":900,"clickAmp":0.300000012,"clickDecay":0.00400000019,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":1,"metal":{"amp":1.5,"decay":0.600000024,"baseScale":0.600000024,"hpHz":6500,"noiseMix":0.349999994,"lpHz":12000},"partials":[]},{"name":"Cowbell","paramId":"cowbellPitch","midiNote":56,"defaultHz":560,"minHz":300,"maxHz":1100,"clickAmp":0.25,"clickDecay":0.00400000019,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":0.600000024,"decay":0.349999994,"noise":false,"q":10},{"ratio":1.48000002,"amp":0.600000024,"decay":0.300000012,"noise":false,"q":10},{"ratio":3,"amp":0.150000006,"decay":0.150000006,"noise":false,"q":10},{"ratio":4.44000006,"amp":0.150000006,"decay":0.119999997,"noise":false,"q":10}]},{"name":"Rimshot","paramId":"rimshotPitch","midiNote":37,"defaultHz":350,"minHz":180,"maxHz":700,"clickAmp":0.699999988,"clickDecay":0.00350000011,"pitchEnvAmt":0,"pitchEnvDecay":0.0299999993,"chokeGroup":0,"metal":{"amp":0,"decay":0.300000012,"baseScale":0.600000024,"hpHz":6000,"noiseMix":0.349999994,"lpHz":12000},"partials":[{"ratio":1,"amp":0.5,"decay":0.0450000018,"noise":false,"q":10},{"ratio":1.79999995,"amp":0.349999994,"decay":0.0350000001,"noise":false,"q":10},{"ratio":6,"amp":0.400000006,"decay":0.0500000007,"noise":true,"q":4},{"ratio":12,"amp":0.300000012,"decay":0.0299999993,"noise":true,"q":5}]}]};
+  const KEYS = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g'];
+  const GROUPS = [ ['drum',0,8], ['metal',9,12], ['bell',13,13], ['accent',14,14] ];
+  const groupLabels = { drum:'Drums', metal:'Cymbals & Hi-Hats', bell:'Cowbell', accent:'Rimshot' };
+  const groupOf = i => GROUPS.find(g => i >= g[1] && i <= g[2])[0];
+
+  let ctx = null, engine = null, node = null, gainNode = null;
+  const levelEl = document.getElementById('masterVol');
+
+  function ensureAudio(){
+    if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return; }
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    engine = new OilDrumEngine.DrumEngine(KIT, ctx.sampleRate);
+    KIT.instruments.forEach((r, i) => engine.setPitchHz(i, pitchHz[i]));
+    // ScriptProcessorNode runs on the main thread, so trigger()/setPitchHz() and render() never overlap.
+    node = ctx.createScriptProcessor(512, 0, 2);
+    node.onaudioprocess = (e) => {
+      const l = e.outputBuffer.getChannelData(0);
+      engine.render(l, l.length);
+      e.outputBuffer.getChannelData(1).set(l);
+    };
+    gainNode = ctx.createGain();
+    gainNode.gain.value = parseFloat(levelEl.value);
+    node.connect(gainNode).connect(ctx.destination);
+    if (ctx.state === 'suspended') ctx.resume();
+  }
+
+  const pitchHz = KIT.instruments.map(r => r.defaultHz);
+  function hitInstrument(i, vel){
+    ensureAudio();
+    engine.setPitchHz(i, pitchHz[i]);
+    engine.trigger(i, vel);
+  }
+
+  const grid = document.getElementById('kitGrid');
+  const lids = [];
+  let lastGroup = null;
+  KIT.instruments.forEach((spec, idx) => {
+    const group = groupOf(idx);
+    if (group !== lastGroup){
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = groupLabels[group];
+      grid.appendChild(label);
+      lastGroup = group;
+    }
+    const pad = document.createElement('div');
+    pad.className = 'pad ' + group;
+
+    const key = document.createElement('div');
+    key.className = 'key';
+    key.textContent = (KEYS[idx]||'').toUpperCase();
+    pad.appendChild(key);
+
+    const lidWrap = document.createElement('div');
+    lidWrap.className = 'lid-wrap';
+    const lid = document.createElement('div');
+    lid.className = 'lid';
+    lid.innerHTML = spec.name.replace(' ', '<br>');
+    lidWrap.appendChild(lid);
+    const ring = document.createElement('div');
+    ring.className = 'ring';
+    lidWrap.appendChild(ring);
+    pad.appendChild(lidWrap);
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'name';
+    nameEl.textContent = spec.name;
+    pad.appendChild(nameEl);
+
+    const sub = document.createElement('div');
+    sub.className = 'sub';
+    sub.textContent = 'key ' + (KEYS[idx]||'-').toUpperCase() + ' \u00b7 MIDI note ' + spec.midiNote;
+    pad.appendChild(sub);
+
+    const tune = document.createElement('div');
+    tune.className = 'tune';
+    const range = document.createElement('input');
+    range.type = 'range';
+    range.min = spec.minHz; range.max = spec.maxHz; range.step = 0.5; range.value = spec.defaultHz;
+    const hzLabel = document.createElement('div');
+    hzLabel.className = 'hz';
+    hzLabel.textContent = Math.round(spec.defaultHz) + ' Hz';
+    range.addEventListener('input', () => {
+      pitchHz[idx] = parseFloat(range.value);
+      hzLabel.textContent = Math.round(pitchHz[idx]) + ' Hz';
+    });
+    tune.appendChild(range);
+    tune.appendChild(hzLabel);
+    pad.appendChild(tune);
+
+    function hit(){
+      hitInstrument(idx, 0.95);
+      lid.classList.add('hit');
+      setTimeout(()=>lid.classList.remove('hit'), 130);
+    }
+    lid.addEventListener('mousedown', hit);
+    lid.addEventListener('touchstart', (e)=>{ e.preventDefault(); hit(); }, {passive:false});
+    grid.appendChild(pad);
+    lids[idx] = lid;
+  });
+
+  const keyToIdx = {};
+  KEYS.forEach((k,i) => { keyToIdx[k] = i; });
+  const heldKeys = new Set();
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (heldKeys.has(k) || !(k in keyToIdx)) return;
+    heldKeys.add(k);
+    hitInstrument(keyToIdx[k], 0.95);
+    lids[keyToIdx[k]].classList.add('hit');
+  });
+  window.addEventListener('keyup', (e) => {
+    const k = e.key.toLowerCase();
+    heldKeys.delete(k);
+    if (k in keyToIdx) setTimeout(()=>lids[keyToIdx[k]].classList.remove('hit'), 60);
+  });
+
+  levelEl.addEventListener('input', () => { if (gainNode) gainNode.gain.value = parseFloat(levelEl.value); });
+  document.getElementById('panicBtn').addEventListener('click', () => { if (engine) engine.allNotesOff(); });
+})();
+</script>
+</body>
+</html>
