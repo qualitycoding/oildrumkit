@@ -13,3 +13,4 @@
 | Ephemeral protections | `plan/ENVIRONMENT.md` | S-ADD-050 | verifier |
 | CI platform matrix | `plan/CI-MATRIX.md` | S-ADD-070 | cold read |
 | Cold read / pre-mortem | this file, `premortem/RISK_REGISTER.md` | S-ADD-090 | verifier |
+| Blind realism listening gate (audio profile, D-981) | plan/GATES.md G-LISTEN, plan/PLAN.md S-LISTEN, GATE-G-LISTEN.md, listening/G-LISTEN/round-001/result.json | S-LISTEN | vendored script hashes + blocked round record |

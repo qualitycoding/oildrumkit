@@ -17,3 +17,4 @@
 | S-ADD-100 | 1 | pass | see commits on `impl-v39-addendum-20261102` |
 | S-ADD-090 | 1 | pass | verifier exit 0 |
 | S-ADD-100 | 1 | pass | remote SHA verified |
+| 2026-11-03T00:00:00Z | S-LISTEN/G-LISTEN | 1 | blocked | listening/G-LISTEN/round-001/result.json | n/a | secure 12+ redistribution-compatible struck-steel references, then build pairs with seed 20261103 |

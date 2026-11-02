@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "repository": "qualitycoding/oildrumkit",
+  "branch": "impl/listening-validation",
+  "candidate_commit": "e31e8d041f49357ac6d87918a70831cf941971a1",
+  "gate_id": "G-LISTEN",
+  "round": 1,
+  "test_type": "realism",
+  "status": "blocked",
+  "prerequisites": [
+    {"id": "P-1", "status": "satisfied", "evidence": "Branch impl/listening-validation created from main e31e8d041f49; plan amended with audio=true, S-LISTEN, G-LISTEN (D-981)."},
+    {"id": "P-2", "status": "satisfied", "evidence": "Pair tools vendored at scripts/make_blind_pairs.py (sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7) and scripts/score_blind.py (sha256 f2d9ea5c76a731fd3dd553d698a9f1a92b393d272f6ea898e6a9e5cbde49defa) from qualitycoding/skills @ 7915c7b7e0cecbee5116e72a4cf5699383df5983; CLI verified with Python 3 + numpy 2.5.4 + soundfile 0.14.0 + scipy 1.18.1."},
+    {"id": "P-3", "status": "satisfied", "evidence": "Current render bit-reproducible vs committed Renders/after WAV (sha256 e487c3fbbba114b5516c54d37ca37efb2e101f0ef717038e70b187286387135d) with full metrics and velocity-timbre sweep recorded."},
+    {"id": "P-4", "status": "missing", "evidence": "Realism references: at least 12 matched struck-steel hits with redistribution-compatible licence, source URL and checksums are not yet secured. Legacy renders are demos, not realism references."},
+    {"id": "P-5", "status": "disclosed-not-passed", "evidence": "RETROSPECTIVE.md limitations preserved: only 2/4 original numeric targets passing; no DAW/Windows validation; open engineering items. These are not converted into passes by this amendment."}
+  ],
+  "frozen_metrics": [
+    {"id": "M-1", "threshold": "disclosed numeric targets (docs/RETROSPECTIVE.md)", "observed": "2/4 passing", "status": "disclosed-limitation", "evidence": "docs/RETROSPECTIVE.md"},
+    {"id": "M-2", "threshold": "bit-reproducibility of current render", "observed": "pass (sha256 e487c3fb...387135d)", "status": "pass", "evidence": "re-render run 2026-11-03"}
+  ],
+  "reference": {"kind": "real struck steel recordings (redistribution-compatible)", "source_urls_or_ids": [], "licence": "not secured", "checksums": ""},
+  "candidate_renders": {"manifest": "Renders/after/oildrumkit_after.meta.json", "checksums": "Renders/after WAV sha256 e487c3fbbba114b5516c54d37ca37efb2e101f0ef717038e70b187286387135d"},
+  "pair_builder": {
+    "script": "scripts/make_blind_pairs.py",
+    "commit": "7915c7b7e0cecbee5116e72a4cf5699383df5983",
+    "seed": 20261103,
+    "pairs": 12,
+    "window": "start",
+    "seconds": 1.0,
+    "rms_db": -23.0,
+    "fade_seconds": 0.01,
+    "sample_rate": 44100
+  },
+  "evidence": {"branch": "impl/listening-validation", "commit": "", "bundle": "", "sha256sums": ""},
+  "answers": {"ordered": "", "submitted_at": "", "same_side_count": 0},
+  "score": {"correct": 0, "total": 12, "one_sided_p": null, "pass_condition": "correct <= 8 && no unresolved qualitative finding"},
+  "qualitative_findings": [],
+  "iterations": [],
+  "response": {"value": "", "recorded_at": "", "file": ""},
+  "resume": {"next_step": "secure 12+ redistribution-compatible struck-steel reference recordings; then run S-LISTEN round-001 with seed 20261103", "checkpoint_file": ".checkpoints/state.json", "checkpoint_commit": "", "execution_log_commit": ""},
+  "blocked_reason": "Missing realism references (P-4). Per plan, do not score against placeholder or legacy material."
+}

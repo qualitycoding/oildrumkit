@@ -24,3 +24,21 @@
   (S-ADD-090), not claimed as an independent pass.
 - **D-980** — Mutation testing design: see `reviews/MUTATION.md` (priced
   three-tier trigger strategy, one aggregator job, report-based score gate).
+- **D-981** — Listening-only amendment (blind realism gate G-LISTEN):
+  branch `impl/listening-validation` created from current `main`
+  (e31e8d041f49357ac6d87918a70831cf941971a1); `audio = true` set in
+  plan/PROFILE.md and checkpoint mode flags; S-LISTEN added after the
+  applicable reviews and before S-RETRO; G-LISTEN defined in plan/GATES.md
+  with 12 onset pairs, `--window start`, 1.0 s clips, −23 dBFS RMS, 10 ms
+  fades, 44.1 kHz PCM-24, ≤8/12 pass, max three rounds, base seed 20261103.
+  Vendored canonical pair tools from qualitycoding/skills @
+  7915c7b7e0cecbee5116e72a4cf5699383df5983:
+  scripts/make_blind_pairs.py sha256
+  3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7;
+  scripts/score_blind.py sha256
+  f2d9ea5c76a731fd3dd553d698a9f1a92b393d272f6ea898e6a9e5cbde49defa.
+  Round-001 is blocked on missing redistribution-compatible struck-steel
+  references (recorded honestly in listening/G-LISTEN/round-001/result.json).
+  The retrospective's disclosed limitations (2/4 numeric targets, no
+  DAW/Windows validation, open engineering items) are preserved; no frozen
+  test was weakened; product execution remains unauthorised by this amendment.
