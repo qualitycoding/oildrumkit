@@ -1,0 +1,22 @@
+# Decisions (D-###)
+
+| ID | Decision | Reason / evidence |
+|---|---|---|
+| D-001 | Profiles `software` + flag `audio`; the plan starts with S-000 (self-initialisation) and then S-LISTEN. No synthesis rework happens before the first listening round. | User request; D-981 on the target branch. |
+| D-002 | The pair level is computed per round, not fixed at -23 dB RMS: `rms_db = min(-23, floor(-worstCrestDb - 1))` via `Tools/listening/level_plan.py`; passed to the vendored builder as `--rms-db`. | Spike S1: percussive hits have 22-34 dB crest; the vendored builder aborts at -23 dB. Test T-L05. |
+| D-003 | The vendored builder and scorer are copied unmodified from `qualitycoding/skills` and pinned by hash (T-L01). | Lesson: never fork a gate tool silently. |
+| D-004 | `--window start`, 1.0 s clips, 44.1 kHz PCM-24, 12 pairs, reference-side correlation >= 0.99 against an independent decode (T-L02). | Skill; Critical lesson on a 16-bit reference that became noise. |
+| D-005 | Reference Route A (owner records own hits, attests CC0-1.0 or CC-BY-4.0), Route B (owner downloads leads in a browser), Route C (demos only, no pass claim). | Spike S5: the shell cannot reach freesound or bigsoundbank. |
+| D-006 | Seeds: round 1 = 20261103, round n = 20261103 + 1000(n-1), at most 3 rounds (T-L12). | Skill step 2 and 7. |
+| D-007 | Pass: at most 8 of 12 correct and no unresolved qualitative finding. Frozen before any listening. | D-981, skill step 6. |
+| D-008 | The key stays base64-concealed and outside the listener bundle (T-L03); the key and sources are decoded only by `record_round.py --score`. | Skill. |
+| D-009 | Evidence is pushed by the implementer to orphan branch `evidence/G-LISTEN-round-N`; no CI workflow exists on `main` and none is added. | A-005: no workflow push right. |
+| D-010 | Mutation testing waived. Cost exceeds value for 300 lines of glue; the failure-swallowing grep (T-L11) and the red check cover the same risk. | Software profile allowance. |
+| D-011 | CI matrix waived. Single environment, Linux. | Plugin is built by the owner on their machine; out of scope. |
+| D-012 | Performance tests waived. A round builds in under 20 s. | Measured in T-L15. |
+| D-013 | The engine under test is the `main` code as bootstrapped. Engine changes happen only in a later iterate step, one general mechanism per measured difference. | Skill step 7.5. |
+| D-014 | Reference licences allowed: CC0-1.0, CC-BY-4.0, CC-BY-3.0, owner attestation. NC and ND refused, because the bundle is public. | A-006, A-010. |
+| D-015 | A pass supports only: "In 12 blind 1.0 s onset pairs of the listed notes the owner identified the real recording no better than 8 times in 12." It does not support "sounds like a real drum kit". | Rule 14. |
+| D-016 | The renderer renders demos from event CSV files with the committed engine, headlessly, at 48 kHz float32; clips are dry. Room is a control demonstrated in demo-07 only. | Spike S1. |
+| D-017 | Nine demos, numbered 01 to 09: 01 single hits, 02 velocity ladder, 03 groove, 04 snare roll, 05 hat choke, 06 hammers, 07 controls (strike, damping, room), 08 cymbal sustain, 09 cowbell. The first four are the existing sections A-D named by `protocols/blind-listening-test-execution-plan.md` §7. | Execution plan §7. |
+| D-018 | This plan was produced without subagents; the independent cold read and independent pre-mortem are deferred to S-005 and disclosed in HANDOFF.md. | Honesty about the check not run. |

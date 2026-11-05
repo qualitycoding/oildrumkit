@@ -1,0 +1,38 @@
+[
+ {
+  "id": "C-01",
+  "claim": "Code on main is unchanged since the audited commit 35fbfea in Source/, Tools/, CMakeLists.txt, Renders/",
+  "status": "verified",
+  "evidence": "research/spikes/S3_bootstrap_result.json"
+ },
+ {
+  "id": "C-02",
+  "claim": "The vendored make_blind_pairs.py aborts at -23 dB RMS on percussive hits",
+  "status": "verified",
+  "evidence": "research/spikes/S2_RESULT.md"
+ },
+ {
+  "id": "C-03",
+  "claim": "The shell cannot reach freesound.org or bigsoundbank.com",
+  "status": "verified",
+  "evidence": "observed 403 and no connection, 2026-11-05"
+ },
+ {
+  "id": "C-04",
+  "claim": "Reference recordings of struck steel exist under CC0/CC-BY",
+  "status": "unverified",
+  "evidence": "none; see research/REFERENCE_LEADS.md"
+ },
+ {
+  "id": "C-05",
+  "claim": "The github.com zip URL for an orphan branch works for a public repository",
+  "status": "unverified",
+  "evidence": "needs repository attachment"
+ },
+ {
+  "id": "C-06",
+  "claim": "The engine sounds like struck metal",
+  "status": "unverified",
+  "evidence": "never judged by listening; this plan exists to test it"
+ }
+]

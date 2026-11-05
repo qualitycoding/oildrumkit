@@ -1,0 +1,2 @@
+{"run_id":"gen-20261105-oildrumkit-listening-phase","protocol":"planning-protocol v3.11","profiles":["software"],"flags":["audio"],
+ "status":"plan-complete-awaiting-S-005-and-G-REF","executed_steps":[],"next_step":"S-000","independent_cold_read":"not-run","pushed":false}
