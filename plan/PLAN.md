@@ -48,6 +48,6 @@ A reader with no access to this conversation runs `python3 plan/check_plan.py` a
 cannot answer is a defect to fix. Not done by the planner (D-018).
 
 ## S-070 Closing: `S-RETRO` then `S-KNOW`
-Retrospective into `retro/` (question 5: sources checked after R7 and missing from the register, or listed with a licence not read from the source; add each to `knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md` in place until it is pushed). Lessons and knowledge items are in `lessons/` and `knowledge/`; `GATE-G-003.md` names the register on its own line with its source count (29) and the number of rows with an unknown or unstated licence or origin (3). Push to the stores only on the owner's response.
+Retrospective into `retro/` (question 5: sources checked after R7 and missing from the register, or listed with a licence not read from the source; add each to `knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md` in place until it is pushed). Lessons and knowledge items are in `lessons/` and `knowledge/`; `GATE-G-003.md` names the register on its own line with its source count (32) and the number of rows with an unknown or unstated licence or origin (5). Push to the stores only on the owner's response.
 
 ## S-080 Final report. Nothing is pushed to the stores before the G-003 response.

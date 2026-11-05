@@ -65,6 +65,11 @@
     "register_row": 25,
     "title": "archive.org from the sandbox shell",
     "url": "https://archive.org"
+   },
+   {
+    "register_row": 32,
+    "title": "freetousesounds.com from the sandbox shell",
+    "url": "https://freetousesounds.com"
    }
   ]
  },
@@ -133,6 +138,16 @@
     "register_row": 27,
     "title": "VSCO-2-CE LICENSE, sgossner/VSCO-2-CE",
     "url": "https://github.com/sgossner/VSCO-2-CE"
+   },
+   {
+    "register_row": 30,
+    "title": "Free to Use Sounds home page (freetousesounds.com)",
+    "url": "https://www.freetousesounds.com"
+   },
+   {
+    "register_row": 31,
+    "title": "Free to Use Sounds licence agreement",
+    "url": "https://www.freetousesounds.com/license-agreement"
    }
   ]
  },
@@ -209,6 +224,11 @@
     "register_row": 21,
     "title": "Freesound 628491 (The Sample Workshop, metal bar multisample)",
     "url": "https://freesound.org/people/The_Sample_Workshop/sounds/628491/"
+   },
+   {
+    "register_row": 30,
+    "title": "Free to Use Sounds home page (freetousesounds.com)",
+    "url": "https://www.freetousesounds.com"
    }
   ]
  },

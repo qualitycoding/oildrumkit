@@ -10,7 +10,7 @@ the tools, tests and evidence to do it.
 
 **State when this bundle was written (2026-11-05).**
 - Done: protocol and skill read; spikes S1-S5; 19 frozen tests (17 fail on the stubs, 19 pass on the reference implementation in `research/reference-impl/`); nine demo event files; bootstrap script run three times against the live repo.
-- Research record: one reconstructed round (`research/rounds/round-1.md`) and the source register (`knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md`, 29 sources). Both were compiled from the session record after a context reset, not as each source was opened (D-019). The first version of `research/REFERENCE_LEADS.md` wrongly said no reference page had been opened; it is corrected.
+- Research record: one reconstructed round (`research/rounds/round-1.md`) and the source register (`knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md`, 32 sources). Both were compiled from the session record after a context reset, not as each source was opened (D-019). The first version of `research/REFERENCE_LEADS.md` wrongly said no reference page had been opened; it is corrected.
 - Not done: no plan step has been executed; no listening has happened; no references exist; the independent cold read (S-005) and an independent pre-mortem have not been run (D-018).
 - Blocker for any scored result: real references (G-REF, `research/QUESTIONS.md` Q1). The planner's shell cannot download them.
 
