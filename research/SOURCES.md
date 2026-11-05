@@ -1,6 +1,6 @@
 # Sources
 
-Working list from which the register (knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md) was compiled. Same rows, in the order first checked.
+Working list from which the register (knowledge/K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2.md) was compiled. Same rows, in the order first checked.
 
 1. Planning protocol v3.11, qualitycoding/skills - https://github.com/qualitycoding/skills/blob/108db63/protocols/planning-protocol.md - used
 2. Planning protocol v3.12, qualitycoding/skills - https://github.com/qualitycoding/skills/blob/7daac75/protocols/planning-protocol.md - used
@@ -31,6 +31,6 @@ Working list from which the register (knowledge/K-20261105T223000Z-source-regist
 27. VSCO-2-CE LICENSE, sgossner/VSCO-2-CE - https://github.com/sgossner/VSCO-2-CE - not relevant
 28. GitHub archive and codeload URLs for qualitycoding/oildrumkit - https://github.com/qualitycoding/oildrumkit/archive/refs/heads/main.zip - used
 29. GitHub REST API, api.github.com - https://api.github.com - used
-30. Free to Use Sounds home page (freetousesounds.com) - https://www.freetousesounds.com - rejected
+30. Free to Use Sounds home page (freetousesounds.com) - https://www.freetousesounds.com - not relevant
 31. Free to Use Sounds licence agreement - https://www.freetousesounds.com/license-agreement - unreachable
 32. freetousesounds.com from the sandbox shell - https://freetousesounds.com - unreachable

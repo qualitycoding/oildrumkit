@@ -11,10 +11,10 @@ the audited behaviour may differ). Exit 3 or 6 = BLOCKED: report to the owner, d
 Also run `git push --dry-run origin impl/listening-validation` and record the answer in `ENVIRONMENT.md` (A-005).
 
 ## S-010 Install the listening tools by test
-Copy `stubs/Tools/listening/*` into the working copy, run `OILDRUM_REPO=<copy> python3 -m pytest tests -q -p no:cacheprovider` and confirm exactly 17
+Copy `stubs/Tools/listening/*` into the working copy, run `OILDRUM_REPO=<copy> python3 -m pytest tests -q -p no:cacheprovider` and confirm exactly 19
 failures and 2 passes (red check). Then implement each tool until the tests pass. The reference implementation in `research/reference-impl/` is
 a worked solution; the implementer may copy it, but must still run the red check first and the green run afterwards.
-Expected: `19 passed`. Commit: `listening: tools and tests (S-010)`.
+Expected: `21 passed`. Commit: `listening: tools and tests (S-010)`.
 
 ## S-020 Reference acquisition (opens G-REF)
 Write `GATE-G-REF.md` from `research/REFERENCE_LEADS.md` and `assets/listening/RECORDING-PROTOCOL.md`. Stop until the answer arrives.
@@ -31,7 +31,7 @@ Expected: one candidate per reference, same stem; clamped pitches listed by name
 `level_plan.py` then `build_round.py --round N`. Expected: `verify_bundle.py` exits 0 (level spread < 0.2 dB, no leak, reference correlation >= 0.99).
 
 ## S-040 Evidence and gate (opens G-LISTEN)
-Render the nine demos with `render_events --timeline`. Push `evidence/G-LISTEN-round-N` (orphan; bundle + SHA256SUMS + ATTRIBUTION). Write
+Render the nine demos with `render_events --timeline`. Hand the private `listener-bundle` (pairs, README, ANSWERS, demos) to the owner as files in the conversation. Push `evidence/G-LISTEN-round-N` (orphan) from `public-evidence/` only: it holds the pairs only if `public_ok.json` says every reference is redistributable, and always holds `REFERENCE_LINKS.md`, `PRIVATE_BUNDLE.sha256` and SHA256SUMS (D-020). Write
 `GATE-G-LISTEN.md` with the metric table and the three questions. Stop.
 
 ## S-045 Score
@@ -49,6 +49,6 @@ A reader with no access to this conversation runs `python3 plan/check_plan.py` a
 cannot answer is a defect to fix. Not done by the planner (D-018).
 
 ## S-070 Closing: `S-RETRO` then `S-KNOW`
-Retrospective into `retro/` (question 5: sources checked after R7 and missing from the register, or listed with a licence not read from the source; add each to `knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md` in place until it is pushed). Lessons and knowledge items are in `lessons/` and `knowledge/`; `GATE-G-003.md` names the register on its own line with its source count (32) and the number of rows with an unknown or unstated licence or origin (5). Push to the stores only on the owner's response.
+Retrospective into `retro/` (question 5: sources checked after R7 and missing from the register, or listed with a licence not read from the source; add each to `knowledge/K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2.md` in place until it is pushed). Lessons and knowledge items are in `lessons/` and `knowledge/`; `GATE-G-003.md` names the register on its own line with its source count (32) and the number of rows with an unknown or unstated licence or origin (5). Push to the stores only on the owner's response.
 
 ## S-080 Final report. Nothing is pushed to the stores before the G-003 response.

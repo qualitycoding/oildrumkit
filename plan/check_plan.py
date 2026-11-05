@@ -44,8 +44,8 @@ for sp in set(re.findall(r"\bS([1-9])\b(?=[^\w-])", re.sub(r"S-\d+", "", alltxt)
 for n in re.findall(r"spike S(\d)", alltxt):
     need(any((root/"research/spikes").glob(f"S{n}_RESULT.md")), f"spike S{n} named but has no result file")
 # exactly one source register; its URLs equal the union of round log, SOURCES.md and claims.json URLs; fields present
-regs = list((root/"knowledge").glob("K-*source-register*.md"))
-need(len(regs) == 1, f"expected one source register, found {len(regs)}")
+regs = [q for q in (root/"knowledge").glob("K-*source-register*.md") if re.search(r"^status: current", q.read_text(), re.M)]
+need(len(regs) == 1, f"expected one current source register, found {len(regs)}")
 if len(regs) == 1:
     rt = regs[0].read_text()
     rows = [l for l in rt.splitlines() if re.match(r"^\| \d+ \|", l)]

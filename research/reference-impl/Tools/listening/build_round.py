@@ -2,7 +2,8 @@
 """Build and verify one listening round.
   build_round.py --ref REF_DIR --cand CAND_DIR --out ROUND_DIR --round N [--attribution FILE] [--demos DIR]
   build_round.py --print-seed --round N
-Writes ROUND_DIR/listener-bundle (what the listener sees) and ROUND_DIR/archive (key, mapping, settings; never shown before scoring)."""
+Writes ROUND_DIR/listener-bundle (what the listener sees; private), ROUND_DIR/public-evidence (safe to publish: the pairs only when
+REF_DIR/public_ok.json says every reference is redistributable) and ROUND_DIR/archive (key, mapping, settings; never shown before scoring)."""
 import argparse, base64, hashlib, json, pathlib, shutil, subprocess, sys, tempfile
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from _common import REPO, seed_for
@@ -50,6 +51,17 @@ def main(argv=None):
     sums = "".join(f"{hashlib.sha256(f.read_bytes()).hexdigest()}  {f.relative_to(lb).as_posix()}\n"
                    for f in sorted(lb.rglob("*")) if f.is_file() and f.name != "SHA256SUMS")
     (lb / "SHA256SUMS").write_text(sums)
+    pub = out / "public-evidence"; pub.mkdir()
+    for n in ("README-LISTENER.txt", "ANSWERS.txt", "ATTRIBUTION.md"): shutil.copy2(lb / n, pub / n)
+    if a.demos: shutil.copytree(a.demos, pub / "demos")
+    ok = pathlib.Path(a.ref) / "public_ok.json"          # a missing marker means not redistributable (fail closed)
+    if ok.is_file() and json.loads(ok.read_text()).get("all_redistributable") is True:
+        for f in lb.glob("pair-*.wav"): shutil.copy2(f, pub / f.name)
+    links = pathlib.Path(a.ref) / "REFERENCE_LINKS.md"
+    if links.is_file(): shutil.copy2(links, pub / "REFERENCE_LINKS.md")
+    (pub / "PRIVATE_BUNDLE.sha256").write_text((lb / "SHA256SUMS").read_text())
+    (pub / "SHA256SUMS").write_text("".join(f"{hashlib.sha256(f.read_bytes()).hexdigest()}  {f.relative_to(pub).as_posix()}\n"
+                                            for f in sorted(pub.rglob("*")) if f.is_file() and f.name != "SHA256SUMS"))
     settings = {"round": a.round, "seed": seed, "pairs": 12, "window": "start", "seconds": 1.0, "rms_db": level, "worst_crest_db": round(worst, 2),
                 "fade_seconds": 0.01, "sample_rate": 44100,
                 "builder_sha256": hashlib.sha256((REPO / "scripts" / "make_blind_pairs.py").read_bytes()).hexdigest()}

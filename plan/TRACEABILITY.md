@@ -10,5 +10,6 @@
 | Reference decoded independently | S-035 | T-L02 |
 | Reproducible rounds | S-035 | T-L15 |
 | Reference manifest rules | S-020 | T-L08, T-L14 |
+| Personal-use references linked, not republished (D-020) | S-020, S-040 | T-L08d, T-L16 |
 | Candidate rendering | S-030 | T-L06, T-L07, T-L13 |
 | Record and secrets scan | S-045, S-050 | T-L10, T-L10b, T-L11 |

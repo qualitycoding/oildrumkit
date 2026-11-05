@@ -5,7 +5,8 @@ Imagine the run failed. Most likely causes, in order:
 | ID | Failure | Mitigation in plan |
 |---|---|---|
 | R-1 | No references arrive, so no scored test ever runs. | G-REF with Routes A/B/C; Route C is honest about the missing pass claim. |
-| R-2 | References are non-redistributable and are published in a public bundle. | D-014; `ingest_refs.py` refuses NC/ND/unknown (T-L08). |
+| R-2 | A non-republishable reference ends up on the public branch. | D-020; `public_ok.json` fails closed (T-L16); `ingest_refs.py` rejects false redistributability (T-L08b). |
+| R-11 | Private pairs cannot be audited by anyone else, and the owner's copy is a derivative of terms-limited files. | D-020 records links, hashes and the private-bundle hashes; the owner is the only listener. |
 | R-3 | A reference bundle clip is silently noise or the wrong note. | T-L02 independent decode, tested to fail. |
 | R-4 | The builder aborts at -23 dB and the implementer lowers it ad hoc. | D-002 and `level_plan.py` (T-L05). |
 | R-5 | Listener hears a loudness or format difference, not realism. | Level spread < 0.2 dB (verify_bundle), same PCM-24 format. |

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Validate reference recordings against references/MANIFEST.json and canonicalise them.
   ingest_refs.py --manifest MANIFEST.json --src DIR --out REF_DIR
+Licences (D-020): redistributable ones may be republished; personal-use-only ones (NC, ND, site terms) are accepted for private listening and
+linked, never copied into a public repository. Each row states `redistributable`, which may not be true for a personal-use-only licence.
 Rules: schema_version 1; at least 12 references; unique stems; sha256 of each source file matches; licence in the allowed set;
 an owner-attested licence needs a non-empty ATTESTATION file named in the row, next to the manifest; at least 3 distinct families;
 no clipped file (peak >= 0.999); at least 1.0 s after the onset. Output: REF_DIR/<stem>.wav (mono, 44.1 kHz, PCM-24) and f0.json."""
@@ -8,7 +10,9 @@ import argparse, hashlib, json, pathlib, sys
 import numpy as np, soundfile as sf
 from scipy.signal import resample_poly
 
-OK_LICENCES = {"CC0-1.0", "CC-BY-4.0", "CC-BY-3.0", "owner-attested-CC0-1.0", "owner-attested-CC-BY-4.0"}
+REDISTRIBUTABLE = {"CC0-1.0", "CC-BY-4.0", "CC-BY-3.0", "CC-BY-SA-4.0", "owner-attested-CC0-1.0", "owner-attested-CC-BY-4.0"}
+PERSONAL_ONLY = {"CC-BY-NC-4.0", "CC-BY-NC-SA-4.0", "CC-BY-ND-4.0", "CC-BY-NC-ND-4.0", "site-terms-personal-use"}
+OK_LICENCES = REDISTRIBUTABLE | PERSONAL_ONLY
 FAMILIES = {"bass", "snare", "tom", "hat", "cymbal", "bell", "other"}
 
 def f0_estimate(x, fs):
@@ -39,7 +43,12 @@ def main(argv=None):
         if str(r.get("licence", "")).startswith("owner-attested"):
             att = mp.parent / (r.get("attestation") or "")
             if not (r.get("attestation") and att.is_file() and att.read_text().strip()): errs.append(f"{r['stem']}: attestation file missing or empty")
-        elif not r.get("source"): errs.append(f"{r['stem']}: source URL missing")
+        else:
+            if not r.get("source"): errs.append(f"{r['stem']}: source URL missing")
+            if not (r.get("author") or "").strip(): errs.append(f"{r['stem']}: author missing")
+        if r.get("licence") == "site-terms-personal-use" and not r.get("terms_url"): errs.append(f"{r['stem']}: terms_url missing")
+        if not isinstance(r.get("redistributable"), bool): errs.append(f"{r['stem']}: redistributable must be true or false")
+        elif r["redistributable"] and r.get("licence") not in REDISTRIBUTABLE: errs.append(f"{r['stem']}: redistributable claimed for {r.get('licence')!r}")
         x, fs = sf.read(f); x = x.mean(axis=1) if x.ndim > 1 else x
         if np.max(np.abs(x)) >= 0.999: errs.append(f"{r['stem']}: clipped"); continue
         if fs != 44100: x = resample_poly(x, 44100, fs)
@@ -53,6 +62,12 @@ def main(argv=None):
     if errs:
         return 1
     (out / "f0.json").write_text(json.dumps(f0, indent=1) + "\n")
+    pub = [r["stem"] for r in rows if r["redistributable"]]
+    (out / "public_ok.json").write_text(json.dumps({"all_redistributable": len(pub) == len(rows), "stems": pub}, indent=1) + "\n")
+    links = "# Reference links\n\nLinked, not copied. Download from the source page and check the sha256.\n\n| Stem | Author | Source | Licence | sha256 | Terms |\n|---|---|---|---|---|---|\n"
+    for r in rows:
+        links += f"| {r['stem']} | {r.get('author', '')} | {r.get('source', '')} | {r['licence']} | {r['sha256']} | {r.get('terms_url', '')} |\n"
+    (out / "REFERENCE_LINKS.md").write_text(links)
     print(f"ingested {len(rows)} references; f0 estimates in {out / 'f0.json'}")
     return 0
 

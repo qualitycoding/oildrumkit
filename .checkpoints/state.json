@@ -13,13 +13,14 @@
  "independent_cold_read": "not-run",
  "pushed": false,
  "knowledge_added": [
-  "K-20261105T223000Z-source-register-oildrumkit-listening-phase",
+  "K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2",
   "K-20261105T223100Z-oildrum-hits-crest-factor-and-pair-builder-level",
   "K-20261105T223200Z-struck-metal-reference-leads-and-licences",
-  "K-20261105T223300Z-sandbox-reachability-2026-11-05"
+  "K-20261105T223300Z-sandbox-reachability-2026-11-05",
+  "K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2"
  ],
  "lessons_added": 6,
- "source_register": "knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md",
+ "source_register": "knowledge/K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2.md",
  "generation_branch": "gen-20261105T211145Z-oildrumkit-listening-phase",
  "gates": {
   "G-REF": {
@@ -27,5 +28,9 @@
    "recorded_at": "2026-11-05T21:45:00Z",
    "files_received": false
   }
- }
+ },
+ "knowledge_superseded": [
+  "K-20261105T223000Z-source-register-oildrumkit-listening-phase"
+ ],
+ "frozen_tests": 21
 }

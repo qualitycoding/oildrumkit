@@ -1,7 +1,7 @@
 ---
 id: K-20261105T223000Z-source-register-oildrumkit-listening-phase
 statement: "Source register for the oildrumkit listening-phase plan (run gen-20261105T211145Z-oildrumkit-listening-phase): 32 external sources checked, 20 used, 0 corroborating, 3 rejected, 5 unreachable, 4 not relevant; 5 have an unknown or unstated licence or origin."
-status: current
+status: superseded
 supersedes: []
 tags: [subject:oildrumkit-listening-phase, domain:audio, tech:github, phase:research, kind:source-register]
 applies_to_version: version-independent

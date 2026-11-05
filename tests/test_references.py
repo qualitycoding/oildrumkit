@@ -4,9 +4,9 @@ import hashlib, json
 import soundfile as sf
 from helpers import hit, tool
 
-OK_LICENCES = {"CC0-1.0", "CC-BY-4.0", "CC-BY-3.0", "owner-attested-CC0-1.0", "owner-attested-CC-BY-4.0"}
+REDISTRIBUTABLE = {"CC0-1.0", "CC-BY-4.0", "CC-BY-3.0", "CC-BY-SA-4.0", "owner-attested-CC0-1.0", "owner-attested-CC-BY-4.0"}
 
-def make(tmp_path, n=12, licence="CC0-1.0", bad_sha=False, family_cycle=("bass", "snare", "tom", "cymbal")):
+def make(tmp_path, n=12, licence="CC0-1.0", bad_sha=False, family_cycle=("bass", "snare", "tom", "cymbal"), redistributable=None, no_author=False, terms_url=""):
     src = tmp_path / "src"; src.mkdir()
     rows = []
     for i in range(n):
@@ -16,6 +16,8 @@ def make(tmp_path, n=12, licence="CC0-1.0", bad_sha=False, family_cycle=("bass",
         rows.append({"stem": f"s{i:02d}", "file": f.name, "sha256": ("0" * 64 if bad_sha and i == 0 else sha),
                      "instrument": i % 15, "family": family_cycle[i % len(family_cycle)], "velocity": 1.0, "hammer": "wood",
                      "licence": licence, "source": "https://example.invalid/take" if not licence.startswith("owner") else "owner",
+                     "author": "" if no_author else ("owner" if licence.startswith("owner") else "A. Person"), "terms_url": terms_url,
+                     "redistributable": (licence in REDISTRIBUTABLE) if redistributable is None else redistributable,
                      "attestation": "ATTESTATION.md" if licence.startswith("owner") else ""})
     m = tmp_path / "MANIFEST.json"
     m.write_text(json.dumps({"schema_version": 1, "references": rows}))
@@ -33,11 +35,15 @@ def test_T_L08_accepts_a_complete_manifest(repo, tmp_path):
     assert sf.info(tmp_path / "ref" / "s00.wav").subtype == "PCM_24"
 
 def test_T_L08_rejects_incomplete_or_unlicensed(repo, tmp_path):
-    """T-L08b: fewer than 12, a checksum mismatch, a licence outside the allowed set, or fewer than 3 families all fail."""
+    """T-L08b: fewer than 12, a checksum mismatch, an unknown or all-rights-reserved licence, a missing author, a false claim of
+    redistributability, a missing terms URL, or fewer than 3 families all fail."""
     good = tmp_path / "good"; good.mkdir()
     m0, s0 = make(good)
     assert ingest(repo, m0, s0, good / "ref").returncode == 0, "a valid manifest must be accepted before rejections mean anything"
-    cases = ({"n": 11}, {"bad_sha": True}, {"licence": "CC-BY-NC-4.0"}, {"family_cycle": ("bass", "snare")})
+    cases = ({"n": 11}, {"bad_sha": True}, {"licence": "unknown"}, {"licence": "all-rights-reserved"}, {"no_author": True},
+             {"licence": "CC-BY-NC-4.0", "redistributable": True},      # claims it may be republished although it may not
+             {"licence": "site-terms-personal-use"},                    # needs the terms URL
+             {"family_cycle": ("bass", "snare")})
     for idx, kw in enumerate(cases):
         d = tmp_path / f"case{idx}"; d.mkdir()
         m, src = make(d, **kw)
@@ -72,3 +78,24 @@ def test_T_L14_make_events_applies_the_pitch_rule(repo, tmp_path):
     assert "pitch_clamped s01 5000.0 400.0" in p.stderr and p.stderr.count("pitch_clamped") == 1
     q = tool(repo, "make_events.py", *base, "--drop-clamped")
     assert q.returncode == 0 and len(out.read_text().splitlines()) == 12
+
+def test_T_L08_personal_use_licences_are_accepted_and_linked_not_republished(repo, tmp_path):
+    """T-L08d (D-020): non-commercial, no-derivatives and personal-use-only references are accepted when marked not redistributable.
+    The ingest then records that the set cannot be republished (public_ok.json) and writes REFERENCE_LINKS.md with every source URL,
+    author, licence and sha256, so the references can be linked instead of copied. A fully redistributable set is marked as such."""
+    for idx, (lic, terms) in enumerate((("CC-BY-NC-4.0", ""), ("CC-BY-ND-4.0", ""), ("site-terms-personal-use", "https://example.invalid/terms"))):
+        d = tmp_path / f"p{idx}"; d.mkdir()
+        m, src = make(d, licence=lic, terms_url=terms)
+        p = ingest(repo, m, src, d / "ref")
+        assert p.returncode == 0, (lic, p.stdout + p.stderr)
+        ok = json.loads((d / "ref" / "public_ok.json").read_text())
+        assert ok["all_redistributable"] is False and ok["stems"] == []
+        links = (d / "ref" / "REFERENCE_LINKS.md").read_text()
+        rows = json.loads(m.read_text())["references"]
+        for r in rows:
+            assert r["source"] in links and r["sha256"] in links and r["author"] in links and lic in links
+    d = tmp_path / "open"; d.mkdir()
+    m, src = make(d)
+    assert ingest(repo, m, src, d / "ref").returncode == 0
+    ok = json.loads((d / "ref" / "public_ok.json").read_text())
+    assert ok["all_redistributable"] is True and len(ok["stems"]) == 12

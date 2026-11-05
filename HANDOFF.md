@@ -9,8 +9,8 @@ the tools, tests and evidence to do it.
 **Start here.** `bash plan/bootstrap/bootstrap.sh "$WORK"` (safe to repeat). Then follow `plan/PLAN.md` from S-000. Do not edit `tests/`.
 
 **State when this bundle was written (2026-11-05).**
-- Done: protocol and skill read; spikes S1-S5; 19 frozen tests (17 fail on the stubs, 19 pass on the reference implementation in `research/reference-impl/`); nine demo event files; bootstrap script run three times against the live repo.
-- Research record: one reconstructed round (`research/rounds/round-1.md`) and the source register (`knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md`, 32 sources). Both were compiled from the session record after a context reset, not as each source was opened (D-019). The first version of `research/REFERENCE_LEADS.md` wrongly said no reference page had been opened; it is corrected.
+- Done: protocol and skill read; spikes S1-S5; 21 frozen tests (19 fail on the stubs, 21 pass on the reference implementation in `research/reference-impl/`); nine demo event files; bootstrap script run three times against the live repo.
+- Research record: one reconstructed round (`research/rounds/round-1.md`) and the source register (`knowledge/K-20261105T231000Z-source-register-oildrumkit-listening-phase-v2.md`, 32 sources). Both were compiled from the session record after a context reset, not as each source was opened (D-019). The first version of `research/REFERENCE_LEADS.md` wrongly said no reference page had been opened; it is corrected.
 - Not done: no plan step has been executed; no listening has happened; no references exist; the independent cold read (S-005) and an independent pre-mortem have not been run (D-018).
 - G-REF is answered: Route B (owner downloads in a browser; `assets/listening/ROUTE-B-GUIDE.md`). The reference files have not arrived, and that remains the blocker for any scored result. The planner's shell cannot download them.
 

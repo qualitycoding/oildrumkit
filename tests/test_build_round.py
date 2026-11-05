@@ -73,6 +73,31 @@ def test_T_L02_reference_side_matches_independent_decode(repo, tmp_path):
     q = tool(repo, "verify_bundle.py", "--round", bad, "--ref", ref)
     assert q.returncode != 0, "verify_bundle accepted a noise clip as the reference"
 
+def test_T_L16_public_evidence_omits_the_pairs_unless_every_reference_is_redistributable(repo, tmp_path):
+    """T-L16 (D-020): the private listener bundle always holds the 24 pair clips. The public-evidence folder holds the pairs only
+    when the reference set is marked all_redistributable; a missing marker counts as not redistributable (fail closed). It never
+    holds the key or the mapping, and always holds demos-side files, its own SHA256SUMS and the hashes of the private bundle."""
+    import json
+    ref, cand = tmp_path / "ref", tmp_path / "cand"
+    write_set(ref, cand, STEMS)
+    closed, opened = tmp_path / "closed", tmp_path / "opened"
+    p = tool(repo, "build_round.py", "--ref", ref, "--cand", cand, "--out", closed, "--round", 1)
+    assert p.returncode == 0, p.stdout + p.stderr
+    (ref / "public_ok.json").write_text(json.dumps({"all_redistributable": True, "stems": STEMS}))
+    q = tool(repo, "build_round.py", "--ref", ref, "--cand", cand, "--out", opened, "--round", 1)
+    assert q.returncode == 0, q.stdout + q.stderr
+    for out, expect in ((closed, 0), (opened, 24)):
+        assert len(list((out / "listener-bundle").glob("pair-*.wav"))) == 24
+        pub = out / "public-evidence"
+        assert len(list(pub.glob("pair-*.wav"))) == expect, (out.name, sorted(x.name for x in pub.iterdir()))
+        names = {x.name for x in pub.rglob("*") if x.is_file()}
+        assert {"SHA256SUMS", "PRIVATE_BUNDLE.sha256", "README-LISTENER.txt"} <= names
+        assert not any("key" in n or "sources" in n or "settings" in n for n in names), names
+        blob = b"".join(x.read_bytes() for x in pub.rglob("*") if x.is_file())
+        for stem in STEMS:
+            assert stem.encode() not in blob
+    assert (closed / "public-evidence" / "PRIVATE_BUNDLE.sha256").read_text() == (closed / "listener-bundle" / "SHA256SUMS").read_text()
+
 def test_T_L15_round_is_reproducible_from_committed_inputs(repo, tmp_path):
     """T-L15 (SC-5, R-006): the same inputs and seed rebuild a byte-identical listener bundle and the same key, so a lost
     working copy never forces a new key; a different round number gives a different bundle."""

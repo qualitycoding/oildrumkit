@@ -10,8 +10,10 @@
       "velocity": 1.0,
       "hammer": "wood",
       "licence": "CC0-1.0",
+      "redistributable": true,
       "source": "https://page-the-file-came-from",
       "author": "name shown on that page",
+      "terms_url": "",
       "attestation": ""
     }
   ]

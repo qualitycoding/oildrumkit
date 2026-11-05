@@ -201,9 +201,9 @@
  },
  {
   "id": "C-08",
-  "claim": "Licences that bar commercial use or derivatives cannot go into a public evidence bundle",
+  "claim": "Files under non-commercial, no-derivatives or no-redistribution terms cannot be republished in a public repository, so they are linked (D-020)",
   "status": "verified",
-  "evidence": "reasoned from the public orphan branch; a CC-BY-NC sound was found and refused",
+  "evidence": "reasoned from the public orphan branch; a CC-BY-NC sound and a no-redistribution site were found",
   "sources": [
    {
     "register_row": 4,
