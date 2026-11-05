@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "stem": "s01",
+      "file": "the-downloaded-file-name.wav",
+      "sha256": "output of: sha256sum the-downloaded-file-name.wav",
+      "instrument": 0,
+      "family": "bass",
+      "velocity": 1.0,
+      "hammer": "wood",
+      "licence": "CC0-1.0",
+      "source": "https://page-the-file-came-from",
+      "author": "name shown on that page",
+      "attestation": ""
+    }
+  ]
+}

@@ -18,6 +18,7 @@ Expected: `19 passed`. Commit: `listening: tools and tests (S-010)`.
 
 ## S-020 Reference acquisition (opens G-REF)
 Write `GATE-G-REF.md` from `research/REFERENCE_LEADS.md` and `assets/listening/RECORDING-PROTOCOL.md`. Stop until the answer arrives.
+G-REF was answered `route-B` on 2026-11-05 (GATE-G-REF.RESPONSE.md); follow `assets/listening/ROUTE-B-GUIDE.md`.
 On Route A/B, run `ingest_refs.py` on the owner's manifest. Expected: it exits 0 and prints `families>=3`. Anything else: return the output to
 the owner; do not weaken the rules.
 On Route C, skip to S-050 with the pair test marked `not-run`; no pass claim is possible (D-015).

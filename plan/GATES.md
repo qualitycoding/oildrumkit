@@ -11,3 +11,5 @@ Pass rule (D-007) is applied by the implementer after the answer; the human resp
 Gate files are written to `GATE-<id>.md`, answers to `GATE-<id>.RESPONSE.md`, and committed with the response.
 
 Resume on `proceed`: S-RETRO, then S-KNOW and G-003 (execution plan §7). `iterate` stays at G-LISTEN and changes `Tools/voicing.json` or a general engine mechanism, with a new seed.
+
+G-REF answered 2026-11-05T21:45Z: `route-B` (GATE-G-REF.RESPONSE.md). Files not yet received.

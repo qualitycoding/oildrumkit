@@ -7,7 +7,7 @@
  "flags": [
   "audio"
  ],
- "status": "plan-complete-awaiting-S-005-and-G-REF",
+ "status": "plan-complete-G-REF-answered-route-B-awaiting-reference-files-and-S-005",
  "executed_steps": [],
  "next_step": "S-000",
  "independent_cold_read": "not-run",
@@ -20,5 +20,12 @@
  ],
  "lessons_added": 6,
  "source_register": "knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md",
- "generation_branch": "gen-20261105T211145Z-oildrumkit-listening-phase"
+ "generation_branch": "gen-20261105T211145Z-oildrumkit-listening-phase",
+ "gates": {
+  "G-REF": {
+   "response": "route-B",
+   "recorded_at": "2026-11-05T21:45:00Z",
+   "files_received": false
+  }
+ }
 }
