@@ -1,38 +1,253 @@
 [
  {
   "id": "C-01",
-  "claim": "Code on main is unchanged since the audited commit 35fbfea in Source/, Tools/, CMakeLists.txt, Renders/",
+  "claim": "Source/ and Tools/ on main are unchanged since the audited commit 35fbfea",
   "status": "verified",
-  "evidence": "research/spikes/S3_bootstrap_result.json"
+  "evidence": "spike S3",
+  "sources": [
+   {
+    "register_row": 8,
+    "title": "oildrumkit main, qualitycoding/oildrumkit",
+    "url": "https://github.com/qualitycoding/oildrumkit/tree/1900ac8"
+   },
+   {
+    "register_row": 9,
+    "title": "oildrumkit impl/listening-validation, qualitycoding/oildrumkit",
+    "url": "https://github.com/qualitycoding/oildrumkit/tree/impl/listening-validation"
+   },
+   {
+    "register_row": 4,
+    "title": "Blind-listening execution plan, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/protocols/blind-listening-test-execution-plan.md"
+   }
+  ]
  },
  {
   "id": "C-02",
-  "claim": "The vendored make_blind_pairs.py aborts at -23 dB RMS on percussive hits",
+  "claim": "The vendored make_blind_pairs.py aborts at -23 dB RMS on percussive hits; all 15 stems fit at about -36 dB",
   "status": "verified",
-  "evidence": "research/spikes/S2_RESULT.md"
+  "evidence": "spike S2",
+  "sources": [
+   {
+    "register_row": 5,
+    "title": "Skill audio-blind-listening-validation (SKILL.md), qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/skills/audio-blind-listening-validation/SKILL.md"
+   },
+   {
+    "register_row": 6,
+    "title": "Pair builder make_blind_pairs.py, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/skills/audio-blind-listening-validation/scripts/make_blind_pairs.py"
+   },
+   {
+    "register_row": 7,
+    "title": "Scorer score_blind.py, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/skills/audio-blind-listening-validation/scripts/score_blind.py"
+   }
+  ]
  },
  {
   "id": "C-03",
-  "claim": "The shell cannot reach freesound.org or bigsoundbank.com",
+  "claim": "The sandbox shell could not reach freesound.org (403) or archive.org, and at first not bigsoundbank.com; bigsoundbank.com later answered 200",
   "status": "verified",
-  "evidence": "observed 403 and no connection, 2026-11-05"
+  "evidence": "spike S5",
+  "sources": [
+   {
+    "register_row": 23,
+    "title": "freesound.org from the sandbox shell (site, API and CDN)",
+    "url": "https://freesound.org"
+   },
+   {
+    "register_row": 24,
+    "title": "bigsoundbank.com from the sandbox shell",
+    "url": "https://bigsoundbank.com"
+   },
+   {
+    "register_row": 25,
+    "title": "archive.org from the sandbox shell",
+    "url": "https://archive.org"
+   }
+  ]
  },
  {
   "id": "C-04",
-  "claim": "Reference recordings of struck steel exist under CC0/CC-BY",
-  "status": "unverified",
-  "evidence": "none; see research/REFERENCE_LEADS.md"
+  "claim": "Redistributable (CC0 or CC-BY) recordings of struck steel drums exist",
+  "status": "single-source",
+  "evidence": "one CC0 page (Lots of Sounds) with unstated origin; nothing downloaded",
+  "sources": [
+   {
+    "register_row": 9,
+    "title": "oildrumkit impl/listening-validation, qualitycoding/oildrumkit",
+    "url": "https://github.com/qualitycoding/oildrumkit/tree/impl/listening-validation"
+   },
+   {
+    "register_row": 14,
+    "title": "Search: freesound CC0 oil drum hit metal barrel strike drumstick sample",
+    "url": "WebSearch query"
+   },
+   {
+    "register_row": 15,
+    "title": "Search: free sound library CC0 steel drum barrel percussion one-shots struck metal Creative Commons 0",
+    "url": "WebSearch query"
+   },
+   {
+    "register_row": 16,
+    "title": "Search: freesound oil drum OR metal barrel OR steel drum 55 gallon hit one shot CC0 OR Attribution",
+    "url": "WebSearch query"
+   },
+   {
+    "register_row": 17,
+    "title": "Search: bigsoundbank barrel OR oil drum OR bidon metal hit sample CC0",
+    "url": "WebSearch query"
+   },
+   {
+    "register_row": 18,
+    "title": "Freesound 410514 'Snare Drum, Single Hit, A (H1)', InspectorJ",
+    "url": "https://freesound.org/people/InspectorJ/sounds/410514/"
+   },
+   {
+    "register_row": 19,
+    "title": "BigSoundBank 'Anvil #1', Pablo Bergel",
+    "url": "https://bigsoundbank.com/anvil-1-s3589.html"
+   },
+   {
+    "register_row": 20,
+    "title": "Lots of Sounds 'Metal Oil Tank Hit' (fs-108264)",
+    "url": "https://www.lotsofsounds.com/sounds/metal-oil-tank-hit-fs-108264"
+   },
+   {
+    "register_row": 21,
+    "title": "Freesound 628491 (The Sample Workshop, metal bar multisample)",
+    "url": "https://freesound.org/people/The_Sample_Workshop/sounds/628491/"
+   },
+   {
+    "register_row": 22,
+    "title": "Freesound 795432 'Metal Barrel Hit' (rtyrty...)",
+    "url": "https://freesound.org/people/rtyrtyrtyrtyrtyrtyrtyrty/sounds/795432/"
+   },
+   {
+    "register_row": 26,
+    "title": "Zenodo records API, eight dataset queries",
+    "url": "https://zenodo.org/api/records"
+   },
+   {
+    "register_row": 27,
+    "title": "VSCO-2-CE LICENSE, sgossner/VSCO-2-CE",
+    "url": "https://github.com/sgossner/VSCO-2-CE"
+   }
+  ]
  },
  {
   "id": "C-05",
-  "claim": "The github.com zip URL for an orphan branch works for a public repository",
-  "status": "unverified",
-  "evidence": "needs repository attachment"
+  "claim": "The github.com archive URL for a branch works",
+  "status": "single-source",
+  "evidence": "200 from the sandbox after attachment; anonymous access untested",
+  "sources": [
+   {
+    "register_row": 28,
+    "title": "GitHub archive and codeload URLs for qualitycoding/oildrumkit",
+    "url": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/main.zip"
+   },
+   {
+    "register_row": 29,
+    "title": "GitHub REST API, api.github.com",
+    "url": "https://api.github.com"
+   }
+  ]
  },
  {
   "id": "C-06",
   "claim": "The engine sounds like struck metal",
   "status": "unverified",
-  "evidence": "never judged by listening; this plan exists to test it"
+  "evidence": "never judged by listening; this plan exists to test it",
+  "sources": []
+ },
+ {
+  "id": "C-07",
+  "claim": "Planning protocol v3.12 adds the R7 source register and its checks",
+  "status": "verified",
+  "evidence": "diff read",
+  "sources": [
+   {
+    "register_row": 1,
+    "title": "Planning protocol v3.11, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/protocols/planning-protocol.md"
+   },
+   {
+    "register_row": 2,
+    "title": "Planning protocol v3.12, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/7daac75/protocols/planning-protocol.md"
+   },
+   {
+    "register_row": 3,
+    "title": "Planning protocol review record, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/7daac75/protocols/planning-protocol-review.md"
+   }
+  ]
+ },
+ {
+  "id": "C-08",
+  "claim": "Licences that bar commercial use or derivatives cannot go into a public evidence bundle",
+  "status": "verified",
+  "evidence": "reasoned from the public orphan branch; a CC-BY-NC sound was found and refused",
+  "sources": [
+   {
+    "register_row": 4,
+    "title": "Blind-listening execution plan, qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/protocols/blind-listening-test-execution-plan.md"
+   },
+   {
+    "register_row": 5,
+    "title": "Skill audio-blind-listening-validation (SKILL.md), qualitycoding/skills",
+    "url": "https://github.com/qualitycoding/skills/blob/108db63/skills/audio-blind-listening-validation/SKILL.md"
+   },
+   {
+    "register_row": 18,
+    "title": "Freesound 410514 'Snare Drum, Single Hit, A (H1)', InspectorJ",
+    "url": "https://freesound.org/people/InspectorJ/sounds/410514/"
+   },
+   {
+    "register_row": 21,
+    "title": "Freesound 628491 (The Sample Workshop, metal bar multisample)",
+    "url": "https://freesound.org/people/The_Sample_Workshop/sounds/628491/"
+   }
+  ]
+ },
+ {
+  "id": "C-09",
+  "claim": "Zenodo, PyPI, raw.githubusercontent.com and (after attachment) api.github.com answer from the shell",
+  "status": "verified",
+  "evidence": "spike S5",
+  "sources": [
+   {
+    "register_row": 10,
+    "title": "numpy 2.5.3, PyPI",
+    "url": "https://pypi.org/project/numpy/2.5.3/"
+   },
+   {
+    "register_row": 11,
+    "title": "scipy 1.18.1, PyPI",
+    "url": "https://pypi.org/project/scipy/1.18.1/"
+   },
+   {
+    "register_row": 12,
+    "title": "soundfile 0.14.0, PyPI",
+    "url": "https://pypi.org/project/soundfile/0.14.0/"
+   },
+   {
+    "register_row": 13,
+    "title": "pytest 9.2.0, PyPI",
+    "url": "https://pypi.org/project/pytest/9.2.0/"
+   },
+   {
+    "register_row": 26,
+    "title": "Zenodo records API, eight dataset queries",
+    "url": "https://zenodo.org/api/records"
+   },
+   {
+    "register_row": 29,
+    "title": "GitHub REST API, api.github.com",
+    "url": "https://api.github.com"
+   }
+  ]
  }
 ]

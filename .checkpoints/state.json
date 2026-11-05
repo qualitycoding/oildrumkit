@@ -1,2 +1,24 @@
-{"run_id":"gen-20261105-oildrumkit-listening-phase","protocol":"planning-protocol v3.11","profiles":["software"],"flags":["audio"],
- "status":"plan-complete-awaiting-S-005-and-G-REF","executed_steps":[],"next_step":"S-000","independent_cold_read":"not-run","pushed":false}
+{
+ "run_id": "gen-20261105-oildrumkit-listening-phase",
+ "protocol": "planning-protocol v3.12",
+ "profiles": [
+  "software"
+ ],
+ "flags": [
+  "audio"
+ ],
+ "status": "plan-complete-awaiting-S-005-and-G-REF",
+ "executed_steps": [],
+ "next_step": "S-000",
+ "independent_cold_read": "not-run",
+ "pushed": false,
+ "knowledge_added": [
+  "K-20261105T223000Z-source-register-oildrumkit-listening-phase",
+  "K-20261105T223100Z-oildrum-hits-crest-factor-and-pair-builder-level",
+  "K-20261105T223200Z-struck-metal-reference-leads-and-licences",
+  "K-20261105T223300Z-sandbox-reachability-2026-11-05"
+ ],
+ "lessons_added": 6,
+ "source_register": "knowledge/K-20261105T223000Z-source-register-oildrumkit-listening-phase.md",
+ "generation_branch": "gen-20261105T211145Z-oildrumkit-listening-phase"
+}

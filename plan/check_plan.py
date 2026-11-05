@@ -36,7 +36,39 @@ if m.is_file():
         need(p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == h, f"manifest mismatch {name.strip()}")
 # claims all carry a status; no unverified claim is used as a fact in PLAN
 for c in json.loads((root/"research/claims.json").read_text()):
-    need(c["status"] in ("verified","unverified"), f"claim {c['id']} has no status")
+    need(c["status"] in ("verified","unverified","single-source","corroborated"), f"claim {c['id']} has no status")
+# spikes named in the text exist
+alltxt = alltext + (root/"research/SOURCES.md").read_text()
+for sp in set(re.findall(r"\bS([1-9])\b(?=[^\w-])", re.sub(r"S-\d+", "", alltxt))):
+    pass
+for n in re.findall(r"spike S(\d)", alltxt):
+    need(any((root/"research/spikes").glob(f"S{n}_RESULT.md")), f"spike S{n} named but has no result file")
+# exactly one source register; its URLs equal the union of round log, SOURCES.md and claims.json URLs; fields present
+regs = list((root/"knowledge").glob("K-*source-register*.md"))
+need(len(regs) == 1, f"expected one source register, found {len(regs)}")
+if len(regs) == 1:
+    rt = regs[0].read_text()
+    rows = [l for l in rt.splitlines() if re.match(r"^\| \d+ \|", l)]
+    reg_urls = {l.split(" | ")[2].strip() for l in rows}
+    log_urls = {l.split(" | ")[2].strip() for l in (root/"research/rounds/round-1.md").read_text().splitlines() if re.match(r"^\| \d+ \|", l)}
+    claim_urls = {s["url"] for c in json.loads((root/"research/claims.json").read_text()) for s in c.get("sources", [])}
+    need(log_urls == reg_urls, f"round-log URLs differ from register: {sorted(log_urls ^ reg_urls)[:3]}")
+    need(claim_urls <= reg_urls, f"claim URLs missing from register: {sorted(claim_urls - reg_urls)[:3]}")
+    for l in rows:
+        cells = [c.strip() for c in l.strip().strip("|").split(" | ")]
+        need(len(cells) == 12 and all(cells), f"register row incomplete: {cells[:2]}")
+        need(len(cells) < 7 or cells[6] in ("used","corroborating","rejected","unreachable","not relevant"), f"bad outcome {cells[:2]}")
+    stm = re.search(r"statement: .*?(\d+) external sources", rt)
+    need(stm and int(stm.group(1)) == len(rows), "register statement count differs from rows")
+# lessons and knowledge items carry the store schema fields
+REQ = {"L": ["id","title","status","supersedes","recurrence_of","occurrences","severity","tags","recorded_by","run","recorded_at"],
+       "K": ["id","statement","status","supersedes","tags","applies_to_version","source","confidence","derived_from","discovered_by","run","recorded_at"]}
+for d, pre in (("lessons","L"),("knowledge","K")):
+    for p in (root/d).glob(f"{pre}-*.md"):
+        head = p.read_text().split("---", 2)[1]
+        fields = dict(re.findall(r"^(\w+):[ \t]*(.*)$", head, re.M))
+        for f in REQ[pre]: need(f in fields, f"{p.name}: missing {f}")
+        need(fields.get("id","").strip() == p.stem, f"{p.name}: id differs from file name")
 # no secrets
 for p in root.rglob("*"):
     if p.is_file() and ".git" not in p.parts and p.suffix in {".md",".py",".sh",".json",".csv",".txt"}:

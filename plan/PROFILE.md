@@ -1,6 +1,6 @@
 # Profile record
 
-Run id: `gen-20261105T211145Z-oildrumkit-listening-phase` (planning protocol v3.11, `qualitycoding/skills` @ 108db63).
+Run id: `gen-20261105T211145Z-oildrumkit-listening-phase` (planning protocol v3.12, `qualitycoding/skills` @ 7daac75; the plan was first written against v3.11 @ 108db63 and brought up to v3.12 on 2026-11-05).
 
 Active profiles: `software` (the listening tools, the event renderer, the round and evidence scripts).
 Mode flags: `audio = true` (the deliverable is sound; activates 3.10). `software.deploys = false`. `courseware = false`.

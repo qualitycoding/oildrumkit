@@ -20,8 +20,8 @@ bash plan/bootstrap/bootstrap.sh "$WORK"            # spike S3: exit 0 three tim
 OILDRUM_REPO="$WORK/oildrumkit" python3 -m pytest tests -q -p no:cacheprovider      # run from the generation-branch checkout
 ```
 
-Host reachability from the shell (spike S5, 2026-11-05): raw.githubusercontent.com 200; zenodo.org 200; pypi.org 200; api.github.com 200 but
+Host reachability from the shell (spike S5, 2026-11-05; it changes during a run, so probe first): raw.githubusercontent.com 200; zenodo.org 200; pypi.org 200; bigsoundbank.com first 000 then 200; api.github.com 200 but
 per-repository answers need the session to attach the repository (a 403 body says "GitHub access to this repository is not enabled for this
-session"); github.com archive and codeload URLs 403 for the same reason; freesound.org 403; bigsoundbank.com no connection.
+session"); github.com archive and codeload URLs 403 until the repository is attached, then 200 (32 MB zip); freesound.org 403; bigsoundbank.com no connection.
 
 Not pinned (no tool needed): the listener's device and headphones (A-003).
