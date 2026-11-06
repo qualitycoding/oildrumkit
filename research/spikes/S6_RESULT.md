@@ -20,3 +20,9 @@
 - Energy-onset scan finds 23 onsets. Six are isolated by at least 1.3 s: 13.34, 18.3, 23.81, 27.05, 32.69 and 49.76 s. These are draft cut points only; the implementer chooses and listens.
 - Recorded in `assets/listening/references/klakmart-oiltank.manifest.json` (licence `owner-attested-CC0-1.0`). The audio is not committed (D-020).
 - Open: this single source must supply bass, snares and toms, so those voices share one resonance. The pairs for them will test pitch-shifted cuts, not separate drums; say so in the round notes.
+
+## Knowledge item K-20261106T120000Z (oil drum hit candidates), read 2026-11-06 12:05
+- Adds betchkal (CC BY 4.0, 100 lb and 20 lb propane tanks, 192 kHz 24-bit) and neirbonad1 (CC0 by snippet, gas tank). The item itself dropped its BangingOilTank note, which is covered here. Its listening notes are the owner's.
+- Effect on the limitation above: betchkal gives two real tank sizes, so bass/tom voices need not all come from one drum. Plan: betchkal 100 lb for bass and low toms, betchkal 20 lb and klakmart for snares and high toms, with the family assignment checked by ear in S-030.
+- Not hashed: no file has been supplied. The owner must download them from Freesound (the shell cannot), after which sha256 and cuts are recorded as for klakmart. Licence CC-BY-4.0 is in the redistributable set but obliges credit.
+- The paid A1 Studio "Industrial Steel Sample Pack" (real 55-gallon barrels) is noted by the item but its licence was not read; not used.
