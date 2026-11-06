@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 2,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored",
  "prerequisites": [
   {
    "id": "P-4",
@@ -54,17 +54,23 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "A,A,A,B,B,A,A,B,A,A,A,A",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 9
  },
  "score": {
-  "correct": 0,
+  "correct": 8,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.1938,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "source": "listener",
+   "finding": "none given yet (asked for demo findings and how pairs were told apart)",
+   "status": "open"
+  }
+ ],
  "iterations": [
   {
    "from_round": 1,
@@ -78,7 +84,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens to round 2; then record_round.py --score (S-045).",
+  "next_step": "Get the listener's qualitative findings and gate response (proceed / iterate / proceed-with-rescope / stop). Numeric condition met (8/12).",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""

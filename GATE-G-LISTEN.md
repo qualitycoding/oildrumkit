@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 2 BUILT, AWAITING LISTENER. Round 1 scored 11/12 (fail; listening/G-LISTEN/round-001/analysis.md). Round 2: seed 20262103, level -30 dB, `verify_bundle: ok`, evidence branch `evidence/G-LISTEN-round-2` @ ee1279d.
+**Status:** ROUND 2 SCORED 8/12 (numeric condition <= 8 met; p = 0.19). Qualitative findings and the owner's response are still needed before the gate can close. Round 1 was 11/12 (fail).
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
