@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 5 SCORED 8/12 (p 0.194); numeric condition met, two qualitative findings open (cymbal noise, drum resonance). Gate not passed. Awaiting owner decision on a further round.
+**Status:** ROUND 6 (OWNER-EXTENDED, D-022) BUILT, AWAITING LISTENER. Rounds: 11, 8, 9, 6, 8 of 12 (findings open after rounds 2, 4 and 5). Round 6: seed 20266103, level -33 dB, `verify_bundle: ok`, evidence `evidence/G-LISTEN-round-6` @ eff3f88.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -50,3 +50,6 @@ After round 3 failed (9/12) the owner extended the gate (2026-11-06 16:16), rema
 
 ## Round 5 (second owner extension)
 After round 4 scored 6/12 with resonance as the discriminating factor, the owner asked for another round. Change: splash and ride get lower damping (dampScale 0.12) with hfLoss 0.6, giving a longer ring (20 dB decay about 1.2 s) while the HF/LF T60 ratio stays at 0.171 and 0.185 (limit 0.25; hfLoss 0.35 failed at 0.28, so it was not used). Numeric targets: partials 10/15 (fail), centroid rise 0 measured (fail), snare roll pass (0.485), HF/LF T60 pass (0.219, all 15 measurable). The round limit is raised with `OILDRUM_OWNER_EXTRA_ROUNDS=2`. Record: `listening/G-LISTEN/round-005/result.json`.
+
+## Round 6 (third owner extension)
+After round 5 (8/12) the owner reported more noise in the real cymbals and more resonance in the real drums. Changes: splash and ride hfLoss 0.4, residual 0.9, scrape 0.8; toms hfLoss 0.5 and cavT60 0.5 (toms 4-6). Numeric targets: partials 10/15 (fail), centroid rise 0 measured (fail), snare roll pass (0.433), HF/LF T60 pass (0.219, all 15 measurable). `OILDRUM_OWNER_EXTRA_ROUNDS=3`. Record: `listening/G-LISTEN/round-006/result.json`.

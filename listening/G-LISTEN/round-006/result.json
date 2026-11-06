@@ -1,0 +1,96 @@
+{
+ "schema_version": 1,
+ "repository": "qualitycoding/oildrumkit",
+ "branch": "impl/listening-validation",
+ "candidate_commit": "3cbf531af1f603221c86ec6b0cd2b6f8ea1df288",
+ "gate_id": "G-LISTEN",
+ "round": 6,
+ "test_type": "realism",
+ "status": "awaiting-listener",
+ "prerequisites": [
+  {
+   "id": "P-4",
+   "text": "12+ references",
+   "status": "met: 16 ingested, 13 used"
+  },
+  {
+   "id": "D-022",
+   "text": "Owner extended the gate beyond three rounds; asked for rounds 4, 5 and 6",
+   "status": "declared with OILDRUM_OWNER_EXTRA_ROUNDS=3"
+  }
+ ],
+ "frozen_metrics": [
+  {
+   "id": "numeric-targets",
+   "result": "2 of 4 pass: partials >= 25 at 50 ms 10/15 (FAIL); centroid rise 0 measured (FAIL); snare-roll xcorr max 0.433 (PASS); HF/LF T60 max 0.219, all 15 measurable (PASS). None relaxed.",
+   "source": "Renders/after/metrics.json"
+  }
+ ],
+ "reference": {
+  "kind": "real struck steel and sheet recordings (steel tanks: klakmart, neirbonad1, betchkal; VCSL idiophones)",
+  "source_urls_or_ids": [
+   "https://freesound.org/s/108264/",
+   "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "https://freesound.org/s/258327",
+   "https://github.com/sgossner/VCSL"
+  ],
+  "licence": "CC0-1.0, owner-attested CC0, CC-BY-4.0 (betchkal)",
+  "checksums": "references/MANIFEST.json; listening/G-LISTEN/round-006/REFERENCE_LINKS.md"
+ },
+ "candidate_renders": {
+  "manifest": "listening/G-LISTEN/round-006/candidate-events.csv",
+  "checksums": "candidate-events.csv sha256 743aa5ed07db6debe7ad935d5e6c231ab9ef4c22a23375b589a0388fc05bcdbb"
+ },
+ "pair_builder": {
+  "script": "scripts/make_blind_pairs.py",
+  "commit": "vendored scripts/make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+  "seed": 20266103,
+  "pairs": 12,
+  "window": "start",
+  "seconds": 1.0,
+  "rms_db": -33,
+  "fade_seconds": 0.01,
+  "sample_rate": 44100
+ },
+ "evidence": {
+  "branch": "evidence/G-LISTEN-round-6",
+  "commit": "eff3f880eb5f1b9d019f6b4608db2d96c319865a",
+  "bundle": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-6.zip",
+  "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
+ },
+ "answers": {
+  "ordered": "",
+  "submitted_at": "",
+  "same_side_count": 0
+ },
+ "score": {
+  "correct": 0,
+  "total": 12,
+  "one_sided_p": null,
+  "pass_condition": "correct <= 8 && no unresolved qualitative finding"
+ },
+ "qualitative_findings": [],
+ "iterations": [
+  {
+   "from_round": 5,
+   "changes": "splash/ride hfLoss 0.4, residual 0.9, scrape 0.8 (broadband noise in the sustain); toms 1-6 hfLoss 0.5 and toms 4-6 cavT60 0.5 (more resonance)",
+   "evidence": "listening/G-LISTEN/round-005/analysis.md"
+  }
+ ],
+ "response": {
+  "value": "",
+  "recorded_at": "",
+  "file": ""
+ },
+ "resume": {
+  "next_step": "Owner listens to round 6; then record_round.py --score.",
+  "checkpoint_file": ".checkpoints/state.json",
+  "checkpoint_commit": "",
+  "execution_log_commit": ""
+ },
+ "round_notes": {
+  "extension": "Round 6 is the third owner-extended round (D-022).",
+  "owner_remark": "Round 5: cymbals have more noise in them and the drums have more resonance.",
+  "known_cues": "Cymbal sustain still shorter than the references (frozen HF/LF T60 target not relaxed). Bass and the first tom are darker than the betchkal tank hits. Closed hat tail ends in digital silence. Snares and rimshot untested."
+ }
+}
