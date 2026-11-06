@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 4,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored",
  "prerequisites": [
   {
    "id": "P-4",
@@ -59,17 +59,23 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "A,A,A,A,B,A,B,A,A,A,B,B",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 8
  },
  "score": {
-  "correct": 0,
+  "correct": 6,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.6128,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "source": "listener (2026-11-06 16:45)",
+   "finding": "The discriminating factor was resonance (decay and brightness no longer named).",
+   "status": "open - owner to classify as resolved, or iterate"
+  }
+ ],
  "iterations": [
   {
    "from_round": 3,
@@ -83,7 +89,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens to round 4; then record_round.py --score.",
+  "next_step": "Owner response: proceed, iterate, proceed-with-rescope or stop. Numeric condition met (6/12).",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""
