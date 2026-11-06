@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 4 SCORED 6/12 (chance level; numeric condition met). Open: the listener's remark that resonance was the discriminating factor. Owner's response needed: proceed, iterate, proceed-with-rescope or stop. Rounds: 11/12, 8/12, 9/12, 6/12.
+**Status:** ROUND 5 (OWNER-EXTENDED, D-022) BUILT, AWAITING LISTENER. Rounds: 11/12, 8/12 (findings open), 9/12 (fail), 6/12 (resonance finding open). Round 5: seed 20265103, level -33 dB, `verify_bundle: ok`, evidence `evidence/G-LISTEN-round-5` @ 9daaab7.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -47,3 +47,6 @@ Cowbell: 40 plate modes, shorter contact, more damping. Closed hat: shorter cont
 
 ## Round 4 (owner extension, D-022)
 After round 3 failed (9/12) the owner extended the gate (2026-11-06 16:16), remarking that the pairs he failed to identify were quite different in timbre from the synthesised clips. Changes: bass, low tom 1, cowbell, closed hat and toms 2-4 moved closer to their references (spectral balance and decay); cymbals unchanged because the frozen HF/LF T60 target caps their sustain (not relaxed). Numeric targets: partials 10/15 (fail), centroid rise 0/15 (fail), snare roll pass (0.453), HF/LF T60 pass (0.219, all 15 measurable). The round limit is raised with `OILDRUM_OWNER_EXTRA_ROUNDS=1`. Record: `listening/G-LISTEN/round-004/result.json`.
+
+## Round 5 (second owner extension)
+After round 4 scored 6/12 with resonance as the discriminating factor, the owner asked for another round. Change: splash and ride get lower damping (dampScale 0.12) with hfLoss 0.6, giving a longer ring (20 dB decay about 1.2 s) while the HF/LF T60 ratio stays at 0.171 and 0.185 (limit 0.25; hfLoss 0.35 failed at 0.28, so it was not used). Numeric targets: partials 10/15 (fail), centroid rise 0 measured (fail), snare roll pass (0.485), HF/LF T60 pass (0.219, all 15 measurable). The round limit is raised with `OILDRUM_OWNER_EXTRA_ROUNDS=2`. Record: `listening/G-LISTEN/round-005/result.json`.
