@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 3 SCORED 9/12 - FAIL; THREE ROUNDS USED, ESCALATED TO THE OWNER. Rounds: 11/12, 8/12 (findings open), 9/12. Owner's decision needed: proceed-with-rescope, extend beyond three rounds (with the cymbal target decision), or stop.
+**Status:** ROUND 4 (OWNER-EXTENDED, D-022) BUILT, AWAITING LISTENER. Rounds: 11/12, 8/12 (findings open), 9/12 (fail). Round 4: seed 20264103, level -33 dB, `verify_bundle: ok`, evidence `evidence/G-LISTEN-round-4` @ 97e33b0.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -44,3 +44,6 @@ General engine changes from the round-1 measurements: new recipe field `hfLoss` 
 
 ## Round 3 changes (S-046, from the round-2 findings)
 Cowbell: 40 plate modes, shorter contact, more damping. Closed hat: shorter contact, less frequency-dependent loss, more scrape, more damping. Toms 2-8: damping x0.6 again and longer contact (darker, longer). Cymbals, bass, low tom 1, snares and rimshot unchanged; cymbal sustain stays capped by the frozen HF/LF T60 target (not relaxed). Numeric targets: partials 11/15 (fail), centroid rise 0/15 (fail), snare roll pass (0.405), HF/LF T60 pass (0.219). Tool fix: `verify_bundle.py` no longer matches stem names inside audio samples. Record: `listening/G-LISTEN/round-003/result.json`.
+
+## Round 4 (owner extension, D-022)
+After round 3 failed (9/12) the owner extended the gate (2026-11-06 16:16), remarking that the pairs he failed to identify were quite different in timbre from the synthesised clips. Changes: bass, low tom 1, cowbell, closed hat and toms 2-4 moved closer to their references (spectral balance and decay); cymbals unchanged because the frozen HF/LF T60 target caps their sustain (not relaxed). Numeric targets: partials 10/15 (fail), centroid rise 0/15 (fail), snare roll pass (0.453), HF/LF T60 pass (0.219, all 15 measurable). The round limit is raised with `OILDRUM_OWNER_EXTRA_ROUNDS=1`. Record: `listening/G-LISTEN/round-004/result.json`.

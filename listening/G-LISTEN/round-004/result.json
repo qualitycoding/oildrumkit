@@ -1,0 +1,96 @@
+{
+ "schema_version": 1,
+ "repository": "qualitycoding/oildrumkit",
+ "branch": "impl/listening-validation",
+ "candidate_commit": "cf779393b059211a6bf768460a1c001c30b5d2fb",
+ "gate_id": "G-LISTEN",
+ "round": 4,
+ "test_type": "realism",
+ "status": "awaiting-listener",
+ "prerequisites": [
+  {
+   "id": "P-4",
+   "text": "12+ references",
+   "status": "met: 16 ingested, 13 used"
+  },
+  {
+   "id": "D-022",
+   "text": "Owner extended the gate beyond three rounds (2026-11-06 16:16)",
+   "status": "declared with OILDRUM_OWNER_EXTRA_ROUNDS=1"
+  }
+ ],
+ "frozen_metrics": [
+  {
+   "id": "numeric-targets",
+   "result": "2 of 4 pass: partials >= 25 at 50 ms 10/15 (FAIL); centroid rise 0/15 (FAIL); snare-roll xcorr max 0.453 (PASS); HF/LF T60 max 0.219, all 15 measurable (PASS). None relaxed.",
+   "source": "Renders/after/metrics.json"
+  }
+ ],
+ "reference": {
+  "kind": "real struck steel and sheet recordings (steel tanks: klakmart, neirbonad1, betchkal; VCSL idiophones)",
+  "source_urls_or_ids": [
+   "https://freesound.org/s/108264/",
+   "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "https://freesound.org/s/258327",
+   "https://github.com/sgossner/VCSL"
+  ],
+  "licence": "CC0-1.0, owner-attested CC0, CC-BY-4.0 (betchkal)",
+  "checksums": "references/MANIFEST.json; listening/G-LISTEN/round-004/REFERENCE_LINKS.md"
+ },
+ "candidate_renders": {
+  "manifest": "listening/G-LISTEN/round-004/candidate-events.csv",
+  "checksums": "candidate-events.csv sha256 743aa5ed07db6debe7ad935d5e6c231ab9ef4c22a23375b589a0388fc05bcdbb"
+ },
+ "pair_builder": {
+  "script": "scripts/make_blind_pairs.py",
+  "commit": "vendored scripts/make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+  "seed": 20264103,
+  "pairs": 12,
+  "window": "start",
+  "seconds": 1.0,
+  "rms_db": -33,
+  "fade_seconds": 0.01,
+  "sample_rate": 44100
+ },
+ "evidence": {
+  "branch": "evidence/G-LISTEN-round-4",
+  "commit": "97e33b0d7374b3c0229f2863c70603e472ae5357",
+  "bundle": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-4.zip",
+  "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
+ },
+ "answers": {
+  "ordered": "",
+  "submitted_at": "",
+  "same_side_count": 0
+ },
+ "score": {
+  "correct": 0,
+  "total": 12,
+  "one_sided_p": null,
+  "pass_condition": "correct <= 8 && no unresolved qualitative finding"
+ },
+ "qualitative_findings": [],
+ "iterations": [
+  {
+   "from_round": 3,
+   "changes": "bass (less HF loss, shorter contact, more damping), low tom 1 (shorter, brighter), cowbell (80 modes, shorter contact), closed hat (shorter contact, more scrape), toms 2-4 (longer contact, darker); cymbals unchanged",
+   "evidence": "listening/G-LISTEN/round-003/analysis.md"
+  }
+ ],
+ "response": {
+  "value": "",
+  "recorded_at": "",
+  "file": ""
+ },
+ "resume": {
+  "next_step": "Owner listens to round 4; then record_round.py --score.",
+  "checkpoint_file": ".checkpoints/state.json",
+  "checkpoint_commit": "",
+  "execution_log_commit": ""
+ },
+ "round_notes": {
+  "extension": "Round 4 is beyond the three-round cap, by the owner's decision D-022.",
+  "owner_remark": "The pairs failed in round 3 (both cowbells, closed hat) were quite different in timbre from the synthesised clips: reference mismatch rather than realism.",
+  "known_cues": "Closed hat falls to digital silence (-125 dB at 0.5-1 s) while its reference keeps a noise floor (-75 dB). Cymbal sustain 1.0-1.1 s against 1.7-2.6 s (frozen HF/LF T60 target not relaxed). Bass about 1.0 kHz centroid against 2.8-3.6 kHz in the betchkal tank hits. Snares and rimshot untested."
+ }
+}

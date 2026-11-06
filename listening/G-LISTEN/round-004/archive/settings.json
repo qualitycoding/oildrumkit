@@ -1,0 +1,12 @@
+{
+ "round": 4,
+ "seed": 20264103,
+ "pairs": 12,
+ "window": "start",
+ "seconds": 1.0,
+ "rms_db": -33,
+ "worst_crest_db": 31.69,
+ "fade_seconds": 0.01,
+ "sample_rate": 44100,
+ "builder_sha256": "3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7"
+}
