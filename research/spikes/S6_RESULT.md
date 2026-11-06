@@ -14,3 +14,9 @@
 - Provenance is now settled by the original uploader's page, which the owner read; the planner could not open it (not on the fetch allowlist) and the shell cannot download from Freesound. Treat the licence as owner-attested until the file is in hand.
 - Status: lead only. No hash exists yet. The owner downloads the original WAV, and the implementer records its sha256 in the manifest as `owner-attested-CC0-1.0` (or `CC0-1.0` if the licence is confirmed by a page the tooling can read), then cuts single hits, marking each cut as from the same source.
 - The earlier objection (no creator named) no longer applies.
+
+## klakmart file received (2026-11-06 11:39)
+- The owner supplied the original WAV. sha256 `14a9c4bbc17445cba49fc41d91eda49f57cfbe6b26f09d8643d1b03fb12edaaf`; PCM_24, 48 kHz, mono, 53.59 s, peak 0.38, no clipping.
+- Energy-onset scan finds 23 onsets. Six are isolated by at least 1.3 s: 13.34, 18.3, 23.81, 27.05, 32.69 and 49.76 s. These are draft cut points only; the implementer chooses and listens.
+- Recorded in `assets/listening/references/klakmart-oiltank.manifest.json` (licence `owner-attested-CC0-1.0`). The audio is not committed (D-020).
+- Open: this single source must supply bass, snares and toms, so those voices share one resonance. The pairs for them will test pitch-shifted cuts, not separate drums; say so in the round notes.
