@@ -50,10 +50,21 @@ python3 Tools/modes.py report      # per-instrument mode counts, ranges, T60
 [`Renders/README.md`](Renders/README.md). Regenerate with `Tools/build_render.sh new|legacy` and `Tools/metrics.py`,
 `Tools/compare.py`.
 
-## Getting Started
+## Building the plugin
 
-To compile the plugin from source, you will need a C++17 compatible compiler and CMake.
+You need CMake 3.22 or later, a C++ compiler and a copy of JUCE. The plugin builds as VST3 and Standalone.
 
-*   Clone the repository containing the source code.
-*   Configure the project using CMake, ensuring JUCE is properly linked or included via `add_subdirectory`.
-*   Build the VST3 or Standalone target using your preferred IDE or command-line build tool.
+`CMakeLists.txt` currently contains `add_subdirectory("D:/JUCE" JUCE)`, so JUCE has to be at `D:/JUCE` (a
+Windows path). Edit that line to point at your own JUCE checkout, then:
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+```
+
+There is no automated test suite or CI in this repository. `Tools/plugin_smoke_test.cpp` is a small
+smoke test for the plugin, and `Tools/render_demo.cpp` renders demo audio.
+
+## Licence
+
+Apache License 2.0. See [LICENSE](LICENSE).
