@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 5 (OWNER-EXTENDED, D-022) BUILT, AWAITING LISTENER. Rounds: 11/12, 8/12 (findings open), 9/12 (fail), 6/12 (resonance finding open). Round 5: seed 20265103, level -33 dB, `verify_bundle: ok`, evidence `evidence/G-LISTEN-round-5` @ 9daaab7.
+**Status:** ROUND 5 SCORED 8/12 (p 0.194); numeric condition met, two qualitative findings open (cymbal noise, drum resonance). Gate not passed. Awaiting owner decision on a further round.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.

@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 5,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored-findings-open",
  "prerequisites": [
   {
    "id": "P-4",
@@ -59,17 +59,28 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "A,B,A,A,A,B,B,A,B,A,A,A",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 8
  },
  "score": {
-  "correct": 0,
+  "correct": 8,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.1938,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "id": "R5-F1",
+   "text": "Cymbals: more noise in the real recordings than in the synthesised clips (owner, 2026-11-06 17:04).",
+   "status": "open"
+  },
+  {
+   "id": "R5-F2",
+   "text": "Drums: the real recordings have more resonance than the synthesised clips (owner).",
+   "status": "open"
+  }
+ ],
  "iterations": [
   {
    "from_round": 4,
@@ -83,7 +94,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens to round 5; then record_round.py --score.",
+  "next_step": "Decide between a further owner-extended round (cymbal noise, drum resonance) and closing the gate with the findings recorded.",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""
