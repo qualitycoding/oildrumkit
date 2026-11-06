@@ -31,3 +31,8 @@
 - betchkal 258327: sha256 `d77c8268...def797`; PCM_24, 192 kHz, stereo, 61.09 s; 14 onsets. Only the hit at 26.88 s clips (182 samples), so avoid it. Unclipped louder hits: 15.72 (0.82), 22.37 (0.97), 40.07 (0.90), 54.11 (0.72). The file mixes a plastic bucket with the tanks and nothing in the audio says which hit is which, so the draft cuts need the owner's ear. 192 kHz must be resampled to 44.1 kHz for the pairs (the builder rejects other rates).
 - neirbonad1 178052: sha256 `4345c711...ec0ee5`; PCM_24, 48 kHz, stereo, 3.18 s; one strike at 0.06 s, peak only 0.104. The CC0 label was still from a snippet; the owner has not yet read its page.
 - Both are recorded in `assets/listening/references/drum-body-extra.manifest.json`. neirbonad1's licence is `CC0-1.0` in the draft: change it to `owner-attested-CC0-1.0` with an attestation once the owner confirms, or the implementer must stop at G-REF.
+
+## Owner confirmations (2026-11-06 13:04)
+- betchkal: all hits after 35 s are ok. Cuts are now 35.32, 40.07, 43.42 and 54.11 s (four hits). Earlier draft cuts at 15.72, 22.37 are dropped as unconfirmed.
+- neirbonad1: licence confirmed CC0 by the owner; recorded as `owner-attested-CC0-1.0`. This closes the licence question left open above.
+- Drum-body set is now: klakmart (6 draft cuts), betchkal (4 cuts, two tank sizes not yet told apart), neirbonad1 (1 hit).

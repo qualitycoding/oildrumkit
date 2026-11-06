@@ -22,15 +22,12 @@
    "duration_s": 61.09,
    "credit": "20131009 plastic buckets + propane tanks, by betchkal, CC BY 4.0, https://freesound.org/s/258327",
    "cuts_draft_s": [
-    15.72,
-    22.37,
+    35.32,
     40.07,
+    43.42,
     54.11
    ],
-   "avoid_cuts_s": {
-    "26.88": "clipped (182 samples at full scale)"
-   },
-   "note": "Contains steel propane tanks (100 lb and 20 lb) AND a plastic bucket; the bucket hits must not be used. Which hits are which object is not yet established: the owner reported the last four high-amplitude hits as ok. Draft cuts are the louder unclipped hits and need a listening check. CC BY 4.0 obliges credit: keep the credit line in the published README or CREDITS."
+   "note": "Owner confirmed 2026-11-06 13:04: all hits after 35 s are ok (steel tanks, usable). Hits before 35 s are not confirmed (the file also holds a plastic bucket) and the clipped hit at 26.88 s must not be used. Cuts are onset times in seconds, to be refined by ear. Resample 192 kHz to 44.1 kHz. CC BY 4.0 obliges credit: keep the credit line in the README or CREDITS."
   },
   {
    "stem": "d02",
@@ -40,17 +37,17 @@
    "family": "drum",
    "velocity": 0.7,
    "hammer": "wood",
-   "licence": "CC0-1.0",
+   "licence": "owner-attested-CC0-1.0",
    "redistributable": true,
    "source": "https://freesound.org/people/neirbonad1/sounds/178052/",
    "author": "neirbonad1",
    "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-   "attestation": "",
+   "attestation": "Owner read the Freesound page on 2026-11-06 and confirmed the licence is CC0 (uploader neirbonad1, sound 178052).",
    "raw_url": "",
    "bytes": 917380,
    "format": "PCM_24 48000 Hz 2ch",
    "duration_s": 3.18,
-   "note": "Single strike at 0.06 s (a faint second event at 0.89 s, -12 dB lower; ignore). Peak 0.104, so quiet: normalise per the level plan. The CC0 label came from a search snippet in the knowledge item; the owner has downloaded the original from Freesound but has not yet confirmed the page's licence line, so treat it as CC0 pending that confirmation."
+   "note": "Single strike at 0.06 s (a faint second event at 0.89 s, about 12 dB lower; ignore). Peak 0.104, so quiet: normalise per the level plan."
   }
  ]
 }
