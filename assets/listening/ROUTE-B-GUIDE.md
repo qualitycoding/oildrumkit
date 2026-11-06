@@ -12,7 +12,7 @@ Set `"redistributable": true` only for CC0, CC BY and CC BY-SA files (the tool r
 ## Where to look
 - Lots of Sounds, "Metal Oil Tank Hit": https://www.lotsofsounds.com/sounds/metal-oil-tank-hit-fs-108264 . Closest match, labelled CC0, but no creator is named and it is one 54-second file of several bangs. Use it only if you can trace the original author; if you cut single hits from it, mark each cut in the manifest as from the same source.
 - BigSoundBank (CC0 per sound page), search "oil drum", "barrel", "bidon" and "metal drum": https://bigsoundbank.com/search?q=oil+drum . Its "Anvil #1" is real ringing steel and CC0, but an anvil: use it as an `other` or `bell` row only if you accept that it is not a drum.
-- Freesound (needs a login to download), filter licence to "Creative Commons 0" or "Attribution". Skip anything "Attribution NonCommercial".
+- Freesound (needs a login to download), filter licence to "Creative Commons 0" or "Attribution". Attribution NonCommercial is acceptable for private listening under D-020 (mark it personal-use-only in the manifest); prefer CC0 or Attribution.
 - Zenodo records 3994999 "Drum and Percussion Kits" and 12685116 (CC-BY-4.0 per the API; not opened by the planner).
 - Free to Use Sounds (freetousesounds.com): its home page allows personal and commercial use but bars resale and redistribution, which D-020 permits for private listening. I could not read its licence agreement page, so check it yourself and give its URL as `terms_url`. No oil-drum page was found on its home page.
 - Freesound 628491 (CC BY-NC 4.0) is now allowed on licence, but it is a processed multisample of a metal bar, not a raw recording: skip it on content grounds.

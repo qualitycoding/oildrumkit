@@ -25,3 +25,7 @@ per-repository answers need the session to attach the repository (a 403 body say
 session"); github.com archive and codeload URLs 403 until the repository is attached, then 200 (32 MB zip); freesound.org 403; bigsoundbank.com no connection.
 
 Not pinned (no tool needed): the listener's device and headphones (A-003).
+
+## Implementation run 2026-11-06 (S-000)
+- `bootstrap.sh /home/claude/work` exited 0. `bootstrap.json`: main 1900ac8, branch `impl/listening-validation` resumed from the remote, base 080a920, `code_changed_since_audited_commit` empty, vendored tools present, render identical to the committed render. The JSON has no `ready` key; the exit code and the other fields were used instead (note for the planner: PLAN.md S-000 mentions `ready:true`).
+- A-005: `git push --dry-run origin impl/listening-validation` from the working copy succeeds (`21972a2..080a920`). The implementer can push the branch.

@@ -9,4 +9,4 @@ real struck steel oil drum, barrel or similar sheet steel.
 4. Write `manifest.json` with, per file: stem, sha256, licence (`owner-attested-CC0-1.0` or `owner-attested-CC-BY-4.0`, with `redistributable` true), attribution, and `owner_attested: true` plus an `ATTESTATION.txt`
    saying you recorded them and grant that licence. Pitch: your best estimate in Hz, or leave blank and the tool estimates it.
 5. Do not include anyone else's recordings or music. Do not include secrets.
-The bundle is published on a public orphan branch, so the licence has to allow redistribution.
+The pairs are published on a public orphan branch only when every reference is redistributable (D-020); otherwise only links and hashes are published and the pairs are handed to the owner privately.
