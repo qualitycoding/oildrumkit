@@ -1,42 +1,93 @@
 {
-  "schema_version": 1,
-  "repository": "qualitycoding/oildrumkit",
-  "branch": "impl/listening-validation",
-  "candidate_commit": "e31e8d041f49357ac6d87918a70831cf941971a1",
-  "gate_id": "G-LISTEN",
-  "round": 1,
-  "test_type": "realism",
-  "status": "blocked",
-  "prerequisites": [
-    {"id": "P-1", "status": "satisfied", "evidence": "Branch impl/listening-validation created from main e31e8d041f49; plan amended with audio=true, S-LISTEN, G-LISTEN (D-981)."},
-    {"id": "P-2", "status": "satisfied", "evidence": "Pair tools vendored at scripts/make_blind_pairs.py (sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7) and scripts/score_blind.py (sha256 f2d9ea5c76a731fd3dd553d698a9f1a92b393d272f6ea898e6a9e5cbde49defa) from qualitycoding/skills @ 7915c7b7e0cecbee5116e72a4cf5699383df5983; CLI verified with Python 3 + numpy 2.5.4 + soundfile 0.14.0 + scipy 1.18.1."},
-    {"id": "P-3", "status": "satisfied", "evidence": "Current render bit-reproducible vs committed Renders/after WAV (sha256 e487c3fbbba114b5516c54d37ca37efb2e101f0ef717038e70b187286387135d) with full metrics and velocity-timbre sweep recorded."},
-    {"id": "P-4", "status": "missing", "evidence": "Realism references: at least 12 matched struck-steel hits with redistribution-compatible licence, source URL and checksums are not yet secured. Legacy renders are demos, not realism references."},
-    {"id": "P-5", "status": "disclosed-not-passed", "evidence": "RETROSPECTIVE.md limitations preserved: only 2/4 original numeric targets passing; no DAW/Windows validation; open engineering items. These are not converted into passes by this amendment."}
+ "schema_version": 1,
+ "repository": "qualitycoding/oildrumkit",
+ "branch": "impl/listening-validation",
+ "candidate_commit": "8ad2f125748646939b6212a3f059d145ceaf1eb3",
+ "gate_id": "G-LISTEN",
+ "round": 1,
+ "test_type": "realism",
+ "status": "awaiting-listener",
+ "prerequisites": [
+  {
+   "id": "P-4",
+   "text": "12+ redistribution-compatible struck-metal references",
+   "status": "met 2026-11-06: 16 ingested, 13 used (3 dropped: pitch outside the instrument range)"
+  }
+ ],
+ "frozen_metrics": [
+  {
+   "id": "numeric-targets",
+   "result": "2 of 4 pass (partials 2/15 FAIL, centroid rise 0/15 FAIL, snare-roll xcorr PASS, HF/LF T60 PASS); not re-run, render bit-identical to committed Renders/after",
+   "source": "Renders/compare/comparison.md"
+  }
+ ],
+ "reference": {
+  "kind": "real struck steel and sheet recordings (steel tanks: klakmart, neirbonad1, betchkal; VCSL idiophones)",
+  "source_urls_or_ids": [
+   "https://freesound.org/s/108264/",
+   "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "https://freesound.org/s/258327",
+   "https://github.com/sgossner/VCSL"
   ],
-  "frozen_metrics": [
-    {"id": "M-1", "threshold": "disclosed numeric targets (docs/RETROSPECTIVE.md)", "observed": "2/4 passing", "status": "disclosed-limitation", "evidence": "docs/RETROSPECTIVE.md"},
-    {"id": "M-2", "threshold": "bit-reproducibility of current render", "observed": "pass (sha256 e487c3fb...387135d)", "status": "pass", "evidence": "re-render run 2026-11-03"}
+  "licence": "CC0-1.0, owner-attested CC0, CC-BY-4.0 (betchkal, credit in ATTRIBUTION.md)",
+  "checksums": "references/MANIFEST.json and listening/G-LISTEN/round-001/REFERENCE_LINKS.md"
+ },
+ "candidate_renders": {
+  "manifest": "listening/G-LISTEN/round-001/candidate-events.csv",
+  "checksums": "candidate-events.csv sha256 743aa5ed07db6debe7ad935d5e6c231ab9ef4c22a23375b589a0388fc05bcdbb"
+ },
+ "pair_builder": {
+  "script": "scripts/make_blind_pairs.py",
+  "commit": "vendored scripts/make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+  "seed": 20261103,
+  "pairs": 12,
+  "window": "start",
+  "seconds": 1.0,
+  "rms_db": -29,
+  "fade_seconds": 0.01,
+  "sample_rate": 44100
+ },
+ "evidence": {
+  "branch": "evidence/G-LISTEN-round-1",
+  "commit": "507d06d0696f94ea48c4c15b58a51b894a01359a",
+  "bundle": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip",
+  "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
+ },
+ "answers": {
+  "ordered": "",
+  "submitted_at": "",
+  "same_side_count": 0
+ },
+ "score": {
+  "correct": 0,
+  "total": 12,
+  "one_sided_p": null,
+  "pass_condition": "correct <= 8 && no unresolved qualitative finding"
+ },
+ "qualitative_findings": [],
+ "iterations": [],
+ "response": {
+  "value": "",
+  "recorded_at": "",
+  "file": ""
+ },
+ "resume": {
+  "next_step": "Owner listens (S-040), answers; then record_round.py --score (S-045).",
+  "checkpoint_file": ".checkpoints/state.json",
+  "checkpoint_commit": "",
+  "execution_log_commit": ""
+ },
+ "round_notes": {
+  "references_used": 13,
+  "references_ingested": 16,
+  "dropped_for_pitch_clamp": [
+   "r09 (hat open, 1432 Hz asked, 900 max)",
+   "r15 (anvil, 1246 Hz, 700 max)",
+   "r16 (brake drum, 1050 Hz, 700 max)"
   ],
-  "reference": {"kind": "real struck steel recordings (redistribution-compatible)", "source_urls_or_ids": [], "licence": "not secured", "checksums": ""},
-  "candidate_renders": {"manifest": "Renders/after/oildrumkit_after.meta.json", "checksums": "Renders/after WAV sha256 e487c3fbbba114b5516c54d37ca37efb2e101f0ef717038e70b187286387135d"},
-  "pair_builder": {
-    "script": "scripts/make_blind_pairs.py",
-    "commit": "7915c7b7e0cecbee5116e72a4cf5699383df5983",
-    "seed": 20261103,
-    "pairs": 12,
-    "window": "start",
-    "seconds": 1.0,
-    "rms_db": -23.0,
-    "fade_seconds": 0.01,
-    "sample_rate": 44100
-  },
-  "evidence": {"branch": "impl/listening-validation", "commit": "", "bundle": "", "sha256sums": ""},
-  "answers": {"ordered": "", "submitted_at": "", "same_side_count": 0},
-  "score": {"correct": 0, "total": 12, "one_sided_p": null, "pass_condition": "correct <= 8 && no unresolved qualitative finding"},
-  "qualitative_findings": [],
-  "iterations": [],
-  "response": {"value": "", "recorded_at": "", "file": ""},
-  "resume": {"next_step": "secure 12+ redistribution-compatible struck-steel reference recordings; then run S-LISTEN round-001 with seed 20261103", "checkpoint_file": ".checkpoints/state.json", "checkpoint_commit": "", "execution_log_commit": ""},
-  "blocked_reason": "Missing realism references (P-4). Per plan, do not score against placeholder or legacy material."
+  "not_covered": "No real snare-drum or rimshot-slot reference passed the pitch rule; snares 1-2 and the Rimshot instrument are not in the scored pairs.",
+  "shared_source_caveat": "Bass and tom references come from three steel tanks (klakmart, neirbonad1, betchkal); the betchkal hits are assumed to be the 100 lb and 20 lb propane tanks, which was not verified.",
+  "pitch_note": "pitch_hz for the three betchkal hits was read from the spectrum by the implementer (38, 36, 110 Hz); every other pitch is the ingest estimate (strongest partial 30-2000 Hz).",
+  "vcsl_note": "VCSL files are 16-bit stereo; the independent decode check in the skill has not been run on them."
+ }
 }

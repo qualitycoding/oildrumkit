@@ -1,42 +1,40 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** BLOCKED — realism references not secured (round-001 not scored).
-**Branch:** `impl/listening-validation` (base `main` @ e31e8d041f49357ac6d87918a70831cf941971a1).
-**Decision:** D-981 (plan/DECISIONS.md). **Frozen seed:** 20261103 (rounds +1000/+2000).
+**Status:** AWAITING LISTENER — round 1 built and verified (`verify_bundle: ok`), not yet scored.
+**Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
+**Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
+**Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
 
-## Test type
-Realism (candidate renders vs real struck-steel oil drum / sheet-steel
-recordings). Legacy-versus-current renders are demos only, never references.
+## What the listener receives
+`listener-bundle`: 12 pairs (`pair-NN-A/B.wav`, 1.0 s, 44.1 kHz, PCM-24, level -29 dB RMS), `README-LISTENER.txt`, a blank `ANSWERS.txt`, nine demo timelines (`demos/`), `ATTRIBUTION.md`. Answer with one letter per pair (the side you believe is the real recording), then the three questions below.
 
 ## Frozen settings
-12 matched onset pairs, `--window start`, 1.0 s clips, common RMS −23 dBFS,
-10 ms fades, 44.1 kHz PCM-24 WAV; pass condition ≤ 8/12 correct and no
-unresolved qualitative finding; maximum three rounds; builder
-`scripts/make_blind_pairs.py` (sha256 3c4f75854e2a…d6824c7) and scorer
-`scripts/score_blind.py` (sha256 f2d9ea5c76a1…e49defa) vendored from
-qualitycoding/skills @ 7915c7b7e0cecbee5116e72a4cf5699383df5983.
+12 matched onset pairs, `--window start`, 1.0 s clips, 10 ms fades; RMS -29 dB (computed by `level_plan.py`; the frozen -23 dB aborts because these percussion hits have a worst crest factor of 28.1 dB, D-002); pass condition ≤ 8/12 correct and no unresolved qualitative finding; at most three rounds; builder sha256 3c4f75854e2a…d6824c7, scorer f2d9ea5c76a7…e49defa.
 
-## Questions for the human listener
+## Metric table (recorded, not re-run; the render is bit-identical to `Renders/after`)
+| Target | Result |
+|---|---|
+| Resolved partials ≥ 25 at 50 ms | 2/15 instruments — FAIL |
+| Centroid rise v0.2→v1.0 ≥ 400 Hz | 0/15 — FAIL |
+| Snare-roll full-band xcorr ≤ 0.97 | max 0.474 — PASS (does not discriminate; legacy also passed) |
+| HF (4–8 kHz) T60 < 25 % of LF T60 | 14/14 measurable — PASS |
+
+## References (13 used of 16 ingested)
+Licences: CC0 (VCSL; klakmart and neirbonad1 owner-attested) and CC BY 4.0 (betchkal, credited). Full list with hashes: `listening/G-LISTEN/round-001/REFERENCE_LINKS.md`. No reference audio is stored in this repository.
+Limits of what a pass can show:
+- Bass and toms (7 refs) are steel tanks from three recordings; snares and the rimshot slot have no real reference and are not in the scored pairs. Three references (open hat, anvil, brake drum) were dropped because their pitch is outside the instrument's range.
+- A pass supports only the narrow claim in D-015, not general realism.
+
+## Questions for the listener
 1. Which side is the real recording (per pair)?
-2. Per demo: convincing metallic ring, attack, decay, velocity response, roll
-   variation, cymbal shimmer vs hiss, snare rattle, hat choke, stereo/room
-   character, cowbell partial structure?
-3. Every adverse finding needs instrument and timestamp.
+2. Per demo: is the metallic ring, attack, decay, velocity response, roll variation, cymbal shimmer (not hiss), hat choke, stereo/room character and cowbell partial structure convincing? Name the demo and the time of any problem.
+3. Did you tell the pairs apart by the metal itself, or by room sound, noise or loudness? Which pairs? Every adverse finding needs instrument and timestamp.
 
 ## Allowed responses
-`proceed` → close G-LISTEN, resume **S-RETRO**, then the existing
-S-KNOW/G-003 closing sequence.
-`iterate: <notes>` → remain at G-LISTEN; general voicing/physics change in
-`Tools/voicing.json` or engine mechanism; rerun metrics/reviews; new seed.
-`proceed-with-rescope: <text>` → narrow the realism/instrument claim; update
-README/research limitations before S-RETRO.
+`proceed` → close G-LISTEN, resume S-RETRO, then the S-KNOW/G-003 sequence.
+`iterate: <notes>` → remain at G-LISTEN; general voicing/physics change in `Tools/voicing.json` or engine mechanism; rerun metrics/reviews; new seed (D-006).
+`proceed-with-rescope: <text>` → narrow the realism/instrument claim; update README/research limitations before S-RETRO.
 `stop` → halt at G-LISTEN with S-RETRO pending.
 
-## Current state
-- Round-001 record: `listening/G-LISTEN/round-001/result.json` (status
-  `blocked`; prerequisite P-4 missing references).
-- Reproducibility: current render bit-identical to committed
-  `Renders/after` WAV (sha256 e487c3fb…387135d).
-- Disclosed limitations (docs/RETROSPECTIVE.md) preserved and not converted to
-  passes: 2/4 numeric targets, no DAW/Windows validation, open engineering
-  items.
+## Disclosed limitations preserved
+2/4 numeric targets, no DAW/Windows validation, open engineering items (docs/RETROSPECTIVE.md).
