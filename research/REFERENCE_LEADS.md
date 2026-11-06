@@ -16,3 +16,24 @@ For each file you choose, record the URL, the licence text as shown on the page,
 Free to Use Sounds (freetousesounds.com, about 15,000 recordings by its founders): the owner opened egress to it on 2026-11-05. Its home page says sounds are free for personal and commercial use but may not be resold or redistributed, which conflicts with a public evidence bundle (D-014), and no oil-drum page was found. The full licence agreement could not be read. Use only if the agreement allows redistribution inside a public repository, or ask the site for permission.
 
 Update 2026-11-05 (D-020): the repository links to reference files instead of republishing them, so non-commercial, no-derivatives and personal-use-only licences are now acceptable (private listening only). The Free to Use Sounds licence agreement still needs reading. Provenance rules are unchanged: a named author and an original source page are required.
+
+## Shortlist from knowledge item K-20261106T112500Z-struck-metal-real-recording-catalogue (read 2026-11-06)
+
+The catalogue was compiled by another research run; its confidence is `single-source` and no audio was downloaded or listened to. This planner re-read only one licence: VCSL is CC0 (its README, read via raw.githubusercontent.com). Every other licence below is as the catalogue states and must be read from the sound's own page when you download it (the manifest requires it). The planner's fetch tool no longer opens these pages (not on its allowlist), and the shell cannot reach freesound.org or theremin.music.uiowa.edu, so the downloads are yours (Route B).
+
+Fit to the kit, best first. Families come from the 12-hit need; "drum body" is the weak spot, because the catalogue found almost no real oil-drum recordings.
+
+| Family (kit instrument index) | Candidate | Licence as catalogued | Notes and checks |
+|---|---|---|---|
+| Drum body (bass 0, snare 1-2, toms 3-8) | engreitz "Oil drum.wav" https://freesound.org/people/engreitz/sounds/79605/ | unverified: read it on the page | Steel oil drum hit with a thin rod at different places, 4.3 s, 16-bit 44.1 kHz. Cut 3 or 4 single hits at different positions; usable only if the licence is acceptable. |
+| Drum body | DeVern "Oil Drum Soft Impact" https://freesound.org/people/DeVern/sounds/524817/ | CC0 | Filed under synths; may be processed. Listen: refuse if it is not a raw recording. |
+| Drum body | Lots of Sounds "Metal Oil Tank Hit" (earlier lead) | CC0 label, no creator | Its page id ends fs-108264; open https://freesound.org/s/108264/ . If that is the original, the author and licence are settled. |
+| Cymbal (splash 9, ride 10) | jfmcrae thunder sheet https://freesound.org/people/jfmcrae/sounds/512925/ ; loganzsound plate hit 6 https://freesound.org/people/loganzsound/sounds/784157/ ; Sheyvan metal plate https://freesound.org/people/Sheyvan/sounds/476121/ | CC0 each | Steel or iron plates and sheet; 24-bit. The thunder sheet is a 26.8 s ring: cut a window after the onset. |
+| Cymbal | University of Iowa MIS gongs and tam-tams https://theremin.music.uiowa.edu/MISgongtamtams.html | "without restrictions" (MIS main page) | Anechoic, 24-bit, three dynamics. Not a clear redistribution grant, so mark `redistributable: false` unless you confirm otherwise. Not steel: bronze-type. |
+| Hat (closed 11, open 12) | Anthousai metal pipe hit https://freesound.org/people/Anthousai/sounds/406555/ ; Zott820 conduit https://freesound.org/people/Zott820/sounds/271170/ | CC0 each | Short clinks. The conduit file is a 14 s multi-hit recorded with a USB microphone: cut it, expect noise. |
+| Bell (cowbell 13) | VCSL brake drum (CC0) and triangles, hand chimes: https://github.com/sgossner/VCSL (Idiophones folder) | CC0 (README) | Room-miked stereo 44.1 or 48 kHz. The planner's sandbox can fetch single files from raw.githubusercontent.com if given exact paths; it cannot list the folder. |
+| Rimshot (14) and other | VCSL anvil (CC0); captainvince anvil https://freesound.org/people/captainvince/sounds/223553/ (CC BY 3.0); jorickhoofd metal on metal https://freesound.org/people/jorickhoofd/sounds/176674/ (CC BY 4.0) | as shown | The anvil file is a 22 s multi-hit: cut single hits. |
+
+Not worth using: Pixabay and Wikimedia Commons (lossy MP3 or OGG), Sonniss, BBC RemArc and Greatest Hits (restrictive terms or not dry), RealImpact (no dataset licence), the Zenodo plate (not audio), and the two entries the catalogue excludes as synthesised.
+
+Honest limit: almost all of this is plate, pipe, gong and anvil metal, not oil drums. A pair test built mainly from it checks the engine's cymbal, hat, bell and rimshot voices against real steel, and the drum voices against two or three drum recordings at best. Say so in the gate (D-015). If the engreitz and DeVern files fail on licence or provenance, the drum-body family has no reference, and the choices are to record it yourself (Route A) or to drop the drum voices from the scored set and say so.
