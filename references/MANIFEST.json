@@ -4,7 +4,7 @@
   {
    "stem": "r01",
    "file": "betchkal-tank-hit-b02.wav",
-   "sha256": "643ec1f484a313f147557aff642d7bb3b532e8af0d4160f849556a5140d9bb99",
+   "sha256": "dbededaaf1d34724958377b843799d35b17b5098a6c26d1b1ed9827412e2704a",
    "instrument": 0,
    "family": "bass",
    "velocity": 0.85,
@@ -20,13 +20,13 @@
    "credit": "20131009 plastic buckets + propane tanks, by betchkal, CC BY 4.0, https://freesound.org/s/258327 (cut and resampled)",
    "parent_file": "258327__betchkal__20131009-plastic-buckets-propane-tanks.wav",
    "parent_sha256": "d77c82688a6fcdb6c57b09c9884ebae428bb1899ae3a8c867bc1458b37def797",
-   "cut_start_s": 40.02,
+   "cut_start_s": 40.0711,
    "cut_end_s": 43.37
   },
   {
    "stem": "r02",
    "file": "betchkal-tank-hit-b04.wav",
-   "sha256": "9b093f5cfae0ab12be40385779761a410e906b7c245f928ad2bf404d6bdcd7cd",
+   "sha256": "569e801be1e7e3c1bac97fd021bbbdfd43774c885fad4662a6f03d0b2bb0627b",
    "instrument": 0,
    "family": "bass",
    "velocity": 0.8,
@@ -42,13 +42,13 @@
    "credit": "20131009 plastic buckets + propane tanks, by betchkal, CC BY 4.0, https://freesound.org/s/258327 (cut and resampled)",
    "parent_file": "258327__betchkal__20131009-plastic-buckets-propane-tanks.wav",
    "parent_sha256": "d77c82688a6fcdb6c57b09c9884ebae428bb1899ae3a8c867bc1458b37def797",
-   "cut_start_s": 54.06,
+   "cut_start_s": 54.1121,
    "cut_end_s": 58.06
   },
   {
    "stem": "r03",
    "file": "betchkal-tank-hit-b01.wav",
-   "sha256": "0636afc1838c61e83a86796f648e049ddf03c690411e7a36f1a3fb3eff7582cf",
+   "sha256": "db242302862fdf4c2c2c8a280c041046bef9264bc7e4bedbe57304e4100db8ef",
    "instrument": 3,
    "family": "tom",
    "velocity": 0.6,
@@ -64,13 +64,13 @@
    "credit": "20131009 plastic buckets + propane tanks, by betchkal, CC BY 4.0, https://freesound.org/s/258327 (cut and resampled)",
    "parent_file": "258327__betchkal__20131009-plastic-buckets-propane-tanks.wav",
    "parent_sha256": "d77c82688a6fcdb6c57b09c9884ebae428bb1899ae3a8c867bc1458b37def797",
-   "cut_start_s": 35.27,
+   "cut_start_s": 35.3175,
    "cut_end_s": 39.27
   },
   {
    "stem": "r04",
    "file": "klakmart-oiltank-hit-k02.wav",
-   "sha256": "27e98aa6958af8218ce7c94672b8561f448f436740112635426ef31a5acd66c7",
+   "sha256": "2732c7c0d2ffe7cfe25632ae996dcf4ddec6a63b11e69f06718546a1f8ecbe7a",
    "instrument": 4,
    "family": "tom",
    "velocity": 0.7,
@@ -83,13 +83,13 @@
    "attestation": "ATTEST-klakmart.txt",
    "parent_file": "108264__klakmart__bangingoiltank.wav",
    "parent_sha256": "14a9c4bbc17445cba49fc41d91eda49f57cfbe6b26f09d8643d1b03fb12edaaf",
-   "cut_start_s": 18.25,
+   "cut_start_s": 18.297,
    "cut_end_s": 22.3
   },
   {
    "stem": "r05",
    "file": "klakmart-oiltank-hit-k03.wav",
-   "sha256": "ed2b1ee526cfba01d9c0f21cb16e937f0b62bf51f984c2e827172b7450030655",
+   "sha256": "51f390f405ac98ba4e774aeb20179053e38267d130b8002b4aa7283b9b7f39d3",
    "instrument": 5,
    "family": "tom",
    "velocity": 0.7,
@@ -102,13 +102,13 @@
    "attestation": "ATTEST-klakmart.txt",
    "parent_file": "108264__klakmart__bangingoiltank.wav",
    "parent_sha256": "14a9c4bbc17445cba49fc41d91eda49f57cfbe6b26f09d8643d1b03fb12edaaf",
-   "cut_start_s": 23.76,
+   "cut_start_s": 23.8052,
    "cut_end_s": 27.0
   },
   {
    "stem": "r06",
    "file": "klakmart-oiltank-hit-k06.wav",
-   "sha256": "8183bcba9598327ffcba17f8c06c8f11b5da280d6c43a4495d70ed0de5cd2e10",
+   "sha256": "2e0c7b065114c0f763c07458a5f55e0bdac3a3b65e43576ecbbed5c180cb42e6",
    "instrument": 6,
    "family": "tom",
    "velocity": 0.7,
@@ -121,13 +121,13 @@
    "attestation": "ATTEST-klakmart.txt",
    "parent_file": "108264__klakmart__bangingoiltank.wav",
    "parent_sha256": "14a9c4bbc17445cba49fc41d91eda49f57cfbe6b26f09d8643d1b03fb12edaaf",
-   "cut_start_s": 49.71,
+   "cut_start_s": 49.757,
    "cut_end_s": 53.59
   },
   {
    "stem": "r07",
-   "file": "178052__neirbonad1__metal-drum-hit.wav",
-   "sha256": "4345c711d7f72adca590ed07b0550a5227c02e3d50ca39a82c7cc98ea2ec0ee5",
+   "file": "neirbonad1-metal-drum-hit-n01.wav",
+   "sha256": "459dcaea78638ea9d75fb1b1e3a4d270c44e36d6b09bf49c6ad4e3d6146d37a3",
    "instrument": 7,
    "family": "tom",
    "velocity": 0.6,
@@ -137,7 +137,11 @@
    "source": "https://freesound.org/people/neirbonad1/sounds/178052/",
    "author": "neirbonad1",
    "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-   "attestation": "ATTEST-neirbonad1.txt"
+   "attestation": "ATTEST-neirbonad1.txt",
+   "parent_file": "178052__neirbonad1__metal-drum-hit.wav",
+   "parent_sha256": "4345c711d7f72adca590ed07b0550a5227c02e3d50ca39a82c7cc98ea2ec0ee5",
+   "cut_start_s": 0.0565,
+   "cut_end_s": 3.18
   },
   {
    "stem": "r08",

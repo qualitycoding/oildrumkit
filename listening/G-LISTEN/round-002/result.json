@@ -1,0 +1,86 @@
+{
+ "schema_version": 1,
+ "repository": "qualitycoding/oildrumkit",
+ "branch": "impl/listening-validation",
+ "candidate_commit": "46f0b85c99f07d7938556861937660510b6eb949",
+ "gate_id": "G-LISTEN",
+ "round": 2,
+ "test_type": "realism",
+ "status": "awaiting-listener",
+ "prerequisites": [
+  {
+   "id": "P-4",
+   "text": "12+ redistribution-compatible struck-metal references",
+   "status": "met: 16 ingested, 13 used"
+  }
+ ],
+ "frozen_metrics": [
+  {
+   "id": "numeric-targets",
+   "result": "2 of 4 pass: partials >= 25 at 50 ms 11/15 (was 2/15, FAIL); centroid rise >= 400 Hz 0/15 (FAIL); snare-roll xcorr max 0.61 (PASS); HF/LF T60 max 0.22 (PASS). None relaxed.",
+   "source": "Renders/after/metrics.json"
+  }
+ ],
+ "reference": {
+  "kind": "real struck steel and sheet recordings (steel tanks: klakmart, neirbonad1, betchkal; VCSL idiophones)",
+  "source_urls_or_ids": [
+   "https://freesound.org/s/108264/",
+   "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "https://freesound.org/s/258327",
+   "https://github.com/sgossner/VCSL"
+  ],
+  "licence": "CC0-1.0, owner-attested CC0, CC-BY-4.0 (betchkal)",
+  "checksums": "references/MANIFEST.json; listening/G-LISTEN/round-002/REFERENCE_LINKS.md"
+ },
+ "candidate_renders": {
+  "manifest": "listening/G-LISTEN/round-002/candidate-events.csv",
+  "checksums": "candidate-events.csv sha256 743aa5ed07db6debe7ad935d5e6c231ab9ef4c22a23375b589a0388fc05bcdbb"
+ },
+ "pair_builder": {
+  "script": "scripts/make_blind_pairs.py",
+  "commit": "vendored scripts/make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+  "seed": 20262103,
+  "pairs": 12,
+  "window": "start",
+  "seconds": 1.0,
+  "rms_db": -30,
+  "fade_seconds": 0.01,
+  "sample_rate": 44100
+ },
+ "evidence": {
+  "branch": "",
+  "commit": "",
+  "bundle": "",
+  "sha256sums": ""
+ },
+ "answers": {
+  "ordered": "",
+  "submitted_at": "",
+  "same_side_count": 0
+ },
+ "score": {
+  "correct": 0,
+  "total": 12,
+  "one_sided_p": null,
+  "pass_condition": "correct <= 8 && no unresolved qualitative finding"
+ },
+ "qualitative_findings": [],
+ "iterations": [
+  {
+   "from_round": 1,
+   "changes": "hfLoss parameter; radiation overflow fix; shorter contact time and lower damping on bass/toms/hats/cowbell; splash/ride longer sustain; references re-cut at the onset (no lead-in)",
+   "evidence": "listening/G-LISTEN/round-001/analysis.md"
+  }
+ ],
+ "response": {
+  "value": "",
+  "recorded_at": "",
+  "file": ""
+ },
+ "resume": {
+  "next_step": "Owner listens to round 2; then record_round.py --score (S-045).",
+  "checkpoint_file": ".checkpoints/state.json",
+  "checkpoint_commit": "",
+  "execution_log_commit": ""
+ }
+}
