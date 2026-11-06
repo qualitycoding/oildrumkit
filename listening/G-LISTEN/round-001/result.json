@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 1,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored",
  "prerequisites": [
   {
    "id": "P-4",
@@ -54,17 +54,28 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "B,A,B,A,A,A,A,A,B,A,A,B",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 8
  },
  "score": {
-  "correct": 0,
+  "correct": 11,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.0032,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "source": "measured by the implementer, not reported by the listener",
+   "finding": "Five reference sides (pairs 01, 02, 07, 08, 10) start 20-50 ms late (near-silent lead-in) while all candidates start at sample 0: a timing cue.",
+   "status": "open"
+  },
+  {
+   "source": "measured",
+   "finding": "Candidate tails fall to digital silence (-108 dB or below) within 1 s while references keep a noise floor or ring; cymbal/splash candidates sustain far less than the real hits (pairs 04, 06, 11).",
+   "status": "open"
+  }
+ ],
  "iterations": [],
  "response": {
   "value": "",
@@ -72,7 +83,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens (S-040), answers; then record_round.py --score (S-045).",
+  "next_step": "Get the listener's words. Fix the lead-in in the references (cut at the onset), then S-046 and S-035 for round 2 with a new seed.",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""
