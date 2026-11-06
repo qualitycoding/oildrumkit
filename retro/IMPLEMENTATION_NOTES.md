@@ -16,3 +16,9 @@
 - Found on the way: the radiation law overflowed float (NaN) for plateModes above about 70 on drum-like voices; fixed.
 - The frozen HF/LF T60 target (< 25 %) caps cymbal sustain at about 1.0-1.2 s against 1.7-2.6 s in the references: a decision for the owner if more sustain is wanted.
 - Scratch tooling used (not committed): feature comparison and tuning scripts in the session scratchpad.
+
+## Round 2 result and round 3 (2026-11-06)
+- Round 2: 8/12 (p = 0.19; numeric condition met). Listener: the cues on the correct pairs were decay, brightness and resonance, so the qualitative condition was not met; owner chose `iterate`.
+- Round 3 (the last allowed round): voicing changes at oildrumkit f3592fc for cowbell, closed hat and toms 2-8; seed 20263103, level -31 dB. Cymbals unchanged because the frozen HF/LF T60 target caps their sustain.
+- Defect found and fixed in `verify_bundle.py` (oildrumkit 3 commits above f3592fc; synced to `research/reference-impl/`): the stem-name leak scan read raw audio samples, where a 3-byte name such as "r05" occurs by chance, so verification failed with no leak. The scan now skips WAV sample data. T-L03 in the frozen tests has the same style of scan but runs on small synthetic bundles.
+- Known cue left in round 3: the closed-hat candidate decays to digital silence while its reference keeps a noise floor.

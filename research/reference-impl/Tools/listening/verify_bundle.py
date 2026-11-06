@@ -38,7 +38,16 @@ def verify(round_dir, ref_dir):
         if np.max(np.abs(x)) >= 0.999: bad.append(f"{n}: clipped")
         levels.append(20 * np.log10(np.sqrt(np.mean((x - x.mean()) ** 2)) + 1e-12))
     if levels and max(levels) - min(levels) > 0.2: bad.append(f"level spread {max(levels) - min(levels):.2f} dB")
-    blob = b"".join(p.read_bytes() for p in lb.rglob("*") if p.is_file())
+    def without_samples(data):
+        """WAV bytes with the 'data' payload removed: a 3-byte stem name occurs by chance in audio samples (false positive)."""
+        if data[:4] != b"RIFF" or data[8:12] != b"WAVE": return data
+        out, i = data[:12], 12
+        while i + 8 <= len(data):
+            cid, size = data[i:i + 4], int.from_bytes(data[i + 4:i + 8], "little")
+            out += data[i:i + 8] if cid == b"data" else data[i:i + 8 + size + (size & 1)]
+            i += 8 + size + (size & 1)
+        return out
+    blob = b"".join(without_samples(p.read_bytes()) + p.name.encode() for p in lb.rglob("*") if p.is_file())
     for stem in set(src.values()):
         if stem.encode() in blob: bad.append(f"stem name {stem} appears in the listener bundle")
     if (rd / "archive" / "key.json.b64").read_text().strip().encode() in blob: bad.append("key text appears in the listener bundle")
