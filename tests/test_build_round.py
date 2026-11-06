@@ -113,3 +113,18 @@ def test_T_L15_round_is_reproducible_from_committed_inputs(repo, tmp_path):
     keys = [(o / "archive" / "key.json.b64").read_text() for o in outs]
     assert sums[0] == sums[1] and keys[0] == keys[1]
     assert sums[0] != sums[2]
+
+
+def test_T_L18_owner_extension_allows_exactly_the_extra_rounds(repo):
+    """T-L18 (D-022): a fourth round is refused unless the owner's extension is declared; the seed rule continues; a fifth is refused."""
+    import os, subprocess, sys
+    tool_path = str(pathlib.Path(repo) / "Tools" / "listening" / "build_round.py")
+    def run(rnd, extra):
+        env = {k: v for k, v in os.environ.items() if k != "OILDRUM_OWNER_EXTRA_ROUNDS"}
+        if extra is not None: env["OILDRUM_OWNER_EXTRA_ROUNDS"] = str(extra)
+        return subprocess.run([sys.executable, tool_path, "--print-seed", "--round", str(rnd)], capture_output=True, text=True, env=env)
+    assert run(4, None).returncode != 0 and run(4, 0).returncode != 0
+    p = run(4, 1)
+    assert p.returncode == 0 and p.stdout.strip() == str(SEED_BASE + 3000), p.stdout + p.stderr
+    assert run(5, 1).returncode != 0 and run(0, 1).returncode != 0
+    assert run(5, 2).stdout.strip() == str(SEED_BASE + 4000)

@@ -14,3 +14,4 @@
 | Candidate rendering | S-030 | T-L06, T-L07, T-L13 |
 | Record and secrets scan | S-045, S-050 | T-L10, T-L10b, T-L11 |
 | Reference files are fetched on demand and refused on any hash mismatch (Rule 15 d) | S-020 | T-L17 |
+| Owner-extended rounds (D-022) | S-045, S-046 | T-L18 |

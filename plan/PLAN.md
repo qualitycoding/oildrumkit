@@ -11,10 +11,10 @@ the audited behaviour may differ). Exit 3 or 6 = BLOCKED: report to the owner, d
 Also run `git push --dry-run origin impl/listening-validation` inside `$WORK/oildrumkit` and record the answer in `ENVIRONMENT.md` (A-005).
 
 ## S-010 Install the listening tools by test
-Copy `stubs/Tools/listening/*` into `$WORK/oildrumkit/Tools/listening/`. From the bundle root run `OILDRUM_REPO=$WORK/oildrumkit python3 -m pytest tests -q -p no:cacheprovider` (the tests stay in the bundle and are not copied into the repository) and confirm exactly 19
+Copy `stubs/Tools/listening/*` into `$WORK/oildrumkit/Tools/listening/`. From the bundle root run `OILDRUM_REPO=$WORK/oildrumkit python3 -m pytest tests -q -p no:cacheprovider` (the tests stay in the bundle and are not copied into the repository) and confirm exactly 20
 failures and 3 passes (red check). Then implement each tool until the tests pass. The reference implementation in `research/reference-impl/` is
 a worked solution; the implementer may copy it, but must still run the red check first and the green run afterwards.
-Expected: `22 passed`. Commit the tools in the working copy: `listening: tools (S-010)`.
+Expected: `23 passed`. Commit the tools in the working copy: `listening: tools (S-010)`.
 
 ## S-020 Reference acquisition (opens G-REF)
 `GATE-G-REF.md` already exists; do not rewrite it.
