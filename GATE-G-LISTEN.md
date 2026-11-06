@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 3 (LAST ALLOWED) BUILT, AWAITING LISTENER. Round 1: 11/12 (fail). Round 2: 8/12 with open findings (decay, brightness, resonance). Round 3: seed 20263103, level -31 dB, `verify_bundle: ok`, evidence branch `evidence/G-LISTEN-round-3` @ 2ece7e8. A fail escalates to the owner.
+**Status:** ROUND 3 SCORED 9/12 - FAIL; THREE ROUNDS USED, ESCALATED TO THE OWNER. Rounds: 11/12, 8/12 (findings open), 9/12. Owner's decision needed: proceed-with-rescope, extend beyond three rounds (with the cymbal target decision), or stop.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.

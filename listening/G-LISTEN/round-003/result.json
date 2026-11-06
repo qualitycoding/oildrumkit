@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 3,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored",
  "prerequisites": [
   {
    "id": "P-4",
@@ -54,17 +54,23 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "A,B,B,A,A,A,B,A,A,A,B,B",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 7
  },
  "score": {
-  "correct": 0,
+  "correct": 9,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.073,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "source": "listener (2026-11-06 16:13)",
+   "finding": "Harder to tell than earlier rounds; settled on answers after a couple of passes. No cues named.",
+   "status": "open"
+  }
+ ],
  "iterations": [
   {
    "from_round": 2,
@@ -78,7 +84,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens to round 3 (last allowed round); then record_round.py --score. A fail escalates to the owner.",
+  "next_step": "Round 3 failed (9/12). Escalated to the owner: rescope, relax the cymbal target and continue beyond three rounds, or stop.",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""
