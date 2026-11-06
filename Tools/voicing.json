@@ -123,16 +123,17 @@
    "shellModes": 20,
    "cavModes": 3,
    "cavAmp": 0.35,
-   "cavT60": 0.35,
+   "cavT60": 0.5,
    "dampScale": 0.342,
    "splitPct": 0.3,
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": 0.25,
-   "outGain": 0.061832,
+   "outGain": 0.058845,
    "nl": 0.15,
    "tauScale": 2.2,
-   "scrape": 0.4
+   "scrape": 0.4,
+   "hfLoss": 0.5
   },
   {
    "name": "Mid Tom 1",
@@ -143,16 +144,17 @@
    "shellModes": 20,
    "cavModes": 3,
    "cavAmp": 0.35,
-   "cavT60": 0.3,
+   "cavT60": 0.5,
    "dampScale": 0.306,
    "splitPct": 0.2,
    "strikeR": 0.45,
    "pitchEnvAmt": 0.04,
    "pan": 0.1,
-   "outGain": 0.079701,
+   "outGain": 0.076008,
    "nl": 0.15,
    "tauScale": 2.2,
-   "scrape": 0.4
+   "scrape": 0.4,
+   "hfLoss": 0.5
   },
   {
    "name": "Mid Tom 2",
@@ -163,16 +165,17 @@
    "shellModes": 20,
    "cavModes": 3,
    "cavAmp": 0.35,
-   "cavT60": 0.3,
+   "cavT60": 0.5,
    "dampScale": 0.342,
    "splitPct": 0.3,
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": -0.05,
-   "outGain": 0.092376,
+   "outGain": 0.090337,
    "nl": 0.15,
    "tauScale": 2.2,
-   "scrape": 0.4
+   "scrape": 0.4,
+   "hfLoss": 0.5
   },
   {
    "name": "High Tom 1",
@@ -189,9 +192,10 @@
    "strikeR": 0.45,
    "pitchEnvAmt": 0.04,
    "pan": -0.2,
-   "outGain": 0.084836,
+   "outGain": 0.080631,
    "nl": 0.15,
-   "tauScale": 1.5
+   "tauScale": 1.5,
+   "hfLoss": 0.5
   },
   {
    "name": "High Tom 2",
@@ -208,9 +212,10 @@
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": -0.3,
-   "outGain": 0.082918,
+   "outGain": 0.078335,
    "nl": 0.15,
-   "tauScale": 1.5
+   "tauScale": 1.5,
+   "hfLoss": 0.5
   },
   {
    "name": "Splash",
@@ -225,12 +230,12 @@
    "pairModes": 40,
    "strikeR": 0.85,
    "strikeRJit": 0.05,
-   "scrape": 0.3,
+   "scrape": 0.8,
    "nl": 0.05,
    "pan": 0.45,
-   "residual": 0.12,
-   "outGain": 0.023064,
-   "hfLoss": 0.6
+   "residual": 0.9,
+   "outGain": 0.018659,
+   "hfLoss": 0.4
   },
   {
    "name": "Ride",
@@ -245,12 +250,12 @@
    "pairModes": 40,
    "strikeR": 0.7,
    "strikeRJit": 0.06,
-   "scrape": 0.3,
+   "scrape": 0.8,
    "nl": 0.05,
    "pan": 0.55,
-   "residual": 0.12,
-   "outGain": 0.024182,
-   "hfLoss": 0.6
+   "residual": 0.9,
+   "outGain": 0.018018,
+   "hfLoss": 0.4
   },
   {
    "name": "Hi-Hat Closed",
