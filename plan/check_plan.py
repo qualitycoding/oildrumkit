@@ -50,7 +50,7 @@ if len(regs) == 1:
     rt = regs[0].read_text()
     rows = [l for l in rt.splitlines() if re.match(r"^\| \d+ \|", l)]
     reg_urls = {l.split(" | ")[2].strip() for l in rows}
-    log_urls = {l.split(" | ")[2].strip() for l in (root/"research/rounds/round-1.md").read_text().splitlines() if re.match(r"^\| \d+ \|", l)}
+    log_urls = {l.split(" | ")[2].strip() for l in [ln for f in sorted((root/"research/rounds").glob("round-*.md")) for ln in f.read_text().splitlines()] if re.match(r"^\| \d+ \|", l)}
     claim_urls = {s["url"] for c in json.loads((root/"research/claims.json").read_text()) for s in c.get("sources", [])}
     need(log_urls == reg_urls, f"round-log URLs differ from register: {sorted(log_urls ^ reg_urls)[:3]}")
     need(claim_urls <= reg_urls, f"claim URLs missing from register: {sorted(claim_urls - reg_urls)[:3]}")

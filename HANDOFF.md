@@ -19,3 +19,5 @@ The github.com archive URL for the evidence zip is unverified until the reposito
 (2 of 4 original numeric targets passing, no DAW or Windows validation, remaining research-note errors) are untouched by this plan.
 
 **Never** store or use a pasted credential; if one appears, tell the owner to revoke it.
+
+**Update 2026-11-06 (end of run).** G-LISTEN ran six rounds and failed (11, 8, 9, 6, 8, 12 of 12); the owner stopped the listening tests. Retrospective: `retro/RETROSPECTIVE.md`; gate G-003 awaits the owner's response (`GATE-G-003.md`); nothing has been pushed to the Lessons or knowledge repositories. Register v3 supersedes v2.

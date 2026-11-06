@@ -22,3 +22,11 @@
 - Round 3 (the last allowed round): voicing changes at oildrumkit f3592fc for cowbell, closed hat and toms 2-8; seed 20263103, level -31 dB. Cymbals unchanged because the frozen HF/LF T60 target caps their sustain.
 - Defect found and fixed in `verify_bundle.py` (oildrumkit 3 commits above f3592fc; synced to `research/reference-impl/`): the stem-name leak scan read raw audio samples, where a 3-byte name such as "r05" occurs by chance, so verification failed with no leak. The scan now skips WAV sample data. T-L03 in the frozen tests has the same style of scan but runs on small synthetic bundles.
 - Known cue left in round 3: the closed-hat candidate decays to digital silence while its reference keeps a noise floor.
+
+## Rounds 4 to 6 (2026-11-06)
+- Round 4: 6/12 (p 0.61). Numeric targets: 2 of 4 pass. The listener named resonance as the discriminating factor. Built beyond the cap on the owner's word (D-022, `OILDRUM_OWNER_EXTRA_ROUNDS=1`, T-L18). Pooled p was first mis-stated as 0.034; corrected to 0.066.
+- Round 5: voicing at oildrumkit b1513f2's parent: splash and ride dampScale 0.12, hfLoss 0.6 (ring about 1.2 s). Result 8/12 (p 0.19); the listener found more noise in the real cymbals and more resonance in the real drums. A trial at hfLoss 0.35 broke the HF/LF T60 target (0.28) and was not used.
+- Round 6: splash and ride hfLoss 0.4, residual 0.9, scrape 0.8; toms hfLoss 0.5; toms 4 to 6 cavT60 0.5. HF/LF T60 stayed below 0.25 (max 0.219, all 15 measurable). Result 12/12 (p 0.0002) although the listener found the pairs much harder. Gate closed as failed at the owner's instruction to stop the listening tests (D-023).
+- Scores by round: 11, 8, 9, 6, 8, 12 of 12; rounds 2 to 6 pooled 43 of 60.
+- Tom-resonance trial: lowering tom hfLoss to 0.3 with cavT60 0.7 lengthened the 20 dB decay to about 1.7 s against 0.5 to 0.7 s in the references; it was eased back before building.
+- Still unresolved at close: the independent pre-mortem (D-018), DAW and Windows validation, cymbal sustain under the frozen HF/LF T60 target, snares and rimshot never compared with a reference.
