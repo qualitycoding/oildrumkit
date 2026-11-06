@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 2 SCORED 8/12 (numeric condition <= 8 met; p = 0.19). Qualitative findings and the owner's response are still needed before the gate can close. Round 1 was 11/12 (fail).
+**Status:** ROUND 3 (LAST ALLOWED) BUILT, AWAITING LISTENER. Round 1: 11/12 (fail). Round 2: 8/12 with open findings (decay, brightness, resonance). Round 3: seed 20263103, level -31 dB, `verify_bundle: ok`, evidence branch `evidence/G-LISTEN-round-3` @ 2ece7e8. A fail escalates to the owner.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -41,3 +41,6 @@ Limits of what a pass can show:
 
 ## Round 2 changes (S-046)
 General engine changes from the round-1 measurements: new recipe field `hfLoss` (frequency-dependent loss, default unchanged); overflow fix in the radiation law; shorter contact time and lower damping on bass, toms, hats and cowbell; longer sustain on splash and ride within the frozen HF/LF T60 target; references re-cut at the onset. Snares and the rimshot are unchanged (no reference). Numeric targets: partials 11/15 (fail, was 2/15), centroid rise 0/15 (fail), snare roll pass, HF/LF T60 pass (max 0.22). Nothing relaxed. Record: `listening/G-LISTEN/round-002/result.json`.
+
+## Round 3 changes (S-046, from the round-2 findings)
+Cowbell: 40 plate modes, shorter contact, more damping. Closed hat: shorter contact, less frequency-dependent loss, more scrape, more damping. Toms 2-8: damping x0.6 again and longer contact (darker, longer). Cymbals, bass, low tom 1, snares and rimshot unchanged; cymbal sustain stays capped by the frozen HF/LF T60 target (not relaxed). Numeric targets: partials 11/15 (fail), centroid rise 0/15 (fail), snare roll pass (0.405), HF/LF T60 pass (0.219). Tool fix: `verify_bundle.py` no longer matches stem names inside audio samples. Record: `listening/G-LISTEN/round-003/result.json`.

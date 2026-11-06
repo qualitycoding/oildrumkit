@@ -1,0 +1,90 @@
+{
+ "schema_version": 1,
+ "repository": "qualitycoding/oildrumkit",
+ "branch": "impl/listening-validation",
+ "candidate_commit": "090e7eac318ae9d24797465732731161df36b65a",
+ "gate_id": "G-LISTEN",
+ "round": 3,
+ "test_type": "realism",
+ "status": "awaiting-listener",
+ "prerequisites": [
+  {
+   "id": "P-4",
+   "text": "12+ references",
+   "status": "met: 16 ingested, 13 used"
+  }
+ ],
+ "frozen_metrics": [
+  {
+   "id": "numeric-targets",
+   "result": "2 of 4 pass: partials >= 25 at 50 ms 11/15 (FAIL); centroid rise 0/15 (FAIL); snare-roll xcorr max 0.405 (PASS); HF/LF T60 max 0.219 (PASS). None relaxed.",
+   "source": "Renders/after/metrics.json"
+  }
+ ],
+ "reference": {
+  "kind": "real struck steel and sheet recordings (steel tanks: klakmart, neirbonad1, betchkal; VCSL idiophones)",
+  "source_urls_or_ids": [
+   "https://freesound.org/s/108264/",
+   "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "https://freesound.org/s/258327",
+   "https://github.com/sgossner/VCSL"
+  ],
+  "licence": "CC0-1.0, owner-attested CC0, CC-BY-4.0 (betchkal)",
+  "checksums": "references/MANIFEST.json; listening/G-LISTEN/round-003/REFERENCE_LINKS.md"
+ },
+ "candidate_renders": {
+  "manifest": "listening/G-LISTEN/round-003/candidate-events.csv",
+  "checksums": "candidate-events.csv sha256 743aa5ed07db6debe7ad935d5e6c231ab9ef4c22a23375b589a0388fc05bcdbb"
+ },
+ "pair_builder": {
+  "script": "scripts/make_blind_pairs.py",
+  "commit": "vendored scripts/make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+  "seed": 20263103,
+  "pairs": 12,
+  "window": "start",
+  "seconds": 1.0,
+  "rms_db": -31,
+  "fade_seconds": 0.01,
+  "sample_rate": 44100
+ },
+ "evidence": {
+  "branch": "evidence/G-LISTEN-round-3",
+  "commit": "2ece7e8b1f2b6c6eb62133f40f4b275e9bf7b9da",
+  "bundle": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-3.zip",
+  "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
+ },
+ "answers": {
+  "ordered": "",
+  "submitted_at": "",
+  "same_side_count": 0
+ },
+ "score": {
+  "correct": 0,
+  "total": 12,
+  "one_sided_p": null,
+  "pass_condition": "correct <= 8 && no unresolved qualitative finding"
+ },
+ "qualitative_findings": [],
+ "iterations": [
+  {
+   "from_round": 2,
+   "changes": "cowbell (40 modes, shorter contact, more damping), closed hat (shorter contact, less frequency-dependent loss, more scrape, more damping), toms 2-8 (damping x0.6 again, longer contact); cymbals, bass, low tom 1, snares, rimshot unchanged",
+   "evidence": "listening/G-LISTEN/round-002/analysis.md"
+  }
+ ],
+ "response": {
+  "value": "",
+  "recorded_at": "",
+  "file": ""
+ },
+ "resume": {
+  "next_step": "Owner listens to round 3 (last allowed round); then record_round.py --score. A fail escalates to the owner.",
+  "checkpoint_file": ".checkpoints/state.json",
+  "checkpoint_commit": "",
+  "execution_log_commit": ""
+ },
+ "round_notes": {
+  "last_allowed_round": true,
+  "known_cues": "Closed hat candidate falls to digital silence (-105 dB at 0.5-1 s) while the reference keeps a noise floor (-73 dB). Cymbal sustain still 1.0-1.1 s against 1.7-2.6 s (frozen HF/LF T60 target not relaxed). Bass still darker than the betchkal tank hits. Snares and the rimshot untested."
+ }
+}
