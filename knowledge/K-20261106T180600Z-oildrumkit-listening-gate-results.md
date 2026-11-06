@@ -3,7 +3,7 @@ id: K-20261106T180600Z-oildrumkit-listening-gate-results
 statement: "Blind listening gate G-LISTEN for oildrumkit, six rounds on 2026-11-06 against 13 real struck-steel and cymbal references: 11, 8, 9, 6, 8 and 12 of 12 identified; the gate failed."
 status: current
 supersedes: []
-tags: [subject:oildrumkit-listening-phase, domain:audio, phase:execution]
+tags: [subject:oildrumkit-listening-phase, domain:audio, phase:implementation]
 applies_to_version: "oildrumkit impl/listening-validation at df96cee"
 source: { url: "https://github.com/qualitycoding/oildrumkit/blob/impl/listening-validation/GATE-G-LISTEN.md", doi: "", title: "GATE-G-LISTEN.md", locator: "status and round sections", accessed: "2026-11-06", tier: 1 }
 confidence: verified

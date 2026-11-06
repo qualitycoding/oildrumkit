@@ -6,7 +6,7 @@ supersedes: []
 recurrence_of: null
 occurrences: 1
 severity: Low
-tags: [domain:process, kind:tool-gap]
+tags: [domain:audio, kind:process]
 recorded_by: planner
 run: gen-20261105T211145Z-oildrumkit-listening-phase
 recorded_at: 2026-11-06T18:05:00Z

@@ -6,7 +6,7 @@ supersedes: []
 recurrence_of: null
 occurrences: 1
 severity: Low
-tags: [domain:audio, tech:python, kind:tool-defect]
+tags: [domain:audio, tech:python, kind:tooling]
 recorded_by: planner
 run: gen-20261105T211145Z-oildrumkit-listening-phase
 recorded_at: 2026-11-06T18:04:00Z

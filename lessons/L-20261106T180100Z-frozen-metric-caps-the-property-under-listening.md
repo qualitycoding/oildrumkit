@@ -6,7 +6,7 @@ supersedes: []
 recurrence_of: null
 occurrences: 1
 severity: High
-tags: [domain:audio, phase:execution, kind:wrong-assumption]
+tags: [domain:audio, phase:implementation, kind:wrong-assumption]
 recorded_by: planner
 run: gen-20261105T211145Z-oildrumkit-listening-phase
 recorded_at: 2026-11-06T18:01:00Z
