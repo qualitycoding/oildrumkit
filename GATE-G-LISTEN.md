@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 6 SCORED 12/12 (p 0.0002); gate fails. Rounds: 11, 8, 9, 6, 8, 12 of 12. Owner reported the pairs as much harder to identify; cue not yet stated. Awaiting owner decision.
+**Status:** CLOSED, FAILED after six rounds (11, 8, 9, 6, 8, 12 of 12; owner-extended, D-022 and D-023). The owner stopped the listening tests after round 6. Open qualitative findings: cymbal noise, drum resonance; round 6 cue not stated. Numeric targets not relaxed (2 of 4 pass). The claim that the engine sounds like struck metal is not supported.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -53,3 +53,6 @@ After round 4 scored 6/12 with resonance as the discriminating factor, the owner
 
 ## Round 6 (third owner extension)
 After round 5 (8/12) the owner reported more noise in the real cymbals and more resonance in the real drums. Changes: splash and ride hfLoss 0.4, residual 0.9, scrape 0.8; toms hfLoss 0.5 and cavT60 0.5 (toms 4-6). Numeric targets: partials 10/15 (fail), centroid rise 0 measured (fail), snare roll pass (0.433), HF/LF T60 pass (0.219, all 15 measurable). `OILDRUM_OWNER_EXTRA_ROUNDS=3`. Record: `listening/G-LISTEN/round-006/result.json`.
+
+## Closure
+The owner stopped the listening tests on 2026-11-06 after round 6 (12/12, p 0.0002), asking to continue the plan implementation. The gate record is final: failed. Rounds 2 to 6 pooled 43/60. Retrospective and decisions are in the plan bundle (`retro/RETROSPECTIVE.md`, D-023). Open items: cymbal HF/LF T60 target (owner's decision), snares and rimshot never compared with a reference, references are tanks and sample-library cymbals rather than oil drums.
