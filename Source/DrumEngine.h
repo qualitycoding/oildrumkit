@@ -262,12 +262,12 @@ public:
             sig[nm] = sigma; if (structural) fTop = std::max (fTop, f);
             ++nm;
         };
-        auto sigmaOf = [&] (float f) { return damp * (tables::kSigma0 + kPi * tables::kEta * f + tables::kSigma2 * f * f); };
+        auto sigmaOf = [&] (float f) { return damp * (tables::kSigma0 + r.hfLoss * (kPi * tables::kEta * f + tables::kSigma2 * f * f)); };   // hfLoss scales the frequency-dependent loss (1 = original law)
         auto radiation = [&] (float ratio, int n)      // amplitude radiation efficiency of an (n)-order mode (baffled-piston low-ka law)
         {
             const float x = std::max (1e-3f, ratio * 0.5236f);   // kR, R scaled with the drum: depends only on ratio
             const float p = (float) (n + 1), xp = std::pow (x, p);
-            return xp / std::sqrt (1.0f + xp * xp);
+            return (xp > 1.0e15f) ? 1.0f : xp / std::sqrt (1.0f + xp * xp);   // xp*xp overflowed float (inf/inf = NaN) for high-order modes at large ratio
         };
         auto jit = [&] { return 1.0f + 0.115f * noise.next(); };             // +-1 dB per mode per hit
         auto fj  = [&] { return 1.0f + 0.001f * noise.next(); };             // +-0.1 % frequency jitter

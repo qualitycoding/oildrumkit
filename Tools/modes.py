@@ -248,7 +248,7 @@ def cmd_generate():
               ("shellModes", "int"), ("shellAmp", "float"), ("shellXs", "float"),
               ("cavModes", "int"), ("cavAmp", "float"), ("cavT60", "float"),
               ("dampScale", "float"), ("splitPct", "float"), ("pairModes", "int"),
-              ("strikeR", "float"), ("strikeRJit", "float"), ("tauScale", "float"), ("scrape", "float"),
+              ("strikeR", "float"), ("strikeRJit", "float"), ("tauScale", "float"), ("hfLoss", "float"), ("scrape", "float"),
               ("pitchEnvAmt", "float"), ("pitchEnvDecayMs", "float"),
               ("rattle", "float"), ("nl", "float"), ("residual", "float"), ("pan", "float"), ("chokeGroup", "int"), ("outGain", "float")]
     W = []
