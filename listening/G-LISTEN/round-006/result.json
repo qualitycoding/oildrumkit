@@ -6,7 +6,7 @@
  "gate_id": "G-LISTEN",
  "round": 6,
  "test_type": "realism",
- "status": "awaiting-listener",
+ "status": "scored-fail",
  "prerequisites": [
   {
    "id": "P-4",
@@ -59,17 +59,23 @@
   "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
-  "ordered": "",
+  "ordered": "B,A,A,A,A,B,B,B,B,A,A,A",
   "submitted_at": "",
-  "same_side_count": 0
+  "same_side_count": 7
  },
  "score": {
-  "correct": 0,
+  "correct": 12,
   "total": 12,
-  "one_sided_p": null,
+  "one_sided_p": 0.0002,
   "pass_condition": "correct <= 8 && no unresolved qualitative finding"
  },
- "qualitative_findings": [],
+ "qualitative_findings": [
+  {
+   "id": "R6-F1",
+   "text": "Owner: much more difficult to identify than earlier rounds, yet all 12 identified correctly. Discriminating cue not yet stated.",
+   "status": "open"
+  }
+ ],
  "iterations": [
   {
    "from_round": 5,
@@ -83,7 +89,7 @@
   "file": ""
  },
  "resume": {
-  "next_step": "Owner listens to round 6; then record_round.py --score.",
+  "next_step": "Ask the owner which cue he used; decide on a further owner-extended round.",
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""

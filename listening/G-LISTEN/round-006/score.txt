@@ -1,0 +1,13 @@
+pair-01: picked B, reference was B -> correct
+pair-02: picked A, reference was A -> correct
+pair-03: picked A, reference was A -> correct
+pair-04: picked A, reference was A -> correct
+pair-05: picked A, reference was A -> correct
+pair-06: picked B, reference was B -> correct
+pair-07: picked B, reference was B -> correct
+pair-08: picked B, reference was B -> correct
+pair-09: picked B, reference was B -> correct
+pair-10: picked A, reference was A -> correct
+pair-11: picked A, reference was A -> correct
+pair-12: picked A, reference was A -> correct
+12/12 correct; chance 6; one-sided p = 0.0002
