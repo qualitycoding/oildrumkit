@@ -19,3 +19,14 @@ Answers: B,A,B,A,A,A,A,A,B,A,A,B. Score: 11/12 correct (one-sided p = 0.0032). P
 
 ## Status
 The listener's own words (how the pairs were told apart, demo findings) have not been given yet. Without them S-046 cannot name the differences heard. Item 1 should be fixed in the pair construction before round 2, so the next round tests the sound and not the timing.
+
+## Listener's report (2026-11-06 14:22)
+"I identified them purely by timbre." The lead-in timing cue (item 1 above) therefore did not decide the answers; the round counts as a genuine fail. No demo notes were given.
+
+## Timbre differences measured (first 150 ms after the peak, reference against candidate)
+- Brightness: energy above 2 kHz is 20-80 dB lower in the candidate. Centroid: tank hits 2.6-3.7 kHz against 0.3-0.8 kHz; cowbell 2.6-2.9 against 1.1 kHz; hat 8.6 against 0.7; splash 5.6 against 1.0. The klakmart toms (pairs 05, 08) are close in centroid (0.6-0.8 kHz against 0.7-0.8 kHz).
+- Decay (time to fall 20 dB): toms 430-660 ms against 146-168 ms; splash about 990 ms against about 40 ms; ride 647 against 183 ms; cowbell 85-116 against 57-59 ms; bass roughly equal (72-194 against 120-129 ms).
+- Validity caveat: the bass and tom references are propane and gas tanks (thin steel, high ring), not 55-gallon oil drums, and the cymbal references are VCSL suspended cymbals; matching them moves the instrument towards those objects.
+
+## First experiment (scratch copy, not committed)
+Global `tauScale` 0.35 (shorter contact pulse) and `dampScale` x0.3 for toms (3-7), x0.05 splash, x0.3 ride, x0.5 closed hat and cowbell. Result: toms and cowbell much closer in brightness (toms now brighter than the klakmart toms); tom decay 300-375 ms against 430-660 ms; splash and ride still far too short (about 215-480 ms against more than 1700 ms) because the cymbal tail is the noise `residual`, not the modes, so it needs a mechanism change; bass unchanged (centroid 0.3 kHz against 2.8-3.6 kHz, because bass has almost no energy above 2 kHz at 36-38 Hz). Numeric target 1 (partials >= 25 at 50 ms) rose from 2/15 to 8/15; target 4 (HF/LF T60 < 25 %) still passes for every measurable voice (largest ratio 0.206). No target was relaxed. The committed `Renders/after` would no longer be reproducible after such a change, and the plan's bootstrap check for a changed engine would trip.
