@@ -66,9 +66,10 @@
  },
  "qualitative_findings": [
   {
-   "source": "listener",
-   "finding": "none given yet (asked for demo findings and how pairs were told apart)",
-   "status": "open"
+   "source": "listener (2026-11-06 15:31)",
+   "finding": "On the pairs identified correctly the cues were decay, brightness and resonance. Pair-level detail not given.",
+   "status": "open",
+   "measured_support": "cowbell: 5-10 kHz band -77 dB vs -18 to -27 dB, centroid 1.5 vs 2.6-2.9 kHz; splash/ride: 20 dB decay 1.0-1.2 s vs 1.7-2.6 s; klakmart toms: candidate brighter (1.2 kHz vs 0.4-0.8 kHz) and 300-375 ms vs 490-660 ms; closed hat centroid 2.3 vs 8.6 kHz (fooled the listener once)"
   }
  ],
  "iterations": [
