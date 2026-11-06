@@ -1,0 +1,6 @@
+stem,time_s,instrument,velocity,hammer,strike,damping,room,pitch_hz,seed,duration_s
+d,0.250,13,0.40,wood,0.5,1.0,0.12,,,3.0
+d,2.250,13,0.70,wood,0.5,1.0,0.12,,,3.0
+d,4.250,13,1.00,wood,0.5,1.0,0.12,,,3.0
+d,6.250,13,0.80,wood,0.5,1.0,0.12,350,,3.0
+d,8.250,13,0.80,wood,0.5,1.0,0.12,900,,3.0
