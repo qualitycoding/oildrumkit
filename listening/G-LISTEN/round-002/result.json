@@ -48,10 +48,10 @@
   "sample_rate": 44100
  },
  "evidence": {
-  "branch": "",
-  "commit": "",
-  "bundle": "",
-  "sha256sums": ""
+  "branch": "evidence/G-LISTEN-round-2",
+  "commit": "ee1279db61802939d2396bccaddfe925c852c353",
+  "bundle": "https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-2.zip",
+  "sha256sums": "SHA256SUMS on the evidence branch; private bundle hashes in PRIVATE_BUNDLE.sha256"
  },
  "answers": {
   "ordered": "",
@@ -82,5 +82,17 @@
   "checkpoint_file": ".checkpoints/state.json",
   "checkpoint_commit": "",
   "execution_log_commit": ""
+ },
+ "round_notes": {
+  "references_used": 13,
+  "dropped_for_pitch_clamp": [
+   "r09",
+   "r15",
+   "r16"
+  ],
+  "not_covered": "Snares 1-2 and Rimshot have no real reference; their voicing is unchanged.",
+  "cymbal_sustain": "Splash and ride now ring about 1.0-1.2 s (20 dB decay) against 1.7-2.6 s in the references: capped by the frozen HF/LF T60 target (< 25 %), which the implementer may not relax.",
+  "bass_brightness": "Bass is still darker than the betchkal tank hits (centroid about 0.75 kHz against 2.8-3.6 kHz).",
+  "known_cue_fixed": "References re-cut at the onset: round-1 lead-in timing cue removed."
  }
 }

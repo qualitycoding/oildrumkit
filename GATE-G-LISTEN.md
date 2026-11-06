@@ -1,6 +1,6 @@
 # GATE-G-LISTEN — struck-steel realism (blind listening)
 
-**Status:** ROUND 1 SCORED 11/12 (fail; pass needs <= 8). Round 2 pending; see listening/G-LISTEN/round-001/analysis.md.
+**Status:** ROUND 2 BUILT, AWAITING LISTENER. Round 1 scored 11/12 (fail; listening/G-LISTEN/round-001/analysis.md). Round 2: seed 20262103, level -30 dB, `verify_bundle: ok`, evidence branch `evidence/G-LISTEN-round-2` @ ee1279d.
 **Branch:** `impl/listening-validation`; candidate commit 8ad2f125 (engine identical to `main` @ 1900ac8).
 **Evidence:** orphan branch `evidence/G-LISTEN-round-1` @ 507d06d (pairs, demos, hashes, reference links; no key). Archive zip: https://github.com/qualitycoding/oildrumkit/archive/refs/heads/evidence/G-LISTEN-round-1.zip (HTTP 200 checked).
 **Decision:** D-981 (plan/DECISIONS.md). **Seed:** 20261103 (rounds +1000/+2000). Record: `listening/G-LISTEN/round-001/result.json`.
@@ -38,3 +38,6 @@ Limits of what a pass can show:
 
 ## Disclosed limitations preserved
 2/4 numeric targets, no DAW/Windows validation, open engineering items (docs/RETROSPECTIVE.md).
+
+## Round 2 changes (S-046)
+General engine changes from the round-1 measurements: new recipe field `hfLoss` (frequency-dependent loss, default unchanged); overflow fix in the radiation law; shorter contact time and lower damping on bass, toms, hats and cowbell; longer sustain on splash and ride within the frozen HF/LF T60 target; references re-cut at the onset. Snares and the rimshot are unchanged (no reference). Numeric targets: partials 11/15 (fail, was 2/15), centroid rise 0/15 (fail), snare roll pass, HF/LF T60 pass (max 0.22). Nothing relaxed. Record: `listening/G-LISTEN/round-002/result.json`.
