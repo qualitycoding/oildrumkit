@@ -1,0 +1,56 @@
+{
+ "schema_version": 1,
+ "note": "DRAFT. Drum-body source recordings supplied by the owner. No audio is stored in this repository.",
+ "references": [
+  {
+   "stem": "d01",
+   "file": "258327__betchkal__20131009-plastic-buckets-propane-tanks.wav",
+   "sha256": "d77c82688a6fcdb6c57b09c9884ebae428bb1899ae3a8c867bc1458b37def797",
+   "instrument": 0,
+   "family": "drum",
+   "velocity": 0.7,
+   "hammer": "wood",
+   "licence": "CC-BY-4.0",
+   "redistributable": true,
+   "source": "https://freesound.org/s/258327",
+   "author": "betchkal",
+   "terms_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attestation": "",
+   "raw_url": "",
+   "bytes": 70378392,
+   "format": "PCM_24 192000 Hz 2ch",
+   "duration_s": 61.09,
+   "credit": "20131009 plastic buckets + propane tanks, by betchkal, CC BY 4.0, https://freesound.org/s/258327",
+   "cuts_draft_s": [
+    15.72,
+    22.37,
+    40.07,
+    54.11
+   ],
+   "avoid_cuts_s": {
+    "26.88": "clipped (182 samples at full scale)"
+   },
+   "note": "Contains steel propane tanks (100 lb and 20 lb) AND a plastic bucket; the bucket hits must not be used. Which hits are which object is not yet established: the owner reported the last four high-amplitude hits as ok. Draft cuts are the louder unclipped hits and need a listening check. CC BY 4.0 obliges credit: keep the credit line in the published README or CREDITS."
+  },
+  {
+   "stem": "d02",
+   "file": "178052__neirbonad1__metal-drum-hit.wav",
+   "sha256": "4345c711d7f72adca590ed07b0550a5227c02e3d50ca39a82c7cc98ea2ec0ee5",
+   "instrument": 0,
+   "family": "drum",
+   "velocity": 0.7,
+   "hammer": "wood",
+   "licence": "CC0-1.0",
+   "redistributable": true,
+   "source": "https://freesound.org/people/neirbonad1/sounds/178052/",
+   "author": "neirbonad1",
+   "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "attestation": "",
+   "raw_url": "",
+   "bytes": 917380,
+   "format": "PCM_24 48000 Hz 2ch",
+   "duration_s": 3.18,
+   "note": "Single strike at 0.06 s (a faint second event at 0.89 s, -12 dB lower; ignore). Peak 0.104, so quiet: normalise per the level plan. The CC0 label came from a search snippet in the knowledge item; the owner has downloaded the original from Freesound but has not yet confirmed the page's licence line, so treat it as CC0 pending that confirmation."
+  }
+ ]
+}

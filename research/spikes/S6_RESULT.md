@@ -26,3 +26,8 @@
 - Effect on the limitation above: betchkal gives two real tank sizes, so bass/tom voices need not all come from one drum. Plan: betchkal 100 lb for bass and low toms, betchkal 20 lb and klakmart for snares and high toms, with the family assignment checked by ear in S-030.
 - Not hashed: no file has been supplied. The owner must download them from Freesound (the shell cannot), after which sha256 and cuts are recorded as for klakmart. Licence CC-BY-4.0 is in the redistributable set but obliges credit.
 - The paid A1 Studio "Industrial Steel Sample Pack" (real 55-gallon barrels) is noted by the item but its licence was not read; not used.
+
+## betchkal and neirbonad1 files received (2026-11-06 12:07)
+- betchkal 258327: sha256 `d77c8268...def797`; PCM_24, 192 kHz, stereo, 61.09 s; 14 onsets. Only the hit at 26.88 s clips (182 samples), so avoid it. Unclipped louder hits: 15.72 (0.82), 22.37 (0.97), 40.07 (0.90), 54.11 (0.72). The file mixes a plastic bucket with the tanks and nothing in the audio says which hit is which, so the draft cuts need the owner's ear. 192 kHz must be resampled to 44.1 kHz for the pairs (the builder rejects other rates).
+- neirbonad1 178052: sha256 `4345c711...ec0ee5`; PCM_24, 48 kHz, stereo, 3.18 s; one strike at 0.06 s, peak only 0.104. The CC0 label was still from a snippet; the owner has not yet read its page.
+- Both are recorded in `assets/listening/references/drum-body-extra.manifest.json`. neirbonad1's licence is `CC0-1.0` in the draft: change it to `owner-attested-CC0-1.0` with an attestation once the owner confirms, or the implementer must stop at G-REF.
