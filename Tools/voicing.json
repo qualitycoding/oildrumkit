@@ -124,14 +124,15 @@
    "cavModes": 3,
    "cavAmp": 0.35,
    "cavT60": 0.35,
-   "dampScale": 0.57,
+   "dampScale": 0.342,
    "splitPct": 0.3,
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": 0.25,
-   "outGain": 0.039619,
+   "outGain": 0.061716,
    "nl": 0.15,
-   "tauScale": 0.5
+   "tauScale": 2.2,
+   "scrape": 0.4
   },
   {
    "name": "Mid Tom 1",
@@ -143,14 +144,15 @@
    "cavModes": 3,
    "cavAmp": 0.35,
    "cavT60": 0.3,
-   "dampScale": 0.51,
+   "dampScale": 0.306,
    "splitPct": 0.2,
    "strikeR": 0.45,
    "pitchEnvAmt": 0.04,
    "pan": 0.1,
-   "outGain": 0.04133,
+   "outGain": 0.079522,
    "nl": 0.15,
-   "tauScale": 0.5
+   "tauScale": 2.2,
+   "scrape": 0.4
   },
   {
    "name": "Mid Tom 2",
@@ -162,14 +164,15 @@
    "cavModes": 3,
    "cavAmp": 0.35,
    "cavT60": 0.3,
-   "dampScale": 0.57,
+   "dampScale": 0.342,
    "splitPct": 0.3,
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": -0.05,
-   "outGain": 0.041727,
+   "outGain": 0.092147,
    "nl": 0.15,
-   "tauScale": 0.5
+   "tauScale": 2.2,
+   "scrape": 0.4
   },
   {
    "name": "High Tom 1",
@@ -181,14 +184,14 @@
    "cavModes": 3,
    "cavAmp": 0.35,
    "cavT60": 0.25,
-   "dampScale": 0.57,
+   "dampScale": 0.342,
    "splitPct": 0.2,
    "strikeR": 0.45,
    "pitchEnvAmt": 0.04,
    "pan": -0.2,
-   "outGain": 0.046101,
+   "outGain": 0.084385,
    "nl": 0.15,
-   "tauScale": 0.5
+   "tauScale": 1.5
   },
   {
    "name": "High Tom 2",
@@ -200,14 +203,14 @@
    "cavModes": 3,
    "cavAmp": 0.35,
    "cavT60": 0.25,
-   "dampScale": 0.63,
+   "dampScale": 0.378,
    "splitPct": 0.3,
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": -0.3,
-   "outGain": 0.045957,
+   "outGain": 0.082789,
    "nl": 0.15,
-   "tauScale": 0.5
+   "tauScale": 1.5
   },
   {
    "name": "Splash",
@@ -226,7 +229,7 @@
    "nl": 0.05,
    "pan": 0.45,
    "residual": 0.12,
-   "outGain": 0.023079,
+   "outGain": 0.023097,
    "hfLoss": 0.2
   },
   {
@@ -246,7 +249,7 @@
    "nl": 0.05,
    "pan": 0.55,
    "residual": 0.12,
-   "outGain": 0.024197,
+   "outGain": 0.024228,
    "hfLoss": 0.2
   },
   {
@@ -257,19 +260,19 @@
    "plateModes": 140,
    "plateSkip": 14,
    "plateStretch": 1.0,
-   "dampScale": 4.5,
+   "dampScale": 15.75,
    "splitPct": 0.5,
    "pairModes": 30,
    "strikeR": 0.9,
    "strikeRJit": 0.04,
-   "scrape": 1.5,
+   "scrape": 3.0,
    "nl": 0.1,
    "chokeGroup": 1,
    "pan": -0.4,
    "residual": 0.7,
-   "outGain": 0.012759,
-   "tauScale": 0.35,
-   "hfLoss": 0.3
+   "outGain": 0.012189,
+   "tauScale": 0.1,
+   "hfLoss": 0.05
   },
   {
    "name": "Hi-Hat Open",
@@ -289,26 +292,26 @@
    "chokeGroup": 1,
    "pan": -0.4,
    "residual": 0.7,
-   "outGain": 0.010349,
-   "tauScale": 0.35,
-   "hfLoss": 0.3
+   "outGain": 0.0091007,
+   "tauScale": 0.15,
+   "hfLoss": 0.1
   },
   {
    "name": "Cowbell",
    "defaultHz": 560,
    "minHz": 300,
    "maxHz": 1100,
-   "plateModes": 10,
+   "plateModes": 40,
    "plateStretch": 1.0,
-   "dampScale": 2.4,
+   "dampScale": 5.28,
    "splitPct": 0.2,
    "pairModes": 10,
    "strikeR": 0.6,
    "pan": 0.2,
-   "outGain": 0.083987,
+   "outGain": 0.067968,
    "nl": 0.1,
-   "tauScale": 0.2,
-   "hfLoss": 0.5
+   "tauScale": 0.12,
+   "hfLoss": 0.2
   },
   {
    "name": "Rimshot",
