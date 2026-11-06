@@ -12,8 +12,10 @@ CORR_MIN = 0.99
 SECRET = __import__("re").compile(r"github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----")
 
 def seed_for(round_no):
-    if round_no not in (1, 2, 3):
-        raise SystemExit(f"round {round_no} refused: the gate allows at most three rounds")
+    # The gate allows three rounds. The owner may extend it (decision D-022): OILDRUM_OWNER_EXTRA_ROUNDS=N allows N more.
+    extra = int(__import__("os").environ.get("OILDRUM_OWNER_EXTRA_ROUNDS", "0") or 0)
+    if not 1 <= round_no <= 3 + max(extra, 0):
+        raise SystemExit(f"round {round_no} refused: the gate allows at most {3 + max(extra, 0)} rounds")
     return SEED_BASE + 1000 * (round_no - 1)
 
 def read_pcm(path):
