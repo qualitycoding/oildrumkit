@@ -129,7 +129,7 @@
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": 0.25,
-   "outGain": 0.061962,
+   "outGain": 0.061832,
    "nl": 0.15,
    "tauScale": 2.2,
    "scrape": 0.4
@@ -149,7 +149,7 @@
    "strikeR": 0.45,
    "pitchEnvAmt": 0.04,
    "pan": 0.1,
-   "outGain": 0.079928,
+   "outGain": 0.079701,
    "nl": 0.15,
    "tauScale": 2.2,
    "scrape": 0.4
@@ -169,7 +169,7 @@
    "strikeR": 0.5,
    "pitchEnvAmt": 0.04,
    "pan": -0.05,
-   "outGain": 0.092703,
+   "outGain": 0.092376,
    "nl": 0.15,
    "tauScale": 2.2,
    "scrape": 0.4
@@ -220,7 +220,7 @@
    "plateModes": 150,
    "plateSkip": 14,
    "plateStretch": 1.0,
-   "dampScale": 0.35,
+   "dampScale": 0.12,
    "splitPct": 0.5,
    "pairModes": 40,
    "strikeR": 0.85,
@@ -229,8 +229,8 @@
    "nl": 0.05,
    "pan": 0.45,
    "residual": 0.12,
-   "outGain": 0.023097,
-   "hfLoss": 0.2
+   "outGain": 0.023064,
+   "hfLoss": 0.6
   },
   {
    "name": "Ride",
@@ -240,7 +240,7 @@
    "plateModes": 170,
    "plateSkip": 14,
    "plateStretch": 1.0,
-   "dampScale": 0.35,
+   "dampScale": 0.12,
    "splitPct": 0.5,
    "pairModes": 40,
    "strikeR": 0.7,
@@ -249,8 +249,8 @@
    "nl": 0.05,
    "pan": 0.55,
    "residual": 0.12,
-   "outGain": 0.024228,
-   "hfLoss": 0.2
+   "outGain": 0.024182,
+   "hfLoss": 0.6
   },
   {
    "name": "Hi-Hat Closed",
