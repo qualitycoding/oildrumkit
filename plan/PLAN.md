@@ -14,7 +14,7 @@ Also run `git push --dry-run origin impl/listening-validation` and record the an
 Copy `stubs/Tools/listening/*` into the working copy, run `OILDRUM_REPO=<copy> python3 -m pytest tests -q -p no:cacheprovider` and confirm exactly 19
 failures and 2 passes (red check). Then implement each tool until the tests pass. The reference implementation in `research/reference-impl/` is
 a worked solution; the implementer may copy it, but must still run the red check first and the green run afterwards.
-Expected: `21 passed`. Commit: `listening: tools and tests (S-010)`.
+Expected: `22 passed`. Commit: `listening: tools and tests (S-010)`.
 
 ## S-020 Reference acquisition (opens G-REF)
 Write `GATE-G-REF.md` from `research/REFERENCE_LEADS.md` and `assets/listening/RECORDING-PROTOCOL.md`. Stop until the answer arrives.
